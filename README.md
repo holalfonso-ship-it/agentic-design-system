@@ -56,14 +56,24 @@ Procedimiento que funcionó, repetible para futuras sincronizaciones:
    (`18:220`) y "Typography" (`18:248`) con los valores primitivos
    escritos directamente como texto — son el atajo más rápido.
 
-Pendiente (no se encontró swatch visual en el archivo para confirmarlos):
-`card/frozen/bg`, `card/frozen/bg-subtle`, `card/frozen/text` y
-`card/border` — existen como variables en Figma pero no aparecen
-aplicadas a ningún nodo visible que el agente pudiera inspeccionar.
-`card.border` usa una estimación razonada (`semantic/border/default` →
-`neutral/200`, `#A19E9C`); `card.frozen.*` mantiene el placeholder
-anterior. Selecciona esos nodos en Figma (o el swatch específico de
-`card/frozen`) y repite el procedimiento de arriba para cerrarlos.
+`card/frozen/*` se cerró localizando el component set real **Product
+Card** (`38:176`): en Figma "frozen" no es un tercer producto, es un
+**estado** (`state = active | frozen | blocked`) que se aplica sobre
+`product = credit | bnpl`. `card.frozen.bg` (`#FFFFFF`) y
+`card.frozen.text` (`#5C5653`) están confirmados sobre ese component
+set real; no existe un "bg-subtle" propio para el estado frozen (a
+diferencia de los productos bnpl/credit), así que se reutiliza el valor
+de `bg`.
+
+Sigue pendiente `card/border`: existe como variable en la colección
+Component Colors pero no se encontró ningún nodo del component set real
+de Product Card (ninguno de los 12: 2 productos × 3 estados × 2 lados)
+que lo use — el estado "blocked" usa en su lugar
+`semantic/feedback/error` para el borde. Puede ser un token sin usar
+todavía; se deja como estimación razonada
+(`semantic/border/default` → `neutral/200`, `#A19E9C`). Si aparece en
+algún otro componente, repite el procedimiento de arriba para
+confirmarlo.
 
 Alternativa sin desktop: exportar las variables vía la REST API de
 Figma (`GET /v1/files/:key/variables/local`) con un token personal de

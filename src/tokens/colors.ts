@@ -6,15 +6,26 @@
  * archivo Figma correcto: "Alfonso_Zamorano_Task_IDFinance"
  * (fileKey 3EHBqyJGvIfSG3CZol393z), vía MCP de Figma (get_design_context /
  * get_variable_defs) sobre el component set real "Button" (28:122), el
- * demo "Tab / Segmented Control" (18:167) y la sección de documentación
- * "Component Colors" (18:144) de la página "01. Tokens" (2:3).
+ * component set real "Product Card" (38:176), el demo "Tab / Segmented
+ * Control" (18:167) y la sección de documentación "Component Colors"
+ * (18:144) de la página "01. Tokens" (2:3).
  *
- * Pendiente de resolver (ver README): las variables `card/frozen/bg`,
- * `card/frozen/bg-subtle`, `card/frozen/text` y `card/border` existen en
- * la colección Component Colors pero no tienen un swatch visual en el
- * archivo — no se ha podido leer su valor exacto por este medio. Quedan
- * marcadas explícitamente abajo. `card.border` usa una estimación
- * razonada (semantic/border → neutral/200) hasta confirmarse.
+ * HALLAZGO — "frozen" no es un tercer producto de tarjeta en Figma, es un
+ * ESTADO que se aplica sobre credit o bnpl (variantes reales del
+ * component set: product = credit | bnpl, state = active | frozen |
+ * blocked). `card.frozen` aquí representa ese estado compartido, no un
+ * producto propio — el código original (Fase 0) lo modeló mal. Se
+ * mantiene la forma `{ bnpl, credit, frozen }` por compatibilidad con
+ * los componentes existentes, pero un futuro Audit (Fase 3) debería
+ * replantear esto como `card.state.frozen` aplicado sobre el producto.
+ *
+ * Pendiente de resolver: `card/border` existe en la colección Component
+ * Colors pero no se encontró ningún nodo del component set real de
+ * Product Card (estados active/frozen/blocked, ambos lados) que lo use
+ * — el estado "blocked" usa en su lugar `semantic/feedback/error`
+ * (#E60C00) para el borde. Puede ser un token sin usar todavía. Se deja
+ * como estimación razonada (`semantic/border/default` → `neutral/200`)
+ * hasta confirmarlo — otro candidato para el Audit de la Fase 3.
  */
 export const button = {
   primary: {
@@ -50,9 +61,12 @@ export const card = {
   border: "#A19E9C",
   bnpl: { bg: "#DCF3A2", bgSubtle: "#FCFEF6", text: "#151211" },
   credit: { bg: "#452476", bgSubtle: "#EDEAF3", text: "#FFFFFF" },
-  // PENDIENTE — sin swatch visual en Figma para card/frozen/*. Se
-  // mantiene el placeholder anterior hasta poder confirmarlo.
-  frozen: { bg: "#EEF1F5", bgSubtle: "#F7F8FA", text: "#4B4F5E" },
+  // Confirmado sobre el component set real (product=credit/bnpl,
+  // state=frozen): mismo bg/text para ambos productos en este estado.
+  // Figma no define un "bg-subtle" propio para el estado frozen (a
+  // diferencia de bnpl/credit, que sí lo tienen como producto) — se usa
+  // el mismo valor que bg.
+  frozen: { bg: "#FFFFFF", bgSubtle: "#FFFFFF", text: "#5C5653" },
 } as const;
 
 export const tab = {
