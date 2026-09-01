@@ -1,9 +1,8 @@
 # Agentic Design System — AID
 
 Fase 0–3 del sistema de diseño agéntico, construido desde cero a partir de
-los componentes reales publicados en Figma (librería
-`Alfonso_Zamorano_Task_IDFinance`, dentro del archivo *AID — iOS Design
-Tokens — UI Kit*).
+los componentes reales publicados en Figma (librería y archivo
+`Alfonso_Zamorano_Task_IDFinance`, `fileKey 3EHBqyJGvIfSG3CZol393z`).
 
 Marco conceptual completo (los 3 pilares, el bucle ARC, el roadmap): ver el
 documento del proyecto "Sistema de Diseño Agéntico".
@@ -31,23 +30,44 @@ npm run generate-index   # regenera index.toon a partir de la metadata
 
 ## Sincronizar valores exactos desde Figma
 
-Los **nombres** de los tokens (`src/tokens/*.ts`) son reales — vienen de
-las variables publicadas en Figma. Los **valores hex/px** son un
-placeholder plausible para una app fintech iOS, porque esta sesión no pudo
-leer los valores exactos de las variables sin el archivo de Figma abierto
-en el Figma desktop app (el MCP de Figma necesita eso para
-`get_variable_defs`).
+**Estado: hecho — Fase 1 (2026-09-01).** Los tokens de `src/tokens/*.ts`
+(colores, radios, tipografía) tienen ya valores reales, extraídos
+directamente del archivo de Figma correcto: **`Alfonso_Zamorano_Task_IDFinance`**
+(`fileKey 3EHBqyJGvIfSG3CZol393z` — el archivo que da nombre a la
+librería, no confundir con otros archivos que puedan compartir nombre de
+librería visible en "Assets").
 
-Para cerrar esa brecha:
+Procedimiento que funcionó, repetible para futuras sincronizaciones:
 
-1. Abre el archivo en Figma desktop y selecciona cualquier componente que
-   use la variable que quieras leer.
-2. Pide que se sincronicen los valores exactos — con el archivo abierto,
-   se pueden leer directamente y actualizar `src/tokens/colors.ts` con
-   los hex reales.
-3. Alternativa sin desktop: exportar las variables vía la REST API de
-   Figma (`GET /v1/files/:key/variables/local`) con un token personal de
-   Figma.
+1. Abre el archivo correcto en Figma desktop (confirma el nombre en la
+   barra de título / URL — `figma.com/design/<fileKey>/...`).
+2. Selecciona en el canvas el nodo que quieras leer y copia su enlace
+   ("Copy link to selection"); el `node-id` de esa URL es lo único que
+   necesita el agente.
+3. Con el nodo seleccionado, el MCP de Figma puede usar **tanto**
+   `get_design_context` (devuelve hex reales incluso sin selección viva,
+   sirve para cualquier node-id válido) **como** `get_variable_defs`
+   (solo funciona si ese nodo sigue siendo la selección activa en el
+   Figma desktop app en ese momento — si fallas con "nothing selected",
+   vuelve a seleccionarlo y reinténtalo).
+4. La página "01. Tokens" del archivo (node `2:3`) tiene una sección
+   "Component Colors" (`18:144`) con demos de Button / Product Card /
+   Tab que traen los hex ya resueltos, más las secciones "Radius"
+   (`18:220`) y "Typography" (`18:248`) con los valores primitivos
+   escritos directamente como texto — son el atajo más rápido.
+
+Pendiente (no se encontró swatch visual en el archivo para confirmarlos):
+`card/frozen/bg`, `card/frozen/bg-subtle`, `card/frozen/text` y
+`card/border` — existen como variables en Figma pero no aparecen
+aplicadas a ningún nodo visible que el agente pudiera inspeccionar.
+`card.border` usa una estimación razonada (`semantic/border/default` →
+`neutral/200`, `#A19E9C`); `card.frozen.*` mantiene el placeholder
+anterior. Selecciona esos nodos en Figma (o el swatch específico de
+`card/frozen`) y repite el procedimiento de arriba para cerrarlos.
+
+Alternativa sin desktop: exportar las variables vía la REST API de
+Figma (`GET /v1/files/:key/variables/local`) con un token personal de
+Figma.
 
 ## Componentes cubiertos vs. pendientes
 
