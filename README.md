@@ -1,4 +1,4 @@
-# Agentic Design System — AID
+# Agentic Design System — AIDA
 
 Fase 0–3 del sistema de diseño agéntico, construido desde cero a partir de
 los componentes reales publicados en Figma (librería y archivo
