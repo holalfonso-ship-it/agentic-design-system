@@ -7,6 +7,7 @@ import { QuickActionTile } from "./components/QuickActionTile";
 import { StatItem } from "./components/StatItem";
 import { Toggle } from "./components/Toggle";
 import { Badge } from "./components/Badge";
+import { Avatar } from "./components/Avatar";
 
 // Icono de relleno genérico para la vitrina — QuickActionTile y StatItem
 // exigen la prop `icon` (ver nota en su metadata sobre por qué no traen
@@ -54,6 +55,12 @@ export default function App() {
         <Badge variant="error">Rechazado</Badge>
         <Badge variant="warning">Pendiente</Badge>
         <Badge variant="neutral">Programado</Badge>
+      </section>
+
+      <section style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 24 }}>
+        <Avatar initials="AZ" size="sm" />
+        <Avatar initials="MC" size="md" />
+        <Avatar initials="CJ" size="lg" />
       </section>
 
       <section style={{ display: "flex", flexDirection: "column", gap: 12, marginBottom: 24 }}>
