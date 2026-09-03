@@ -73,3 +73,30 @@ export const tab = {
   bg: { default: "#FFFFFF", selected: "#361C5C" },
   text: { default: "#2E2824", selected: "#FFFFFF" },
 } as const;
+
+/**
+ * Colores semánticos genéricos — colección "semantic" de Figma, distinta
+ * de "Component Colors" (button/*, card/*, tab/* arriba). Confirmados en
+ * la Fase 2 (2026-09-03) sobre los componentes reales "Quick Action Tile"
+ * (75:51) y "Stat Item" (75:597), que los referencian directamente en vez
+ * de tener variables propias por componente como Button/Card/Tab.
+ *
+ * `semantic/border/default` (#C0BEBC) y `semantic/text/disabled`
+ * (#5C5653) ya habían aparecido antes como el valor real detrás de
+ * variables con nombre distinto (`button.secondary.border.disabled`,
+ * `button.primary.text.disabled` / `card.frozen.text`) — mismo valor,
+ * confirma que son alias del mismo token semántico subyacente.
+ */
+export const semantic = {
+  bg: { default: "#EDEAF3" },
+  border: { default: "#C0BEBC" },
+  text: { secondary: "#2E2824", disabled: "#5C5653" },
+} as const;
+
+/**
+ * Colección "labels" de Figma — texto de máximo énfasis, distinto de los
+ * colores por componente. Confirmado sobre "Quick Action Tile" (75:51).
+ */
+export const labels = {
+  primary: "#000000",
+} as const;

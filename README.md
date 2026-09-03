@@ -81,13 +81,31 @@ Figma.
 
 ## Componentes cubiertos vs. pendientes
 
-Cubiertos en esta primera pasada (los que aparecieron como *component
-set* reales en la librería, no como icono suelto):
+Cubiertos (6):
 
 - `Button` (primary / secondary / tertiary × default / hover / pressed / disabled)
 - `Tab Bar` (default / selected)
 - `Product Card` (bnpl / credit / frozen)
 - `Transaction List Item` (in / out)
+- `Quick Action Tile` — tile de acción rápida para la fila de acciones
+  del home (componente sin variantes en Figma, node `75:51`, añadido en
+  Fase 2 el 2026-09-03). Prop `icon` obligatoria, sin default: el
+  "Calendar Icon" que trae por defecto en Figma no se pudo descargar en
+  esta sesión (el egress de red del entorno bloquea `figma.com`) — el
+  consumidor debe pasar siempre un icono.
+- `Stat Item` — bloque de estadística pequeño para el resumen de
+  balance (Balance total / Total Gastos; componente sin variantes,
+  node `75:597`, añadido en Fase 2 el 2026-09-03). Prop `icon`
+  obligatoria por el mismo motivo: en Figma alterna entre
+  `arrow.up.right.circle.fill` / `arrow.down.left.circle.fill`, ninguno
+  de los dos assets se pudo descargar.
+
+`Quick Action Tile` y `Stat Item` fueron los primeros componentes en
+usar la colección "semantic" de Figma directamente (`semantic/bg/default`,
+`semantic/border/default`, `semantic/text/secondary`,
+`semantic/text/disabled`) en vez de tener variables propias por
+componente como Button/Card/Tab — ahora está en `src/tokens/colors.ts`
+como `semantic` y `labels`.
 
 La librería tiene además un catálogo de iconos individuales estilo SF
 Symbols mucho más grande de lo que se había estimado: la Fase 0 apuntó
@@ -97,35 +115,17 @@ ya encontró 40+ (`download.and.arrow.down`, `bell.badge`,
 es probable que sea un pack de comunidad SF Symbols completo, no una
 selección curada para la app. En vez de intentar catalogar el pack
 entero como componente `Icon`, la Fase 2 debería arrancar por los
-iconos con uso confirmado en componentes reales (p. ej.
-`arrow.up.right.circle.fill` / `arrow.down.left.circle.fill` en
-"Stat Item", ver abajo) y crecer el mapeo nombre→componente bajo
-demanda, no de una vez.
+iconos con uso confirmado en componentes reales: los dos de `Stat Item`
+y el "Calendar Icon" de `Quick Action Tile` son los tres primeros
+candidatos, con el mismo bloqueo de descarga documentado arriba —
+resolverlo (o exportar los SVG a mano desde Figma) es el siguiente paso
+antes de poder construir `Icon`.
 
-### Componentes reales encontrados, aún sin catalogar
-
-Búsqueda en Figma del 2026-09-03 (`search_design_system`) reveló dos
-component sets/componentes reales que no estaban en el inventario de
-Fase 0 y no tienen todavía metadata ni entrada en `index.toon`:
-
-- **`Quick Action Tile`** — tile de acción rápida para la fila de
-  acciones del home. Prop `Icon` intercambiable (cualquier SF Symbol
-  circular), título/subtítulo editables directamente.
-- **`Stat Item`** — bloque de estadística pequeño para el resumen de
-  balance (Balance total / Total Gastos). Prop `Icon`, pensado para
-  `arrow.up.right.circle.fill` / `arrow.down.left.circle.fill` según
-  dirección.
-
-Cubrirlos requiere leer su design context exacto (colores, spacing,
-variantes) con el archivo abierto en Figma desktop en la página
-correspondiente — pendiente de que Alfonso lo abra ahí para poder
-extraerlos con `get_design_context` en vez de estimarlos.
-
-No encontrados en la librería actual como componente de UI (huecos a
-decidir si se diseñan en Figma o se toman de una librería de
-comunidad): input de texto, toggle/switch, badge/chip (más allá de los
-iconos con "badge" en el nombre, que son SF Symbols compuestos, no un
-componente Badge de UI), modal/sheet, avatar.
+No encontrados en la librería actual como componente de UI (decidido
+con Alfonso el 2026-09-03: se diseñan en Figma propio, no se adoptan de
+una librería de comunidad): input de texto, toggle/switch, badge/chip
+(más allá de los iconos con "badge" en el nombre, que son SF Symbols
+compuestos, no un componente Badge de UI), modal/sheet, avatar.
 
 ## Cuando nada encaja — mecanismo de flag
 
