@@ -5,6 +5,7 @@ import { ProductCard } from "./components/ProductCard";
 import { TransactionListItem } from "./components/TransactionListItem";
 import { QuickActionTile } from "./components/QuickActionTile";
 import { StatItem } from "./components/StatItem";
+import { Toggle } from "./components/Toggle";
 
 // Icono de relleno genérico para la vitrina — QuickActionTile y StatItem
 // exigen la prop `icon` (ver nota en su metadata sobre por qué no traen
@@ -38,6 +39,13 @@ export default function App() {
       <section style={{ display: "flex", gap: 8, marginBottom: 24 }}>
         <QuickActionTile icon={<PlaceholderIcon />} title="Transferencias" subtitle="Feb · Mar · Abr · May" />
         <QuickActionTile icon={<PlaceholderIcon />} title="Pagar" subtitle="Recibos y servicios" />
+      </section>
+
+      <section style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 24 }}>
+        <Toggle checked={true} onChange={() => {}} aria-label="Notificaciones" />
+        <Toggle checked={false} onChange={() => {}} aria-label="Modo oscuro" />
+        <Toggle checked={true} disabled aria-label="Biometría (bloqueado)" />
+        <Toggle checked={false} disabled aria-label="Ubicación (bloqueado)" />
       </section>
 
       <section style={{ display: "flex", flexDirection: "column", gap: 12, marginBottom: 24 }}>

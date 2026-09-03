@@ -23,17 +23,24 @@
  * Colors pero no se encontró ningún nodo del component set real de
  * Product Card (estados active/frozen/blocked, ambos lados) que lo use
  * — el estado "blocked" usa en su lugar `semantic/feedback/error`
- * (#E60C00) para el borde. Puede ser un token sin usar todavía. Se deja
- * como estimación razonada (`semantic/border/default` → `neutral/200`)
- * hasta confirmarlo — otro candidato para el Audit de la Fase 3.
+ * (#E60C00) para el borde. Puede ser un token sin usar todavía. Su
+ * valor exacto SÍ se confirmó en la Fase 2 (2026-09-03), al resolver
+ * variables reales para construir el Toggle en Figma:
+ * `semantic/border/default` → `neutral/100` → `#C0BEBC` (no
+ * `neutral/200` como se había estimado en la Fase 1 — la estimación
+ * anterior era la variable primitiva equivocada, aunque el hex final
+ * quedó cerca). Sigue sin usarse en ningún nodo real, pero ya no es una
+ * estimación.
  */
 export const button = {
   primary: {
     bg: {
       default: "#361C5C",
-      // Estimado desde semantic/action/primary/bg/hover → plum/800.
-      // La variable button/primary/bg/hover existe pero no se encontró
-      // su swatch directo — confirmar antes de dar por definitivo.
+      // Confirmado en la Fase 2 (2026-09-03) al resolver variables
+      // reales para el Toggle: plum/700 = #361C5C (= semantic/action/
+      // primary/bg/default, el mismo valor que default de arriba) y
+      // plum/800 = #2A1648 — coincide exacto con este valor estimado
+      // en Fase 1. Ya no es una estimación.
       hover: "#2A1648",
       pressed: "#201137",
       disabled: "#F7F6F6",
@@ -56,9 +63,11 @@ export const button = {
 } as const;
 
 export const card = {
-  // Estimado (semantic/border/default → neutral/200). Sin swatch directo
-  // para card/border en el archivo — confirmar.
-  border: "#A19E9C",
+  // Confirmado en la Fase 2 (2026-09-03): semantic/border/default →
+  // neutral/100 → #C0BEBC (mismo valor que semantic.border.default más
+  // abajo). Sigue sin usarse en ningún nodo real de Product Card — ver
+  // nota al principio del archivo.
+  border: "#C0BEBC",
   bnpl: { bg: "#DCF3A2", bgSubtle: "#FCFEF6", text: "#151211" },
   credit: { bg: "#452476", bgSubtle: "#EDEAF3", text: "#FFFFFF" },
   // Confirmado sobre el component set real (product=credit/bnpl,
@@ -88,7 +97,11 @@ export const tab = {
  * confirma que son alias del mismo token semántico subyacente.
  */
 export const semantic = {
-  bg: { default: "#EDEAF3" },
+  // `surface` (#FFFFFF, neutral/white) confirmado en la Fase 2
+  // (2026-09-03) sobre el knob del Toggle — es semantic/bg/surface,
+  // distinto de semantic/bg/default (el fondo violeta claro de Quick
+  // Action Tile).
+  bg: { default: "#EDEAF3", surface: "#FFFFFF" },
   border: { default: "#C0BEBC" },
   text: { secondary: "#2E2824", disabled: "#5C5653" },
 } as const;
@@ -99,4 +112,34 @@ export const semantic = {
  */
 export const labels = {
   primary: "#000000",
+} as const;
+
+/**
+ * Colores de acción semánticos — subcolección `semantic/action/*` de
+ * Figma, distinta de `semantic.bg`/`semantic.border`/`semantic.text` de
+ * arriba. Confirmados en la Fase 2 (2026-09-03) al construir el Toggle:
+ * `semantic/action/primary/bg/default` resultó ser exactamente el mismo
+ * valor que `button.primary.bg.default` (plum/700, #361C5C) — es el
+ * token que Button referencia bajo un nombre propio y que Toggle
+ * consume directo, igual que `semantic`/`labels` para Quick Action
+ * Tile/Stat Item.
+ */
+export const semanticAction = {
+  primary: {
+    bg: { default: "#361C5C", disabled: "#F7F6F6" },
+  },
+} as const;
+
+/**
+ * Primitivos de la colección "Primitive Colors" de Figma consumidos
+ * directamente (sin pasar por un token semántico), cuando ningún token
+ * semántico existente encaja. Confirmado en la Fase 2 (2026-09-03):
+ * `neutral/300` es el track "off" del Toggle — no hay un
+ * un `semantic/action/.../off` (o similar) en la colección Semantic Colors,
+ * así que se usa el primitivo tal cual, siguiendo la regla de
+ * `figma-generate-library` de que reusar un primitivo directo es
+ * preferible a inventar un token semántico nuevo que Figma no tiene.
+ */
+export const neutral = {
+  "300": "#76726F",
 } as const;
