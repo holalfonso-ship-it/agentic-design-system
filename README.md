@@ -89,15 +89,54 @@ set* reales en la librería, no como icono suelto):
 - `Product Card` (bnpl / credit / frozen)
 - `Transaction List Item` (in / out)
 
-La librería también tiene ~15 componentes de icono individuales (estilo
-SF Symbols: `camera.shutter.button`, `bookmark.fill`, etc.) que no se
-tradujeron a componentes React en esta fase — son assets, no componentes
-de UI con variantes de comportamiento. Se pueden incorporar como un
-componente `Icon` único parametrizado por nombre, cuando haga falta.
+La librería tiene además un catálogo de iconos individuales estilo SF
+Symbols mucho más grande de lo que se había estimado: la Fase 0 apuntó
+"~15", pero una búsqueda parcial en `search_design_system` (2026-09-03)
+ya encontró 40+ (`download.and.arrow.down`, `bell.badge`,
+`cart.badge.plus`, `person.crop.square`, `location.north.fill`, etc.) —
+es probable que sea un pack de comunidad SF Symbols completo, no una
+selección curada para la app. En vez de intentar catalogar el pack
+entero como componente `Icon`, la Fase 2 debería arrancar por los
+iconos con uso confirmado en componentes reales (p. ej.
+`arrow.up.right.circle.fill` / `arrow.down.left.circle.fill` en
+"Stat Item", ver abajo) y crecer el mapeo nombre→componente bajo
+demanda, no de una vez.
 
-No encontrados en la librería actual (huecos a decidir si se diseñan o se
-toman de una librería de comunidad): input de texto, toggle/switch,
-badge/chip, modal/sheet, avatar.
+### Componentes reales encontrados, aún sin catalogar
+
+Búsqueda en Figma del 2026-09-03 (`search_design_system`) reveló dos
+component sets/componentes reales que no estaban en el inventario de
+Fase 0 y no tienen todavía metadata ni entrada en `index.toon`:
+
+- **`Quick Action Tile`** — tile de acción rápida para la fila de
+  acciones del home. Prop `Icon` intercambiable (cualquier SF Symbol
+  circular), título/subtítulo editables directamente.
+- **`Stat Item`** — bloque de estadística pequeño para el resumen de
+  balance (Balance total / Total Gastos). Prop `Icon`, pensado para
+  `arrow.up.right.circle.fill` / `arrow.down.left.circle.fill` según
+  dirección.
+
+Cubrirlos requiere leer su design context exacto (colores, spacing,
+variantes) con el archivo abierto en Figma desktop en la página
+correspondiente — pendiente de que Alfonso lo abra ahí para poder
+extraerlos con `get_design_context` en vez de estimarlos.
+
+No encontrados en la librería actual como componente de UI (huecos a
+decidir si se diseñan en Figma o se toman de una librería de
+comunidad): input de texto, toggle/switch, badge/chip (más allá de los
+iconos con "badge" en el nombre, que son SF Symbols compuestos, no un
+componente Badge de UI), modal/sheet, avatar.
+
+## Cuando nada encaja — mecanismo de flag
+
+Desde el 2026-09-03, la regla extend-vs-create de `CLAUDE.md` es una
+puerta dura: si ningún componente ni categoría existente encaja, el
+agente no fuerza el más parecido ni inventa uno nuevo — añade una línea
+a `flags.jsonl` (raíz del repo) y lo reporta como tal. Ver la sección
+"Cuando nada encaja" de `CLAUDE.md` para el esquema completo. Ese
+archivo es el backlog real del sistema: los huecos de componentes se
+priorizan por casos reales marcados ahí, no solo por la lista de huecos
+conocidos de arriba.
 
 ## Próximo paso
 

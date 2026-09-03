@@ -18,6 +18,66 @@ modificar este codebase correctamente.
    cualquier valor de color, radio o tamaño de fuente a mano. Ningún
    componente debe tener un hex o un px hardcodeado que ya exista como
    token.
+5. **Si nada de lo anterior encaja, no fuerces el componente más
+   parecido ni inventes uno nuevo por tu cuenta.** Ve la sección
+   siguiente — "Cuando nada encaja" es una puerta dura (hard gate), no
+   una guía.
+
+## Cuando nada encaja — flag, no invención
+
+Incorporado el 2026-09-03 a partir de feedback real de Phong Designs AI
+Systems (Product Designer, Design Systems) en la serie de LinkedIn del
+proyecto: la metadata describe qué es cada componente, pero no resuelve
+la decisión extend-vs-create sobre la petición en sí. Sin una salida
+legítima para "no hay nada que encaje", un agente solo tiene dos
+movimientos posibles frente a una petición que no cubre ningún
+componente existente — y los dos son incorrectos:
+
+- Coger el componente más parecido aunque no encaje del todo (lo
+  estira con una prop o variante ad-hoc).
+- Inventarse un componente nuevo sin pasar por Figma ni por revisión.
+
+Ambos casos "parecen" un resultado correcto pero no lo son: rompen la
+trazabilidad código↔diseño y ensucian el índice con componentes que no
+existen en la librería real.
+
+**Regla dura:** si tras seguir los 4 pasos de la sección anterior ningún
+componente existente cubre ≥70% de las props necesarias y ninguna
+categoría existente encaja, el agente NO construye nada. En su lugar:
+
+1. Añade una línea a `flags.jsonl` (raíz del repo, formato JSON Lines,
+   solo apertura — nunca reescribas ni borres líneas existentes) con
+   este esquema:
+
+   ```json
+   {
+     "date": "YYYY-MM-DD",
+     "requestedBy": "quién/qué originó la petición (agente, usuario, feature)",
+     "brief": "descripción corta de qué se pidió construir",
+     "closestComponent": "nombre del componente más parecido, o null",
+     "closestCategory": "categoría más parecida, o null",
+     "reason": "qué prop, variante o patrón falta para que encajara",
+     "decision": "flagged"
+   }
+   ```
+
+2. Responde a quien hizo la petición explicando que no hay componente
+   que encaje, citando `closestComponent`/`closestCategory` y `reason`.
+3. No construyas una versión provisional "mientras tanto" — el flag es
+   el resultado correcto, no un paso intermedio antes de construir igual.
+
+`flags.jsonl` es el backlog real del sistema: en vez de decidir a priori
+qué componentes faltan, la Fase 2 se prioriza con casos reales donde el
+sistema no dio la talla. El ciclo Audit (ver más abajo) debe releer este
+archivo en cada pasada.
+
+**Componente bajo vigilancia especial:** `TransactionListItem`. Button,
+TabBar y ProductCard son lo bastante genéricos como para que casi
+cualquier petición encaje sin forzar. `TransactionListItem` está atado a
+un flujo concreto (una fila de movimiento in/out), así que es el
+candidato más probable a que un agente lo estire en vez de admitir que
+no encaja — por ejemplo un estado "pending", o un tipo de partida que no
+sea in/out. Trátalo como el caso de prueba de esta regla.
 
 ## Al crear o modificar un componente
 
@@ -39,11 +99,15 @@ modificar este codebase correctamente.
 - **Audit**: lee `index.toon` completo, compara contra `src/components/`
   real. Reporta cualquier carpeta de componente sin entrada en el índice,
   y cualquier entrada del índice sin carpeta correspondiente (índice
-  desincronizado).
+  desincronizado). Lee también `flags.jsonl` completo — cada línea es un
+  caso real donde el sistema no dio la talla; agrúpalas por
+  `closestCategory`/`closestComponent` para ver patrones (3+ flags sobre
+  el mismo componente es señal fuerte de que falta una variante real).
 - **Report**: busca en el código consumidor (fuera de `src/components/`)
   estilos inline o valores hardcodeados que dupliquen un token existente
   o un patrón que se repita 3+ veces sin estar extraído a componente.
   Repórtalo con archivo, línea y el token/componente que debería usarse.
+  Suma los hallazgos de `flags.jsonl` como parte del reporte, no aparte.
 - **Compose** (fase futura, no automatizada aún en este repo): no generes
   cambios automáticos todavía — deja el reporte para revisión humana vía
   PR.
@@ -52,10 +116,14 @@ modificar este codebase correctamente.
 
 - Los tokens son la única fuente de verdad de valores visuales:
   `src/tokens/colors.ts`, `radius.ts`, `typography.ts`.
-- Los valores de color en `colors.ts` son placeholder hasta sincronizar
-  los valores exactos de Figma — no los trates como definitivos al
-  auditar contraste o accesibilidad; señala el placeholder si lo
-  detectas, no lo "corrijas" inventando un valor.
+- Los valores de `colors.ts`, `radius.ts` y `typography.ts` están
+  **sincronizados con Figma** desde la Fase 1 (2026-09-01) — ya no son
+  placeholder. Quedan dos huecos documentados como estimación razonada,
+  no confirmados: `card.border` (no se encontró ningún nodo real que lo
+  use) y el nombre de `button.secondary.border.default` (la variable
+  real se aplica en Figma al estado pressed/loading, no al default
+  visual). Señala cualquier otro valor que no cuadre al auditar — no lo
+  "corrijas" inventando un valor nuevo, repórtalo.
 - Stack: React + TypeScript + Vite. Sin librería de estilos externa — los
   componentes usan estilos inline a propósito, en esta fase, para
   mantener el árbol de dependencias mínimo mientras se valida la
