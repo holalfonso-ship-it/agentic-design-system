@@ -81,7 +81,7 @@ Figma.
 
 ## Componentes cubiertos vs. pendientes
 
-Cubiertos (6):
+Cubiertos (10):
 
 - `Button` (primary / secondary / tertiary × default / hover / pressed / disabled)
 - `Tab Bar` (default / selected)
@@ -99,6 +99,29 @@ Cubiertos (6):
   obligatoria por el mismo motivo: en Figma alterna entre
   `arrow.up.right.circle.fill` / `arrow.down.left.circle.fill`, ninguno
   de los dos assets se pudo descargar.
+- `Toggle` — switch on/off (track + knob), sin label propio. No existía
+  en la librería: se diseñó de cero en Figma con el agente (skill
+  `figma-generate-library` + `figma-use`), component_set `159:119` en
+  la página "02. Components", bindeado a variables reales (sin hex
+  hardcodeados). Añadido en Fase 2 el 2026-09-03.
+- `Badge` — pill de estado (success / error / warning / neutral) con
+  punto de color + texto. Tampoco existía en la librería: diseñado de
+  cero igual que Toggle, component_set `165:119`. El texto de la
+  variante `warning` usa `sunflower/800` (primitivo directo) en vez de
+  `semantic/feedback/warning` (`sunflower/500`) por falta de contraste
+  suficiente — no existe `warning-subtle` en el archivo. Añadido en
+  Fase 2 el 2026-09-03.
+- `Avatar` — círculo con iniciales (sm/md/lg), reutiliza los tokens de
+  Button (`button.primary.bg.default` / `button.primary.text.default`)
+  en vez de variables propias. Solo soporta iniciales, sin imagen —
+  extensión futura documentada en su metadata. Diseñado de cero,
+  component_set `169:113`. Añadido en Fase 2 el 2026-09-03.
+- `Input` — campo de texto de una línea con label + helper text,
+  estados default / focused / error / disabled. El estado "focused" se
+  deriva en runtime con onFocus/onBlur en vez de exigirse como prop,
+  aunque en Figma sí existe como variante propia para poder verla en el
+  archivo de diseño. Diseñado de cero, component_set `173:119`. Añadido
+  en Fase 2 el 2026-09-03.
 
 `Quick Action Tile` y `Stat Item` fueron los primeros componentes en
 usar la colección "semantic" de Figma directamente (`semantic/bg/default`,
@@ -121,11 +144,20 @@ candidatos, con el mismo bloqueo de descarga documentado arriba —
 resolverlo (o exportar los SVG a mano desde Figma) es el siguiente paso
 antes de poder construir `Icon`.
 
-No encontrados en la librería actual como componente de UI (decidido
-con Alfonso el 2026-09-03: se diseñan en Figma propio, no se adoptan de
-una librería de comunidad): input de texto, toggle/switch, badge/chip
-(más allá de los iconos con "badge" en el nombre, que son SF Symbols
-compuestos, no un componente Badge de UI), modal/sheet, avatar.
+De los 5 componentes que no existían en la librería (decidido con
+Alfonso el 2026-09-03: se diseñan en Figma propio, no se adoptan de una
+librería de comunidad), 4 ya están construidos y sincronizados a código
+(Toggle, Badge, Avatar, Input — arriba). Queda pendiente:
+
+- `Modal` / sheet — el único de los 5 que aún no se ha construido en
+  Figma. Es un componente compuesto (header / body / footer / backdrop),
+  con más superficie que los anteriores.
+
+Ninguno de los 4 construidos tiene todavía `componentKey`: se asigna
+solo cuando Alfonso publica la librería desde Figma desktop (acción
+manual, no expuesta por ninguna herramienta MCP disponible). Cada
+metadata de componente documenta esto explícitamente con
+`figma.componentKey: null` + `figma.nodeId`.
 
 ## Cuando nada encaja — mecanismo de flag
 

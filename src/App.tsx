@@ -8,6 +8,7 @@ import { StatItem } from "./components/StatItem";
 import { Toggle } from "./components/Toggle";
 import { Badge } from "./components/Badge";
 import { Avatar } from "./components/Avatar";
+import { Input } from "./components/Input";
 
 // Icono de relleno genérico para la vitrina — QuickActionTile y StatItem
 // exigen la prop `icon` (ver nota en su metadata sobre por qué no traen
@@ -61,6 +62,13 @@ export default function App() {
         <Avatar initials="AZ" size="sm" />
         <Avatar initials="MC" size="md" />
         <Avatar initials="CJ" size="lg" />
+      </section>
+
+      <section style={{ display: "flex", flexDirection: "column", gap: 16, marginBottom: 24 }}>
+        <Input label="Nombre" placeholder="Placeholder" helperText="Texto de ayuda" />
+        <Input label="Email" defaultValue="alfonso@example.com" helperText="Texto de ayuda" />
+        <Input label="Importe" error errorText="Este campo es obligatorio" />
+        <Input label="Documento" placeholder="Placeholder" helperText="Texto de ayuda" disabled />
       </section>
 
       <section style={{ display: "flex", flexDirection: "column", gap: 12, marginBottom: 24 }}>

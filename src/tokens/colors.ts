@@ -103,7 +103,22 @@ export const semantic = {
   // Action Tile).
   bg: { default: "#EDEAF3", surface: "#FFFFFF" },
   border: { default: "#C0BEBC" },
-  text: { secondary: "#2E2824", disabled: "#5C5653" },
+  // `primary` (#151211, neutral/900) añadido en la Fase 2 (2026-09-03)
+  // al construir el Input: es el color de "Texto introducido" en los
+  // estados default/focused/error — coincide con card.credit.text
+  // ya documentado más arriba, confirmando que es el mismo alias.
+  text: { primary: "#151211", secondary: "#2E2824", disabled: "#5C5653" },
+  // `brand.primary` (#361C5C, plum/700) añadido en la Fase 2
+  // (2026-09-03) al construir el Input: es el borde del estado
+  // "focused" — mismo valor exacto que semanticAction.primary.bg.default
+  // y button.primary.bg.default, pero es una variable de Figma distinta
+  // (semantic/brand/primary) que Input referencia directamente.
+  brand: { primary: "#361C5C" },
+  // `feedback.error` (#E60C00, red/500) añadido en la Fase 2
+  // (2026-09-03) al construir el Input: borde + helper text del estado
+  // "error". No se añaden success/warning aquí porque Input no los usa
+  // todavía (sí están resueltos en Badge.tsx, con sus propios comentarios).
+  feedback: { error: "#E60C00" },
 } as const;
 
 /**
@@ -142,4 +157,11 @@ export const semanticAction = {
  */
 export const neutral = {
   "300": "#76726F",
+  // `50` (#F7F6F6, neutral/50) añadido en la Fase 2 (2026-09-03) al
+  // construir el Input: fondo del campo en el estado "disabled". Mismo
+  // hex que button.primary.bg.disabled y semanticAction.primary.bg.disabled
+  // (misma variable primitiva, consumida por distintos tokens semánticos
+  // en Figma) — aquí se referencia el primitivo directo porque no hay un
+  // semantic/bg/disabled genérico en la colección Semantic Colors.
+  "50": "#F7F6F6",
 } as const;

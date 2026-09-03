@@ -1,8 +1,9 @@
-# index.toon — generado 2026-09-03T09:04:08.068Z
-# componentes:9 relaciones:0
+# index.toon — generado 2026-09-03T09:12:14.580Z
+# componentes:10 relaciones:0
 Avatar|data-display|deps:none|tokens:2|estados:3|figma:-
 Badge|data-display|deps:none|tokens:10|estados:4|figma:-
 Button|action|deps:none|tokens:8|estados:4|figma:0784c9db
+Input|form|deps:none|tokens:13|estados:4|figma:-
 ProductCard|data-display|deps:none|tokens:7|estados:3|figma:6a26bf3b
 QuickActionTile|action|deps:none|tokens:7|estados:1|figma:35e5a3a3
 StatItem|data-display|deps:none|tokens:3|estados:1|figma:a753e447
