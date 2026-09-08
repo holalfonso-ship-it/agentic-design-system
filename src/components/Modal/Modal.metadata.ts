@@ -11,6 +11,13 @@
  * componente en sí). El código de este directorio se escribió después,
  * a partir de ese componente real. Es el último de los 5 componentes
  * ausentes originales de la Fase 2 (Input, Toggle, Badge, Avatar, Modal).
+ *
+ * Nota (2026-09-08): la primera versión de este componente en Figma no
+ * tenía component properties (a diferencia de Toggle/Badge/Avatar/Input,
+ * que exponen estado como variantes) — corregido el mismo día a raíz de
+ * una pregunta directa de Alfonso ("¿y no tendrá propiedades?"). Se
+ * añadieron 5: Title, Body, Secondary label, Primary label (TEXT) y
+ * Show footer (BOOLEAN). Ver figma.componentProperties abajo.
  */
 export const meta = {
   name: "Modal",
@@ -27,6 +34,20 @@ export const meta = {
     componentKey: null,
     nodeId: "178:107",
     type: "component",
+    // Component properties añadidas el 2026-09-08 (tras revisión de
+    // Alfonso: la primera versión no tenía ninguna, a diferencia de
+    // Toggle/Badge/Avatar/Input que sí exponen estado como variantes).
+    // Mapean 1:1 a las props de React de abajo, salvo "Show footer"
+    // (booleana, controla la visibilidad del footer completo) que en
+    // código se deriva de si se pasan primaryActionLabel/onPrimaryAction
+    // o un footer custom, no es una prop booleana independiente.
+    componentProperties: {
+      Title: "TEXT",
+      Body: "TEXT",
+      "Secondary label": "TEXT",
+      "Primary label": "TEXT",
+      "Show footer": "BOOLEAN",
+    },
   },
   props: {
     open: "boolean (obligatorio)",
