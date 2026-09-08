@@ -81,7 +81,7 @@ Figma.
 
 ## Componentes cubiertos vs. pendientes
 
-Cubiertos (10):
+Cubiertos (11):
 
 - `Button` (primary / secondary / tertiary × default / hover / pressed / disabled)
 - `Tab Bar` (default / selected)
@@ -122,6 +122,15 @@ Cubiertos (10):
   aunque en Figma sí existe como variante propia para poder verla en el
   archivo de diseño. Diseñado de cero, component_set `173:119`. Añadido
   en Fase 2 el 2026-09-03.
+- `Modal` — bottom sheet: backdrop + sheet (handle, header con título y
+  botón cerrar, divider, body de contenido, footer con acción
+  secundaria y primaria). El último de los 5 componentes ausentes
+  originales. No existía en la librería: diseñado de cero, componente
+  `178:107` (sin variantes, como Quick Action Tile/Stat Item — su
+  variabilidad es de contenido, no de estado). El footer por defecto
+  reutiliza el componente `Button` real en código (no en Figma, donde
+  se construyó como nodos propios, igual que el resto del repo).
+  Añadido en Fase 2 el 2026-09-08.
 
 `Quick Action Tile` y `Stat Item` fueron los primeros componentes en
 usar la colección "semantic" de Figma directamente (`semantic/bg/default`,
@@ -146,14 +155,11 @@ antes de poder construir `Icon`.
 
 De los 5 componentes que no existían en la librería (decidido con
 Alfonso el 2026-09-03: se diseñan en Figma propio, no se adoptan de una
-librería de comunidad), 4 ya están construidos y sincronizados a código
-(Toggle, Badge, Avatar, Input — arriba). Queda pendiente:
+librería de comunidad), los 5 ya están construidos y sincronizados a
+código: Toggle, Badge, Avatar, Input y Modal (arriba) — cierra la
+cobertura de componentes ausentes de la Fase 2.
 
-- `Modal` / sheet — el único de los 5 que aún no se ha construido en
-  Figma. Es un componente compuesto (header / body / footer / backdrop),
-  con más superficie que los anteriores.
-
-Ninguno de los 4 construidos tiene todavía `componentKey`: se asigna
+Ninguno de los 5 construidos tiene todavía `componentKey`: se asigna
 solo cuando Alfonso publica la librería desde Figma desktop (acción
 manual, no expuesta por ninguna herramienta MCP disponible). Cada
 metadata de componente documenta esto explícitamente con

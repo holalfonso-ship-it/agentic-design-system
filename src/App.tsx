@@ -9,6 +9,7 @@ import { Toggle } from "./components/Toggle";
 import { Badge } from "./components/Badge";
 import { Avatar } from "./components/Avatar";
 import { Input } from "./components/Input";
+import { Modal } from "./components/Modal";
 
 // Icono de relleno genérico para la vitrina — QuickActionTile y StatItem
 // exigen la prop `icon` (ver nota en su metadata sobre por qué no traen
@@ -23,6 +24,7 @@ function PlaceholderIcon() {
 
 export default function App() {
   const [activeTab, setActiveTab] = useState("home");
+  const [modalOpen, setModalOpen] = useState(false);
 
   return (
     <div style={{ maxWidth: 380, margin: "40px auto", fontFamily: "sans-serif" }}>
@@ -80,6 +82,22 @@ export default function App() {
       <section style={{ marginBottom: 24 }}>
         <TransactionListItem merchant="Carrefour" category="Supermercado" amount="34,20 €" direction="out" timestamp="hoy" />
         <TransactionListItem merchant="Nómina" category="Ingreso" amount="1.800,00 €" direction="in" timestamp="ayer" />
+      </section>
+
+      <section style={{ marginBottom: 24 }}>
+        <Button variant="secondary" onClick={() => setModalOpen(true)}>
+          Abrir modal
+        </Button>
+        <Modal
+          open={modalOpen}
+          onClose={() => setModalOpen(false)}
+          title="Confirmar transferencia"
+          primaryActionLabel="Confirmar"
+          onPrimaryAction={() => setModalOpen(false)}
+          secondaryActionLabel="Cancelar"
+        >
+          Vas a transferir 45,00 € a Carrefour. Esta acción no se puede deshacer.
+        </Modal>
       </section>
 
       <TabBar

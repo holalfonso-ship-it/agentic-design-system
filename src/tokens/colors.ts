@@ -164,4 +164,10 @@ export const neutral = {
   // en Figma) — aquí se referencia el primitivo directo porque no hay un
   // semantic/bg/disabled genérico en la colección Semantic Colors.
   "50": "#F7F6F6",
+  // `black` (#000000, neutral/black) añadido en la Fase 2 (2026-09-08) al
+  // construir el Modal: color base del backdrop (fondo semi-transparente
+  // detrás del sheet), consumido al 40% de opacity en tiempo de renderizado
+  // (Modal.tsx aplica el canal alpha en CSS, no como variable de Figma
+  // separada: el archivo no tiene una variable "backdrop" propia).
+  "black": "#000000",
 } as const;

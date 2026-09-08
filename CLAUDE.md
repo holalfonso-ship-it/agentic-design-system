@@ -11,7 +11,8 @@ modificar este codebase correctamente.
    generado por `npm run generate-index`. No explores `src/components`
    manualmente si `index.toon` ya responde la pregunta.
 2. Busca por **categoría**, no por nombre exacto. Categorías actuales:
-   `action`, `navigation`, `data-display`.
+   `action`, `navigation`, `data-display`, `form` (desde Input, Fase 2),
+   `overlay` (desde Modal, Fase 2).
 3. Si un componente existente cubre más del 70% de las props que necesitas,
    extiéndelo (nueva variante, nueva prop) en vez de crear uno nuevo.
 4. Si no existe nada parecido, revisa `src/tokens/` antes de escribir
