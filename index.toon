@@ -1,11 +1,11 @@
-# index.toon — generado 2026-09-14T08:15:03.497Z
+# index.toon — generado 2026-09-14T08:20:32.372Z
 # componentes:11 relaciones:1
 Avatar|data-display|deps:none|tokens:2|estados:3|figma:-
 Badge|data-display|deps:none|tokens:10|estados:4|figma:-
 Button|action|deps:none|tokens:8|estados:4|figma:0784c9db
 Input|form|deps:none|tokens:13|estados:4|figma:-
 Modal|overlay|deps:Button|tokens:14|estados:1|figma:-
-ProductCard|data-display|deps:none|tokens:7|estados:3|figma:6a26bf3b
+ProductCard|data-display|deps:none|tokens:8|estados:3|figma:6a26bf3b
 QuickActionTile|action|deps:none|tokens:7|estados:1|figma:35e5a3a3
 StatItem|data-display|deps:none|tokens:3|estados:1|figma:a753e447
 TabBar|navigation|deps:none|tokens:6|estados:2|figma:4cbc45b6

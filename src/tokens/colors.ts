@@ -10,27 +10,26 @@
  * Control" (18:167) y la sección de documentación "Component Colors"
  * (18:144) de la página "01. Tokens" (2:3).
  *
- * HALLAZGO — "frozen" no es un tercer producto de tarjeta en Figma, es un
- * ESTADO que se aplica sobre credit o bnpl (variantes reales del
- * component set: product = credit | bnpl, state = active | frozen |
- * blocked). `card.frozen` aquí representa ese estado compartido, no un
- * producto propio — el código original (Fase 0) lo modeló mal. Se
- * mantiene la forma `{ bnpl, credit, frozen }` por compatibilidad con
- * los componentes existentes, pero un futuro Audit (Fase 3) debería
- * replantear esto como `card.state.frozen` aplicado sobre el producto.
+ * REMODELADO — Compose de la Fase 3 (2026-09-14, hallazgo 3 del Audit).
+ * `card.frozen` ya no es un tercer producto — el component set real
+ * (`product = credit | bnpl` × `state = active | frozen | blocked`,
+ * confirmado de nuevo vía get_variable_defs) se refleja ahora en la
+ * forma de este export: `bnpl`/`credit` llevan su bg/text propio del
+ * estado "active", y `frozen` es un objeto compartido que se aplica
+ * sobre cualquier producto cuando el estado no es "active". El estado
+ * "blocked" no tiene bg/text propio — reusa `frozen` (confirmado sobre
+ * el nodo real `46:68`, product=credit/state=blocked) y solo cambia el
+ * borde a `semantic.feedback.error` (ver ProductCard.tsx). El `radius`
+ * real del componente también se corrigió de camino: es `radius/md`
+ * (12px), no `radius/lg` (16px) — confirmado sobre los nodos reales
+ * `35:959` (active) y `46:68` (blocked).
  *
- * Pendiente de resolver: `card/border` existe en la colección Component
- * Colors pero no se encontró ningún nodo del component set real de
- * Product Card (estados active/frozen/blocked, ambos lados) que lo use
- * — el estado "blocked" usa en su lugar `semantic/feedback/error`
- * (#E60C00) para el borde. Puede ser un token sin usar todavía. Su
- * valor exacto SÍ se confirmó en la Fase 2 (2026-09-03), al resolver
- * variables reales para construir el Toggle en Figma:
- * `semantic/border/default` → `neutral/100` → `#C0BEBC` (no
- * `neutral/200` como se había estimado en la Fase 1 — la estimación
- * anterior era la variable primitiva equivocada, aunque el hex final
- * quedó cerca). Sigue sin usarse en ningún nodo real, pero ya no es una
- * estimación.
+ * `card.border` (`#C0BEBC`) sigue sin usarse en ningún nodo real de
+ * Figma (confirmado de nuevo en la Fase 3) — pero sí se usa en código,
+ * como borde por defecto de los estados active/frozen (ver
+ * ProductCard.tsx). La nota anterior de este archivo daba a entender
+ * que el token no se usaba en ningún sitio; se corrige aquí: solo el
+ * lado de Figma no lo consume, el código sí.
  */
 export const button = {
   primary: {
@@ -65,17 +64,18 @@ export const button = {
 export const card = {
   // Confirmado en la Fase 2 (2026-09-03): semantic/border/default →
   // neutral/100 → #C0BEBC (mismo valor que semantic.border.default más
-  // abajo). Sigue sin usarse en ningún nodo real de Product Card — ver
-  // nota al principio del archivo.
+  // abajo). Border por defecto para los estados active/frozen — ver
+  // ProductCard.tsx para el borde del estado blocked.
   border: "#C0BEBC",
   bnpl: { bg: "#DCF3A2", bgSubtle: "#EFF9D4", text: "#151211" },
   credit: { bg: "#452476", bgSubtle: "#C8BCD8", text: "#FFFFFF" },
-  // Confirmado sobre el component set real (product=credit/bnpl,
-  // state=frozen): mismo bg/text para ambos productos en este estado.
-  // Figma no define un "bg-subtle" propio para el estado frozen (a
-  // diferencia de bnpl/credit, que sí lo tienen como producto) — se usa
-  // el mismo valor que bg.
-  frozen: { bg: "#FFFFFF", bgSubtle: "#FFFFFF", text: "#5C5653" },
+  // Compartido por cualquier producto en estado "frozen" o "blocked" —
+  // confirmado sobre el component set real (product=credit/bnpl,
+  // state=frozen y state=blocked): mismo bg/text en los dos estados y
+  // en los dos productos. Sin "bg-subtle" propio (a diferencia de
+  // bnpl/credit) — no hace falta, este objeto ya no se usa como fondo
+  // "sutil" de nada.
+  frozen: { bg: "#FFFFFF", text: "#5C5653" },
 } as const;
 
 export const tab = {

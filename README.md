@@ -65,15 +65,15 @@ set real; no existe un "bg-subtle" propio para el estado frozen (a
 diferencia de los productos bnpl/credit), así que se reutiliza el valor
 de `bg`.
 
-Sigue pendiente `card/border`: existe como variable en la colección
-Component Colors pero no se encontró ningún nodo del component set real
-de Product Card (ninguno de los 12: 2 productos × 3 estados × 2 lados)
-que lo use — el estado "blocked" usa en su lugar
-`semantic/feedback/error` para el borde. Puede ser un token sin usar
-todavía; se deja como estimación razonada
-(`semantic/border/default` → `neutral/200`, `#A19E9C`). Si aparece en
-algún otro componente, repite el procedimiento de arriba para
-confirmarlo.
+`card/border` (`#C0BEBC`, confirmado en la Fase 2) sigue sin usarse en
+ningún nodo real de Product Card en Figma — pero desde el Compose de la
+Fase 3 (2026-09-14) sí se usa en código: `ProductCard.tsx` lo aplica
+como borde por defecto en los estados `active`/`frozen`, y cambia a
+`semantic/feedback/error` (2px) en el estado `blocked` — exactamente el
+comportamiento que esta sección ya documentaba como pendiente. La
+"estimación razonada" anterior (`neutral/200`, `#A19E9C`) quedó
+obsoleta: el valor real (`#C0BEBC`, vía `neutral/100`) se confirmó en
+la propia Fase 2, ver arriba.
 
 Alternativa sin desktop: exportar las variables vía la REST API de
 Figma (`GET /v1/files/:key/variables/local`) con un token personal de

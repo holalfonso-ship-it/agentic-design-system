@@ -74,9 +74,10 @@ export default function App() {
       </section>
 
       <section style={{ display: "flex", flexDirection: "column", gap: 12, marginBottom: 24 }}>
-        <ProductCard variant="bnpl" title="Compra en 3 pagos" subtitle="Próximo pago: 12 sep" amount="45,00 €" />
-        <ProductCard variant="credit" title="Tarjeta Visa ····4821" subtitle="Límite disponible" amount="1.230,00 €" />
-        <ProductCard variant="frozen" title="Tarjeta congelada" subtitle="Bloqueada por el usuario" />
+        <ProductCard product="bnpl" title="Compra en 3 pagos" subtitle="Próximo pago: 12 sep" amount="45,00 €" />
+        <ProductCard product="credit" title="Tarjeta Visa ····4821" subtitle="Límite disponible" amount="1.230,00 €" />
+        <ProductCard product="credit" state="frozen" title="Tarjeta Visa ····4821" subtitle="Congelada por el usuario" />
+        <ProductCard product="credit" state="blocked" title="Tarjeta Visa ····4821" subtitle="Bloqueada por sospecha de fraude" />
       </section>
 
       <section style={{ marginBottom: 24 }}>
