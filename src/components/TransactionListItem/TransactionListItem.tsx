@@ -1,4 +1,4 @@
-import { fontSize, fontFamily } from "../../tokens";
+import { fontSize, fontFamily, semantic } from "../../tokens";
 import type { CSSProperties, ReactNode } from "react";
 
 export interface TransactionListItemProps {
@@ -31,33 +31,46 @@ export function TransactionListItem({
     fontFamily: fontFamily.base,
   };
 
+  // Corregido en el Audit de la Fase 3 (2026-09-14): el fondo circular
+  // "#EEF1F5" no existía en ningún token ni en el nodo real de Figma —
+  // el component set real "Transaction List Item" (76:91) no tiene
+  // ningún fondo detrás del icono, solo el icono a tamaño natural
+  // (44x44). Se quita el círculo de fondo en vez de tokenizarlo, para
+  // no inventar un valor que Figma no tiene.
   const iconWrap: CSSProperties = {
-    width: 40,
-    height: 40,
-    borderRadius: 999,
-    background: "#EEF1F5",
+    width: 44,
+    height: 44,
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     flexShrink: 0,
   };
 
+  // Colores corregidos en el Audit de la Fase 3 (2026-09-14) contra el
+  // component set real "Transaction List Item" (76:91), vía
+  // get_design_context: el título usa semantic/text/primary (no el
+  // "#1A1C24" hardcodeado que había, aunque el tono era parecido), el
+  // texto secundario usa semantic/text/secondary (no el gris "#8A8E9C"
+  // que había, que no correspondía a ningún token real), y el monto usa
+  // semantic/feedback/success en verde para "in" y semantic/feedback/error
+  // en rojo para "out" — el código anterior no coloreaba "out" en
+  // absoluto (usaba el mismo negro que "in").
   const info: CSSProperties = { display: "flex", flexDirection: "column", flex: 1, minWidth: 0 };
   const merchantStyle: CSSProperties = {
     fontSize: fontSize["body-md"],
     fontWeight: 600,
-    color: "#1A1C24",
+    color: semantic.text.primary,
     margin: 0,
   };
   const metaStyle: CSSProperties = {
     fontSize: fontSize.caption,
-    color: "#8A8E9C",
+    color: semantic.text.secondary,
     margin: 0,
   };
   const amountStyle: CSSProperties = {
     fontSize: fontSize["body-md"],
     fontWeight: 600,
-    color: direction === "in" ? "#1F8A4C" : "#1A1C24",
+    color: direction === "in" ? semantic.feedback.success : semantic.feedback.error,
   };
 
   return (

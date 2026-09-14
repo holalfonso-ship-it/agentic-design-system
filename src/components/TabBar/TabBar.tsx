@@ -1,4 +1,4 @@
-import { tab, fontSize, fontFamily } from "../../tokens";
+import { tab, semantic, fontSize, fontFamily } from "../../tokens";
 import type { CSSProperties } from "react";
 
 export interface TabBarItem {
@@ -19,13 +19,22 @@ export interface TabBarProps {
  * Ver TabBar.metadata.ts.
  */
 export function TabBar({ items, activeKey, onChange }: TabBarProps) {
+  // Corregido en el Audit de la Fase 3 (2026-09-14): "#E1E3EA" no
+  // correspondía a ningún token real ni nodo de Figma (resto de la
+  // Fase 0 nunca sincronizado). Releído el component real "Tab Bar"
+  // (83:4772) vía get_design_context: el fondo es blanco puro
+  // (neutral/white, igual que semantic.bg.surface, ya usado en el
+  // resto del repo) y el borde real es "#E9E9E9" — un valor que en el
+  // propio Figma tampoco está bindeado a ninguna variable (color de
+  // trazo directo, no un token), así que se mantiene como hex literal
+  // en vez de inventar un token que Figma no tiene.
   const container: CSSProperties = {
     display: "flex",
     justifyContent: "space-around",
     alignItems: "center",
     padding: "8px 0 20px",
-    borderTop: "1px solid #E1E3EA",
-    background: "#FFFFFF",
+    borderTop: "1px solid #E9E9E9",
+    background: semantic.bg.surface,
   };
 
   return (

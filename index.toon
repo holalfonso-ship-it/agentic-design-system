@@ -1,4 +1,4 @@
-# index.toon — generado 2026-09-08T09:14:10.667Z
+# index.toon — generado 2026-09-14T08:15:03.497Z
 # componentes:11 relaciones:1
 Avatar|data-display|deps:none|tokens:2|estados:3|figma:-
 Badge|data-display|deps:none|tokens:10|estados:4|figma:-
@@ -8,6 +8,6 @@ Modal|overlay|deps:Button|tokens:14|estados:1|figma:-
 ProductCard|data-display|deps:none|tokens:7|estados:3|figma:6a26bf3b
 QuickActionTile|action|deps:none|tokens:7|estados:1|figma:35e5a3a3
 StatItem|data-display|deps:none|tokens:3|estados:1|figma:a753e447
-TabBar|navigation|deps:none|tokens:5|estados:2|figma:4cbc45b6
+TabBar|navigation|deps:none|tokens:6|estados:2|figma:4cbc45b6
 Toggle|action|deps:none|tokens:6|estados:4|figma:-
-TransactionListItem|data-display|deps:none|tokens:2|estados:2|figma:7d433c68
+TransactionListItem|data-display|deps:none|tokens:6|estados:2|figma:7d433c68

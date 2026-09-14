@@ -68,8 +68,8 @@ export const card = {
   // abajo). Sigue sin usarse en ningún nodo real de Product Card — ver
   // nota al principio del archivo.
   border: "#C0BEBC",
-  bnpl: { bg: "#DCF3A2", bgSubtle: "#FCFEF6", text: "#151211" },
-  credit: { bg: "#452476", bgSubtle: "#EDEAF3", text: "#FFFFFF" },
+  bnpl: { bg: "#DCF3A2", bgSubtle: "#EFF9D4", text: "#151211" },
+  credit: { bg: "#452476", bgSubtle: "#C8BCD8", text: "#FFFFFF" },
   // Confirmado sobre el component set real (product=credit/bnpl,
   // state=frozen): mismo bg/text para ambos productos en este estado.
   // Figma no define un "bg-subtle" propio para el estado frozen (a
@@ -118,7 +118,31 @@ export const semantic = {
   // (2026-09-03) al construir el Input: borde + helper text del estado
   // "error". No se añaden success/warning aquí porque Input no los usa
   // todavía (sí están resueltos en Badge.tsx, con sus propios comentarios).
-  feedback: { error: "#E60C00" },
+  // `success` / `success-subtle` (#2DAF17 / #EAF7E8, green/500 / green/50) y
+  // `error-subtle` (#F9E7E6, red/50) añadidos en el Audit de la Fase 3
+  // (2026-09-14) al mover los colores de Badge desde hex hardcodeados a
+  // tokens reales: confirmados vía get_variable_defs sobre el component
+  // set real de Badge (165:119). `error` ya existía desde Input.
+  feedback: {
+    error: "#E60C00",
+    success: "#2DAF17",
+    "success-subtle": "#EAF7E8",
+    "error-subtle": "#F9E7E6",
+  },
+} as const;
+
+/**
+ * Primitivos de la colección "Primitive Colors" (familia sunflower),
+ * consumidos directos por Badge para su variante "warning" — añadidos
+ * en el Audit de la Fase 3 (2026-09-14). `800` es el texto (más oscuro
+ * que `semantic/feedback/warning` = sunflower/500, por contraste
+ * insuficiente sobre `50`, ver nota de a11y en Badge.metadata.ts);
+ * `50` es el fondo. Confirmados vía get_variable_defs sobre el
+ * component set real de Badge (165:119).
+ */
+export const sunflower = {
+  "50": "#FEF8EA",
+  "800": "#86651B",
 } as const;
 
 /**

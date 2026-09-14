@@ -48,5 +48,5 @@ export const meta = {
   },
   dependencies: [],
   notes:
-    "Nota de accesibilidad tomada en el diseño: la variante 'warning' usa sunflower/800 como color de texto, no semantic/feedback/warning (sunflower/500) directamente — sunflower/500 no tiene contraste suficiente sobre su propio bg-subtle (sunflower/50). No existe todavía un token semántico de 'warning text fuerte' en el archivo de Figma; candidato a proponerle a Alfonso para añadir a la colección Semantic Colors en una futura pasada de fundaciones.",
+    "Nota de accesibilidad tomada en el diseño: la variante 'warning' usa sunflower/800 como color de texto, no semantic/feedback/warning (sunflower/500) directamente — sunflower/500 no tiene contraste suficiente sobre su propio bg-subtle (sunflower/50). No existe todavía un token semántico de 'warning text fuerte' en el archivo de Figma; candidato a proponerle a Alfonso para añadir a la colección Semantic Colors en una futura pasada de fundaciones. Corregido en el Audit de la Fase 3 (2026-09-14): estos tokens ahora existen de verdad en src/tokens/colors.ts (antes esta lista describía la intención pero el componente hardcodeaba los hex directamente) — re-verificados contra Figma vía get_variable_defs, valores sin cambios.",
 } as const;

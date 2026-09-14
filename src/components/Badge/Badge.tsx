@@ -1,4 +1,4 @@
-import { radius, fontSize, lineHeight, fontFamily } from "../../tokens";
+import { radius, fontSize, lineHeight, fontFamily, semantic, sunflower, neutral } from "../../tokens";
 import type { CSSProperties, ReactNode } from "react";
 
 export type BadgeVariant = "success" | "error" | "warning" | "neutral";
@@ -10,17 +10,17 @@ export interface BadgeProps {
   style?: CSSProperties;
 }
 
+// Corregido en el Audit de la Fase 3 (2026-09-14): estos 4 pares de color
+// vivían como hex hardcodeados con solo un comentario citando la variable
+// de Figma — ahora son tokens reales de `src/tokens/colors.ts`, verificados
+// de nuevo contra el component set real de Badge (165:119) vía
+// get_variable_defs. Los valores no cambiaron (ya eran correctos), pero
+// antes no existían como tokens reusables.
 const variantColors: Record<BadgeVariant, { bg: string; text: string }> = {
-  // semantic/feedback/success-subtle (green/50) + semantic/feedback/success (green/500)
-  success: { bg: "#EAF7E8", text: "#2DAF17" },
-  // semantic/feedback/error-subtle (red/50) + semantic/feedback/error (red/500)
-  error: { bg: "#F9E7E6", text: "#E60C00" },
-  // sunflower/50 (primitivo directo, no hay semantic/feedback/warning-subtle) +
-  // sunflower/800 (primitivo directo, no semantic/feedback/warning = sunflower/500:
-  // sin contraste suficiente como texto sobre su propio bg-subtle)
-  warning: { bg: "#FEF8EA", text: "#86651B" },
-  // neutral/50 (primitivo directo) + semantic/text/secondary
-  neutral: { bg: "#F7F6F6", text: "#2E2824" },
+  success: { bg: semantic.feedback["success-subtle"], text: semantic.feedback.success },
+  error: { bg: semantic.feedback["error-subtle"], text: semantic.feedback.error },
+  warning: { bg: sunflower["50"], text: sunflower["800"] },
+  neutral: { bg: neutral["50"], text: semantic.text.secondary },
 };
 
 /**

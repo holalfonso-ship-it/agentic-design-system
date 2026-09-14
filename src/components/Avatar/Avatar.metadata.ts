@@ -24,8 +24,15 @@ export const meta = {
     initials: "string (obligatorio, normalmente 1-2 caracteres)",
     size: ["sm", "md", "lg"],
   },
+  // Corregido en el Audit de la Fase 3 (2026-09-14): esta lista citaba
+  // "semantic.brand.primary", pero Avatar.tsx importa y usa
+  // "button.primary.bg.default" — mismo hex (#361C5C) pero trazabilidad
+  // distinta. Se corrige aquí en vez de cambiar el código: el comentario
+  // de Avatar.tsx ya explica que reusar el token de Button es
+  // intencional ("mismo criterio semántico que Button para 'acción
+  // primaria'"), así que la metadata debe reflejar esa intención real.
   tokens: [
-    "semantic.brand.primary",
+    "button.primary.bg.default",
     "button.primary.text.default",
   ],
   states: ["sm", "md", "lg"],
