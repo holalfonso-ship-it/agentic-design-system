@@ -72,6 +72,40 @@ qué componentes faltan, la Fase 2 se prioriza con casos reales donde el
 sistema no dio la talla. El ciclo Audit (ver más abajo) debe releer este
 archivo en cada pasada.
 
+**Cerrar un flag (añadido en el Compose de la Fase 3, 2026-09-14, a
+partir de feedback de Phong Designs AI Systems tras el post de Fase 2):**
+un archivo que solo registra casos sin resolver es un backlog real
+solamente si alguien está obligado a vaciarlo — si nada lo obliga, se
+convierte en el sitio silencioso donde van los casos difíciles, y el
+sistema parece más sano de lo que es. Por eso:
+
+1. Cuando un flag deja de estar pendiente (se construyó el componente,
+   se decidió extender uno existente, o se decidió explícitamente no
+   hacer nada), añade una **nueva línea** a `flags.jsonl` (nunca edites
+   ni borres la original — el archivo sigue siendo solo-apertura) con
+   este esquema:
+
+   ```json
+   {
+     "date": "YYYY-MM-DD",
+     "resolves": "date del flag original que cierra",
+     "resolution": "built" | "extended" | "wontfix",
+     "detail": "qué se hizo (componente creado/extendido, o motivo de wontfix)",
+     "decision": "resolved"
+   }
+   ```
+
+2. El ciclo Audit no solo lee `flags.jsonl` para agrupar por
+   componente/categoría — también calcula **entradas añadidas vs.
+   entradas cerradas** (contando `"decision": "flagged"` frente a
+   `"decision": "resolved"`) y lo reporta explícitamente. Un flag
+   abierto durante varias pasadas de Audit sin ninguna entrada
+   `"resolved"` que lo referencie es una señal a escalar, no un dato a
+   ignorar.
+3. Cerrar flags es una obligación del ciclo Audit, no una tarea
+   opcional "si hay tiempo" — un Audit que solo lee el archivo sin
+   intentar cerrar ninguna entrada pendiente no ha cumplido su función.
+
 **Componente bajo vigilancia especial:** `TransactionListItem`. Button,
 TabBar y ProductCard son lo bastante genéricos como para que casi
 cualquier petición encaje sin forzar. `TransactionListItem` está atado a
@@ -100,10 +134,16 @@ sea in/out. Trátalo como el caso de prueba de esta regla.
 - **Audit**: lee `index.toon` completo, compara contra `src/components/`
   real. Reporta cualquier carpeta de componente sin entrada en el índice,
   y cualquier entrada del índice sin carpeta correspondiente (índice
-  desincronizado). Lee también `flags.jsonl` completo — cada línea es un
-  caso real donde el sistema no dio la talla; agrúpalas por
-  `closestCategory`/`closestComponent` para ver patrones (3+ flags sobre
-  el mismo componente es señal fuerte de que falta una variante real).
+  desincronizado). Lee también `flags.jsonl` completo — cada línea
+  `"flagged"` es un caso real donde el sistema no dio la talla; agrúpalas
+  por `closestCategory`/`closestComponent` para ver patrones (3+ flags
+  sobre el mismo componente es señal fuerte de que falta una variante
+  real, o de que el componente representa dos conceptos distintos bajo
+  un mismo nombre). Reporta también la métrica **añadidas vs. cerradas**
+  (entradas `"flagged"` frente a `"resolved"`, ver sección de flags
+  arriba) y, cuando encuentres flags `"flagged"` sin una entrada
+  `"resolved"` que los referencie, intenta cerrarlos como parte del
+  propio ciclo Audit en vez de solo señalarlos.
 - **Report**: busca en el código consumidor (fuera de `src/components/`)
   estilos inline o valores hardcodeados que dupliquen un token existente
   o un patrón que se repita 3+ veces sin estar extraído a componente.
