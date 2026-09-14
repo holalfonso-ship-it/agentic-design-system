@@ -99,6 +99,11 @@ export function Input({
         <input
           disabled={disabled}
           style={inputStyle}
+          // aria-invalid añadido en el Compose de la Fase 3 (2026-09-14,
+          // hallazgo 8 del Audit) — antes el estado de error solo se
+          // comunicaba visualmente (borde/texto rojo), sin señal para
+          // lectores de pantalla.
+          aria-invalid={error}
           onFocus={(e) => {
             setFocused(true);
             onFocus?.(e);

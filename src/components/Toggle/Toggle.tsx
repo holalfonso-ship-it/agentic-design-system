@@ -41,19 +41,36 @@ export function Toggle({
       ? semanticAction.primary.bg.default
       : neutral["300"];
 
+  // Corregido en el Audit de la Fase 3 (2026-09-14, hallazgo 8): el
+  // área táctil real era 51×31, por debajo del mínimo recomendado de
+  // 44×44. Se separa el "hit target" (el <button>, ahora 51×44,
+  // transparente) del track visual (el <span> de dentro, sigue siendo
+  // 51×31 — mismo aspecto que antes). El knob se posiciona igual que
+  // antes, solo que ahora relativo al track en vez de al botón.
+  const hitStyle: CSSProperties = {
+    position: "relative",
+    display: "inline-flex",
+    alignItems: "center",
+    justifyContent: "center",
+    width: TRACK_WIDTH,
+    height: 44,
+    padding: 0,
+    border: "none",
+    background: "transparent",
+    cursor: disabled ? "not-allowed" : "pointer",
+    ...style,
+  };
+
   const trackStyle: CSSProperties = {
     position: "relative",
-    display: "inline-block",
+    display: "block",
     width: TRACK_WIDTH,
     height: TRACK_HEIGHT,
     borderRadius: radius.full,
     background: trackColor,
     border: disabled ? `1px solid ${semantic.border.default}` : "none",
-    padding: 0,
-    cursor: disabled ? "not-allowed" : "pointer",
     transition: "background-color 120ms ease",
     boxSizing: "border-box",
-    ...style,
   };
 
   const knobStyle: CSSProperties = {
@@ -75,10 +92,12 @@ export function Toggle({
       disabled={disabled}
       onClick={() => onChange?.(!checked)}
       className={className}
-      style={trackStyle}
+      style={hitStyle}
       {...rest}
     >
-      <span style={knobStyle} />
+      <span style={trackStyle}>
+        <span style={knobStyle} />
+      </span>
     </button>
   );
 }

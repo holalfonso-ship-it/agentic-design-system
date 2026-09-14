@@ -48,7 +48,7 @@ export const meta = {
     keyboardSupport: true,
     minTouchTarget: 44,
     notes:
-      "Renderizado como <button role=\"switch\" aria-checked>, no <input type=\"checkbox\">, para que el estado se anuncie correctamente en lectores de pantalla. El consumidor debe pasar aria-label (no hay label de texto propio). El área táctil real (51×31) es menor que el mínimo recomendado de 44×44 — el consumidor debería ampliar el hit-area con padding si se usa como control táctil principal.",
+      "Renderizado como <button role=\"switch\" aria-checked>, no <input type=\"checkbox\">, para que el estado se anuncie correctamente en lectores de pantalla. El consumidor debe pasar aria-label (no hay label de texto propio). Corregido en el Compose de la Fase 3 (2026-09-14, hallazgo 8 del Audit): el área táctil real ya es 51×44 (el <button> es más alto que el track visual, que sigue viéndose igual, 51×31) — cumple el mínimo recomendado de 44×44 sin que el consumidor tenga que añadir padding.",
   },
   dependencies: [],
 } as const;

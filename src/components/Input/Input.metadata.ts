@@ -64,7 +64,7 @@ export const meta = {
     keyboardSupport: true,
     minTouchTarget: 48,
     notes:
-      "El label envuelve el campo (<label><span>texto</span><input/></label>), por lo que queda asociado automáticamente sin necesitar htmlFor/id. El estado de error debe comunicarse también con aria-invalid en el consumidor si se integra con validación de formularios más estricta — no lo añade este componente por sí solo todavía.",
+      "El label envuelve el campo (<label><span>texto</span><input/></label>), por lo que queda asociado automáticamente sin necesitar htmlFor/id. Corregido en el Compose de la Fase 3 (2026-09-14, hallazgo 8 del Audit): el <input> ya lleva aria-invalid={error}, así que el estado de error se anuncia también a lectores de pantalla, no solo por color/texto.",
   },
   dependencies: [],
 } as const;

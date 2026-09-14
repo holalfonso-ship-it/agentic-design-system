@@ -81,10 +81,10 @@ export const meta = {
     "Contenido o una acción que interrumpe el flujo actual y necesita foco exclusivo del usuario antes de continuar (confirmar una acción destructiva, un formulario corto, un detalle que no merece pantalla propia). No usar para mensajes breves no bloqueantes (ahí el patrón esperado es un toast/snackbar, que este sistema todavía no cubre) ni para flujos largos de varios pasos (mejor una pantalla dedicada).",
   a11y: {
     role: "dialog",
-    keyboardSupport: false,
-    minTouchTarget: 32,
+    keyboardSupport: true,
+    minTouchTarget: 44,
     notes:
-      "Renderizado con role=\"dialog\" y aria-modal=\"true\", con aria-label tomado de title. El botón de cerrar tiene aria-label propio (\"Cerrar\"). Limitaciones conocidas, no resueltas en esta fase: no hay focus trap (el foco de teclado puede salir del modal), no se cierra con Escape, y no se devuelve el foco al elemento que abrió el modal al cerrarlo. El botón cerrar (32×32) es menor que el mínimo táctil recomendado de 44×44, igual que el hit-area del Toggle — mismo patrón, misma nota pendiente de resolver a nivel de sistema.",
+      "Renderizado con role=\"dialog\" y aria-modal=\"true\", con aria-label tomado de title. El botón de cerrar tiene aria-label propio (\"Cerrar\"). Corregido en el Compose de la Fase 3 (2026-09-14, hallazgo 8 del Audit): se cierra con Escape, hay focus trap dentro del sheet mientras está abierto (Tab/Shift+Tab no se escapan), se devuelve el foco al elemento que abrió el modal al cerrarlo, y el botón cerrar tiene un hit target de 44×44 (el círculo visual sigue siendo 32×32, solo creció el área clicable).",
   },
   dependencies: ["Button"],
 } as const;

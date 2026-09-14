@@ -1,5 +1,6 @@
 import { semantic, neutral, radius, fontSize, lineHeight, fontFamily } from "../../tokens";
 import { Button } from "../Button";
+import { useEffect, useRef } from "react";
 import type { CSSProperties, ReactNode } from "react";
 
 export interface ModalProps {
@@ -17,6 +18,9 @@ export interface ModalProps {
   style?: CSSProperties;
 }
 
+const FOCUSABLE_SELECTOR =
+  'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
 /**
  * Modal — bottom sheet: backdrop + sheet (handle, header con título y botón
  * cerrar, divider, body de contenido, footer con acción secundaria y
@@ -33,6 +37,12 @@ export interface ModalProps {
  * no instancias, mismo criterio que el resto de componentes de este repo),
  * en código el footer por defecto reutiliza el componente Button real —
  * más natural en React que duplicar sus estilos.
+ *
+ * Accesibilidad corregida en el Compose de la Fase 3 (2026-09-14,
+ * hallazgo 8 del Audit): cierre con Escape, focus trap dentro del sheet
+ * mientras está abierto, devolución de foco al elemento que lo abrió al
+ * cerrarse, y área táctil del botón cerrar ampliada a 44×44 (el círculo
+ * visual sigue siendo 32×32, solo el hit target creció).
  */
 export function Modal({
   open,
@@ -47,6 +57,45 @@ export function Modal({
   className,
   style,
 }: ModalProps) {
+  const sheetRef = useRef<HTMLDivElement>(null);
+  const previousFocusRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    if (!open) return;
+
+    previousFocusRef.current = document.activeElement as HTMLElement | null;
+    const sheet = sheetRef.current;
+    const firstFocusable = sheet?.querySelector<HTMLElement>(FOCUSABLE_SELECTOR);
+    firstFocusable?.focus();
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        onClose();
+        return;
+      }
+      if (event.key !== "Tab" || !sheet) return;
+
+      const focusable = sheet.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR);
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    }
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      previousFocusRef.current?.focus();
+    };
+  }, [open, onClose]);
+
   if (!open) return null;
 
   const backdropStyle: CSSProperties = {
@@ -92,7 +141,7 @@ export function Modal({
     alignItems: "center",
     justifyContent: "space-between",
     gap: 8,
-    padding: "4px 24px 16px",
+    padding: "4px 16px 16px 24px",
   };
 
   const titleStyle: CSSProperties = {
@@ -103,22 +152,33 @@ export function Modal({
     margin: 0,
   };
 
+  // Hit target (44×44) separado del círculo visual (32×32) — ver nota
+  // de accesibilidad de la Fase 3 arriba.
   const closeButtonStyle: CSSProperties = {
-    width: 32,
-    height: 32,
-    minWidth: 32,
-    borderRadius: radius.full,
-    background: semantic.bg.default,
+    width: 44,
+    height: 44,
+    minWidth: 44,
     border: "none",
+    background: "transparent",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     cursor: "pointer",
+    padding: 0,
+    flexShrink: 0,
+  };
+
+  const closeGlyphStyle: CSSProperties = {
+    width: 32,
+    height: 32,
+    borderRadius: radius.full,
+    background: semantic.bg.default,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
     color: semantic.text.secondary,
     fontSize: 18,
     lineHeight: 1,
-    flexShrink: 0,
-    padding: 0,
   };
 
   const dividerStyle: CSSProperties = {
@@ -146,6 +206,7 @@ export function Modal({
   return (
     <div style={backdropStyle} onClick={onClose}>
       <div
+        ref={sheetRef}
         className={className}
         style={sheetStyle}
         onClick={(e) => e.stopPropagation()}
@@ -159,7 +220,7 @@ export function Modal({
         <div style={headerStyle}>
           <h2 style={titleStyle}>{title}</h2>
           <button type="button" onClick={onClose} style={closeButtonStyle} aria-label="Cerrar">
-            ×
+            <span style={closeGlyphStyle}>×</span>
           </button>
         </div>
         <hr style={dividerStyle} />
