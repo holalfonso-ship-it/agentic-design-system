@@ -24,9 +24,27 @@ documento del proyecto "Sistema de Diseño Agéntico".
 
 ```bash
 npm install
-npm run dev              # vitrina de componentes en localhost
+npm run dev              # demo interna (App.tsx) en localhost
 npm run generate-index   # regenera index.toon a partir de la metadata
+npm run storybook        # vitrina navegable de los 11 componentes (localhost:6006)
+npm run build-storybook  # build estático de la vitrina, para publicar
 ```
+
+## Storybook — la vitrina (Fase 4, 2026-09-14)
+
+`npm run storybook` levanta la vitrina navegable de los 11 componentes
+que el Post 1 ya prometía ("un Storybook navegable donde tanto personas
+como agentes puedan ver todos los componentes y sus variantes"). Cada
+componente tiene su `<Nombre>.stories.tsx` junto al código, agrupado por
+categoría en el sidebar (`Action`, `Navigation`, `Data Display`, `Form`,
+`Overlay` — mismo orden que `index.toon`), con la `description` y el
+`useWhen` de su metadata como texto de documentación (autodocs), así que
+nunca se desincronizan entre sí. Incluye el addon de accesibilidad
+(`@storybook/addon-a11y`) para poder validar cada componente en el
+propio navegador.
+
+`npm run build-storybook` genera `storybook-static/` (gitignored, igual
+que `dist/`) para publicarlo donde haga falta.
 
 ## Sincronizar valores exactos desde Figma
 
@@ -176,8 +194,15 @@ archivo es el backlog real del sistema: los huecos de componentes se
 priorizan por casos reales marcados ahí, no solo por la lista de huecos
 conocidos de arriba.
 
-## Próximo paso
+## Estado del roadmap
 
-Con esto ya hay material real para el primer post de la serie de
-LinkedIn (Post 2 — los tres pilares) y para correr el primer ciclo
-Audit → Report sobre este mismo repo.
+- **Fase 0-1** (fundamentos + tokens reales): completas.
+- **Fase 2** (cobertura de componentes): completa, 11 componentes.
+- **Fase 3** (primer ciclo Audit → Report → Compose): completa y
+  verificada (2026-09-14) — ver `claude/estado-tarea-agentic-design-system.md`
+  en el proyecto de Claude para el detalle de los 9 hallazgos y su
+  resolución.
+- **Fase 4** (calidad y automatización): en marcha — la vitrina de
+  Storybook (arriba) es la primera pieza, pensada específicamente para
+  poder enseñar el sistema fuera del repo. Tests unitarios, CI y
+  versionado siguen pendientes.

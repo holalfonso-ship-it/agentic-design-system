@@ -128,6 +128,14 @@ sea in/out. Trátalo como el caso de prueba de esta regla.
 4. Corre `npm run generate-index` después de cualquier cambio de
    metadata. El índice desactualizado es peor que no tener índice —
    genera falsos negativos.
+5. Añade (o actualiza) `<Nombre>.stories.tsx` junto al componente —
+   Storybook (Fase 4, 2026-09-14) es la vitrina navegable del sistema,
+   no solo un lujo visual: cada story reutiliza la `description` y el
+   `useWhen` de la metadata como texto de documentación (`tags:
+   ["autodocs"]`), así que metadata y vitrina nunca se desincronizan.
+   Cubre como mínimo todas las variantes/estados listados en
+   `meta.states`. Verifica con `npm run build-storybook` antes de dar
+   el componente por cerrado.
 
 ## Ciclo ARC — cómo auditar este sistema
 
@@ -169,3 +177,11 @@ sea in/out. Trátalo como el caso de prueba de esta regla.
   componentes usan estilos inline a propósito, en esta fase, para
   mantener el árbol de dependencias mínimo mientras se valida la
   infraestructura agéntica.
+- **Storybook** (`npm run storybook` / `npm run build-storybook`,
+  añadido en la Fase 4, 2026-09-14): vitrina navegable de los 11
+  componentes, organizada por categoría (mismo orden que `index.toon`).
+  Cada `.stories.tsx` vive junto a su componente, igual que la
+  metadata. `.storybook/main.ts` y `preview.tsx` son la única
+  configuración — nada de addons no instalados (evita el error de
+  `create-storybook init`, ver nota en
+  `estado-tarea-agentic-design-system.md`).

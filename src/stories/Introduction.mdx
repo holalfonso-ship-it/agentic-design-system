@@ -1,0 +1,37 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Introducción" />
+
+# Aida — Agentic Design System
+
+Vitrina navegable de los componentes reales de **Aida**, el sistema de diseño
+agéntico construido a partir de la librería de Figma
+`Alfonso_Zamorano_Task_IDFinance`. Esta es la Fase 4 del roadmap: la primera
+pieza pensada para poder enseñarse fuera del propio repo, no solo para que un
+agente de IA la consulte.
+
+## Los 3 pilares
+
+1. **Metadata por componente** (`<Nombre>.metadata.ts`) — qué es cada
+   componente, cuándo usarlo, qué tokens consume y su trazabilidad a Figma.
+   Cada story de esta vitrina reutiliza esa misma metadata como texto de
+   documentación, para que nunca queden desincronizadas.
+2. **Índice generado** (`index.toon`) — el grafo de componentes que
+   cualquier agente debe consultar antes de explorar el código a mano.
+3. **Protocolo para agentes** (`CLAUDE.md`) — reglas de cuándo extender vs.
+   crear un componente, y el ciclo **ARC** (Audit → Report → Compose) que
+   ya se ha ejecutado una vez sobre este mismo repo (Fase 3, 2026-09-14).
+
+## Estado del sistema
+
+- **11 componentes** cubiertos: Button, TabBar, ProductCard,
+  TransactionListItem (Fase 0/1) · QuickActionTile, StatItem, Toggle,
+  Badge, Avatar, Input, Modal (Fase 2).
+- **Primer ciclo de Audit/Compose cerrado** (Fase 3): tokens hardcodeados
+  corregidos, `ProductCard` remodelado como producto + estado, y deuda de
+  accesibilidad de Toggle/Modal/Input resuelta.
+- Categorías: `action`, `navigation`, `data-display`, `form`, `overlay` —
+  mismo orden que en el menú de la izquierda.
+
+Navega por categoría en el sidebar para ver cada componente con sus
+variantes y estados reales.
