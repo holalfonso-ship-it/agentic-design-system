@@ -13,7 +13,7 @@ export interface StatItemProps {
  * StatItem — bloque de estadística pequeño para la fila de resumen de
  * balance del home (Balance total / Total Gastos). Corresponde al
  * componente "Stat Item" publicado en la librería Figma
- * "Alfonso_Zamorano_Task_IDFinance" (AID). Ver StatItem.metadata.ts.
+ * "Aida" (AID). Ver StatItem.metadata.ts.
  *
  * La prop `icon` es obligatoria y no tiene valor por defecto: en Figma
  * se intercambia entre arrow.up.right.circle.fill / arrow.down.left.circle.fill

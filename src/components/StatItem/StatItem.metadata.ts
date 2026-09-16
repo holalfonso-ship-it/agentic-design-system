@@ -1,7 +1,7 @@
 /**
  * Metadata ejecutable — Pilar 1 del sistema de diseño agéntico.
  * Fuente: componente "Stat Item" (node 75:597, componentKey
- * a753e4476a…) en la librería Figma "Alfonso_Zamorano_Task_IDFinance".
+ * a753e4476a…) en la librería Figma "Aida".
  * Descubierto en la sesión de Fase 2 del 2026-09-03 (no catalogado en
  * Fase 0).
  */
@@ -11,7 +11,7 @@ export const meta = {
   description:
     "Bloque de estadística pequeño para la fila de resumen de balance del home (Balance total / Total Gastos): icono direccional + etiqueta + importe.",
   figma: {
-    library: "Alfonso_Zamorano_Task_IDFinance",
+    library: "Aida",
     componentKey: "a753e4476aae8f8dc1eb570a2b14c75a624f70a6",
     type: "component",
   },

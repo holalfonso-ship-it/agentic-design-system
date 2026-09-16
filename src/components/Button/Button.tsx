@@ -24,7 +24,7 @@ const sizeToFontSize: Record<ButtonSize, number> = {
 /**
  * Button — acción primaria, secundaria o terciaria.
  * Corresponde al component set "Button" publicado en la librería Figma
- * "Alfonso_Zamorano_Task_IDFinance" (AID). Ver Button.metadata.ts.
+ * "Aida" (AID). Ver Button.metadata.ts.
  */
 export function Button({
   variant = "primary",

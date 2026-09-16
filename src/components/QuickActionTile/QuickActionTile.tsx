@@ -12,7 +12,7 @@ export interface QuickActionTileProps {
 /**
  * QuickActionTile — tile de acción rápida para la fila de acciones del
  * home. Corresponde al componente "Quick Action Tile" publicado en la
- * librería Figma "Alfonso_Zamorano_Task_IDFinance" (AID). Ver
+ * librería Figma "Aida" (AID). Ver
  * QuickActionTile.metadata.ts.
  *
  * La prop `icon` es obligatoria y no tiene valor por defecto: en Figma es

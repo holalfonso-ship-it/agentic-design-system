@@ -4,7 +4,7 @@
  *
  * SINCRONIZADO — Fase 1 (2026-09-01). Valores leídos directamente de la
  * sección "Radius" (18:220) de la página "01. Tokens" (2:3) del archivo
- * Figma "Alfonso_Zamorano_Task_IDFinance" (fileKey 3EHBqyJGvIfSG3CZol393z),
+ * Figma "Aida" (fileKey 3EHBqyJGvIfSG3CZol393z),
  * confirmados también vía get_variable_defs sobre el componente Button
  * (radius/sm = 8, coincide).
  */

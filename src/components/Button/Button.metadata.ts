@@ -1,7 +1,7 @@
 /**
  * Metadata ejecutable — Pilar 1 del sistema de diseño agéntico.
  * Fuente: component set "Button" (componentKey 0784c9db…) en la librería
- * Figma "Alfonso_Zamorano_Task_IDFinance".
+ * Figma "Aida".
  */
 export const meta = {
   name: "Button",
@@ -9,7 +9,7 @@ export const meta = {
   description:
     "Acción primaria, secundaria o terciaria disparada por el usuario. Único punto de interacción táctil por vista relevante.",
   figma: {
-    library: "Alfonso_Zamorano_Task_IDFinance",
+    library: "Aida",
     componentKey: "0784c9dbdf145332fe89fda98d11d14d3ac9794b",
     type: "component_set",
   },

@@ -3,7 +3,7 @@ export const meta = {
   category: "navigation",
   description: "Barra de navegación inferior con hasta 5 destinos principales de la app.",
   figma: {
-    library: "Alfonso_Zamorano_Task_IDFinance",
+    library: "Aida",
     componentKey: "4cbc45b63ae7ee3ba23691f7487d35de6d534a74",
     type: "component_set",
   },

@@ -4,7 +4,7 @@
  *
  * SINCRONIZADO — Fase 1 (2026-09-01). Valores leídos de la sección
  * "Typography" (18:248) de la página "01. Tokens" (2:3) del archivo Figma
- * "Alfonso_Zamorano_Task_IDFinance" (fileKey 3EHBqyJGvIfSG3CZol393z),
+ * "Aida" (fileKey 3EHBqyJGvIfSG3CZol393z),
  * confirmados también vía get_variable_defs sobre el componente Button
  * (font-size/label-sm = 12, font-size/label-md = 14 — coinciden).
  */

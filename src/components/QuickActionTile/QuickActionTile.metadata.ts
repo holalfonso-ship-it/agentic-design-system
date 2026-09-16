@@ -1,7 +1,7 @@
 /**
  * Metadata ejecutable — Pilar 1 del sistema de diseño agéntico.
  * Fuente: componente "Quick Action Tile" (node 75:51, componentKey
- * 35e5a3a3e2…) en la librería Figma "Alfonso_Zamorano_Task_IDFinance".
+ * 35e5a3a3e2…) en la librería Figma "Aida".
  * Descubierto en la sesión de Fase 2 del 2026-09-03 (no catalogado en
  * Fase 0).
  */
@@ -11,7 +11,7 @@ export const meta = {
   description:
     "Tile de acción rápida para la fila de acciones del home. Combina un icono intercambiable con un título y un subtítulo cortos.",
   figma: {
-    library: "Alfonso_Zamorano_Task_IDFinance",
+    library: "Aida",
     componentKey: "35e5a3a3e20ad89f76bbdc68ed46784ace1a475f",
     type: "component",
   },

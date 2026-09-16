@@ -2,7 +2,7 @@
 
 Fase 0–3 del sistema de diseño agéntico, construido desde cero a partir de
 los componentes reales publicados en Figma (librería y archivo
-`Alfonso_Zamorano_Task_IDFinance`, `fileKey 3EHBqyJGvIfSG3CZol393z`).
+`Aida`, `fileKey 3EHBqyJGvIfSG3CZol393z`).
 
 Marco conceptual completo (los 3 pilares, el bucle ARC, el roadmap): ver el
 documento del proyecto "Sistema de Diseño Agéntico".
@@ -50,7 +50,7 @@ que `dist/`) para publicarlo donde haga falta.
 
 **Estado: hecho — Fase 1 (2026-09-01).** Los tokens de `src/tokens/*.ts`
 (colores, radios, tipografía) tienen ya valores reales, extraídos
-directamente del archivo de Figma correcto: **`Alfonso_Zamorano_Task_IDFinance`**
+directamente del archivo de Figma correcto: **`Aida`**
 (`fileKey 3EHBqyJGvIfSG3CZol393z` — el archivo que da nombre a la
 librería, no confundir con otros archivos que puedan compartir nombre de
 librería visible en "Assets").

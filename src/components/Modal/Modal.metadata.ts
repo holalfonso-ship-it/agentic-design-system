@@ -25,12 +25,12 @@ export const meta = {
   description:
     "Bottom sheet modal: backdrop + sheet (handle, header con título y botón cerrar, divider, body de contenido, footer con acción secundaria y primaria).",
   figma: {
-    library: "Alfonso_Zamorano_Task_IDFinance",
+    library: "Aida",
     // Sin componentKey todavía: el nodo existe en el archivo (componente
     // 178:107, página "02. Components") pero componentKey solo se asigna
     // cuando la librería se publica desde Figma desktop — acción manual
     // que le corresponde a Alfonso. Node-id de referencia:
-    // https://www.figma.com/design/3EHBqyJGvIfSG3CZol393z/Alfonso_Zamorano_Task_IDFinance?node-id=178-107
+    // https://www.figma.com/design/3EHBqyJGvIfSG3CZol393z/Aida?node-id=178-107
     componentKey: null,
     nodeId: "178:107",
     type: "component",

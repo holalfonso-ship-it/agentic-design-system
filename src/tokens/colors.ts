@@ -3,7 +3,7 @@
  * Colors" del archivo AID en Figma (button/*, card/*, tab/*).
  *
  * SINCRONIZADO — Fase 1 (2026-09-01). Valores extraídos directamente del
- * archivo Figma correcto: "Alfonso_Zamorano_Task_IDFinance"
+ * archivo Figma correcto: "Aida"
  * (fileKey 3EHBqyJGvIfSG3CZol393z), vía MCP de Figma (get_design_context /
  * get_variable_defs) sobre el component set real "Button" (28:122), el
  * component set real "Product Card" (38:176), el demo "Tab / Segmented

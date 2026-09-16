@@ -3,7 +3,7 @@ export const meta = {
   category: "data-display",
   description: "Fila de una transacción individual dentro del historial de movimientos.",
   figma: {
-    library: "Alfonso_Zamorano_Task_IDFinance",
+    library: "Aida",
     componentKey: "7d433c686e62c82b27d9d05cfff0e814bae9b117",
     // nodeId localizado en el Audit de la Fase 3 (2026-09-14) — no
     // estaba documentado hasta ahora (solo se conocía el componentKey,

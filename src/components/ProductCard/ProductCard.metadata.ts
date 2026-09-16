@@ -4,7 +4,7 @@ export const meta = {
   description:
     "Tarjeta que resume un producto financiero del usuario: BNPL o tarjeta de crédito, en uno de tres estados (activo, congelado, bloqueado).",
   figma: {
-    library: "Alfonso_Zamorano_Task_IDFinance",
+    library: "Aida",
     componentKey: "6a26bf3ba21c5c0880939bdbf69bad3a2267ce59",
     type: "component_set",
   },
