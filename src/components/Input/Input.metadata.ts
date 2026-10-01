@@ -57,6 +57,7 @@ export const meta = {
     "lineHeight.label-sm",
     "lineHeight.body-md",
     "space.12",
+    "space.6",
     "space.16",
     "fontWeight.semibold",
   ],

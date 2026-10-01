@@ -49,7 +49,7 @@ export function ProductCard({ product, state = "active", title, subtitle, amount
   const containerStyle: CSSProperties = {
     display: "flex",
     flexDirection: "column",
-    gap: 6, // fuera de la escala space.* (valor de Figma sin variable)
+    gap: space["6"],
     padding: space["16"],
     // Corregido en el Compose de la Fase 3: el radio real del componente
     // es radius/md (12px), no radius/lg (16px) — confirmado sobre los

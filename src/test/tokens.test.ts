@@ -9,7 +9,7 @@ import { space, fontWeight } from "../tokens";
  */
 describe("tokens ↔ Figma", () => {
   it("space es exactamente la escala space/* de Figma", () => {
-    expect(space).toEqual({ "0": 0, "2": 2, "4": 4, "8": 8, "12": 12, "16": 16, "24": 24, "32": 32, "40": 40, "48": 48, "64": 64 });
+    expect(space).toEqual({ "0": 0, "2": 2, "4": 4, "6": 6, "8": 8, "12": 12, "14": 14, "16": 16, "24": 24, "32": 32, "40": 40, "48": 48, "64": 64 });
   });
 
   it("las claves de space son sus propios valores (mismo nombre que en Figma)", () => {

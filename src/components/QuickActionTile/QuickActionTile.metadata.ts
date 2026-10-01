@@ -32,6 +32,7 @@ export const meta = {
     "lineHeight.label-sm",
     "fontFamily.base",
     "space.16",
+    "space.14",
     "fontWeight.regular",
     "fontWeight.medium",
   ],

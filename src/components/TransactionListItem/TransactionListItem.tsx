@@ -58,7 +58,7 @@ export function TransactionListItem({
   const info: CSSProperties = { display: "flex", flexDirection: "column", flex: 1, minWidth: 0 };
   const merchantStyle: CSSProperties = {
     fontSize: fontSize["body-md"],
-    fontWeight: fontWeight.semibold,
+    fontWeight: fontWeight.regular,
     color: semantic.text.primary,
     margin: 0,
   };
@@ -69,7 +69,7 @@ export function TransactionListItem({
   };
   const amountStyle: CSSProperties = {
     fontSize: fontSize["body-md"],
-    fontWeight: fontWeight.semibold,
+    fontWeight: fontWeight.regular,
     color: direction === "in" ? semantic.feedback.success : semantic.feedback.error,
   };
 

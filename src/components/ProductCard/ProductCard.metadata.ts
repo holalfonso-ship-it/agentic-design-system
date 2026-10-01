@@ -28,6 +28,7 @@ export const meta = {
     "fontSize.body-md",
     "fontFamily.base",
     "space.16",
+    "space.6",
     "fontWeight.semibold",
     "fontWeight.bold",
   ],

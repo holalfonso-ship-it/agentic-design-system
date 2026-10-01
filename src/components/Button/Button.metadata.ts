@@ -30,9 +30,12 @@ export const meta = {
     "fontSize.label-sm",
     "fontSize.body-md",
     "fontFamily.base",
-    "space.8",
     "space.4",
-    "fontWeight.semibold",
+    "space.8",
+    "space.12",
+    "space.16",
+    "space.24",
+    "fontWeight.medium",
   ],
   states: ["default", "hover", "pressed", "disabled"],
   useWhen:
@@ -44,4 +47,6 @@ export const meta = {
     notes: "El estado disabled debe comunicarse también por atributo aria-disabled, no solo por color.",
   },
   dependencies: [],
+  notes:
+    "Ciclo ARC 3 (2026-10-01): peso 500 (Type/Label/*) y padding horizontal 16/24/24, alineados con Figma. Divergencia abierta: en Figma la altura es fija (sm 44, md 48, lg 56) y sin padding vertical; el código la deriva del contenido con padding vertical 8/12/16.",
 } as const;

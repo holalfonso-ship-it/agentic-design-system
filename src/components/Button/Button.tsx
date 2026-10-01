@@ -9,13 +9,14 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   size?: ButtonSize;
 }
 
-// 14/18/22 horizontales: fuera de la escala space.* (valores de Figma sin variable).
-// Las partes verticales (8/12/16) sí coinciden con la escala, pero se dejan en la
-// misma cadena para no partir un valor que en Figma es un solo padding.
+// Horizontales alineados con Figma (Ciclo 3): sm 16, md 24, lg 24. Los 14/18/22 que
+// había antes no existían en Figma. Las partes verticales (8/12/16) se mantienen:
+// en Figma la altura es fija (44/48/56) y el código la deriva del contenido
+// (divergencia registrada en la metadata).
 const sizeToPadding: Record<ButtonSize, string> = {
-  sm: "8px 14px",
-  md: "12px 18px",
-  lg: "16px 22px",
+  sm: `${space["8"]}px ${space["16"]}px`,
+  md: `${space["12"]}px ${space["24"]}px`,
+  lg: `${space["16"]}px ${space["24"]}px`,
 };
 
 const sizeToFontSize: Record<ButtonSize, number> = {
@@ -42,7 +43,7 @@ export function Button({
   const finalStyle: CSSProperties = {
     fontFamily: fontFamily.base,
     fontSize: sizeToFontSize[size],
-    fontWeight: fontWeight.semibold,
+    fontWeight: fontWeight.medium,
     padding: variant === "tertiary" ? `${space["8"]}px ${space["4"]}px` : sizeToPadding[size],
     borderRadius: radius.md,
     border: styles.border ?? "none",

@@ -29,6 +29,8 @@ export const meta = {
     "fontFamily.base",
     "fontWeight.medium",
     "fontWeight.semibold",
+    "space.8",
+    "space.14",
   ],
   states: ["default"],
   useWhen:

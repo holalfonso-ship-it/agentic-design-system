@@ -23,6 +23,8 @@ export const meta = {
     "radius.full",
     "space.8",
     "space.4",
+    "space.12",
+    "space.24",
     "fontWeight.semibold",
     "fontWeight.medium",
   ],

@@ -30,7 +30,7 @@ export const meta = {
     "fontFamily.base",
     "space.12",
     "space.4",
-    "fontWeight.semibold",
+    "fontWeight.regular",
   ],
   states: ["in", "out"],
   useWhen:
@@ -42,5 +42,5 @@ export const meta = {
   },
   dependencies: [],
   notes:
-    "Corregido en el Audit de la Fase 3 (2026-09-14): los colores del icono (fondo circular), el texto principal, el texto secundario y el monto estaban hardcodeados con valores que no correspondían a ningún token ni nodo real. Releído el component set real (76:91) vía get_design_context: se quitó el fondo circular del icono (no existe en Figma) y se corrigieron los 3 colores de texto/monto a sus tokens reales — ver comentarios en TransactionListItem.tsx. Nota aparte, no corregida aquí: el componente real de Figma modela los campos como `category` (texto principal) + `date` (texto secundario), no como `merchant` + `category`/`timestamp` combinados — se mantiene la API actual (más útil para una app real, donde el nombre del comercio es el dato principal) en vez de replicar literalmente el demo de Figma, pero queda anotado por si un futuro Audit quiere revisarlo. DECISIÓN (Ciclo 2, 2026-10-01, con Alfonso): se mantiene la API de código. Mapeo Figma → código: variante `sign=negative|positive` ⇒ prop `direction` (out | in); texto principal `category` ⇒ `merchant`; texto secundario `date` ⇒ `category` + `timestamp` (unidos con « · »).",
+    "Corregido en el Audit de la Fase 3 (2026-09-14): los colores del icono (fondo circular), el texto principal, el texto secundario y el monto estaban hardcodeados con valores que no correspondían a ningún token ni nodo real. Releído el component set real (76:91) vía get_design_context: se quitó el fondo circular del icono (no existe en Figma) y se corrigieron los 3 colores de texto/monto a sus tokens reales — ver comentarios en TransactionListItem.tsx. Nota aparte, no corregida aquí: el componente real de Figma modela los campos como `category` (texto principal) + `date` (texto secundario), no como `merchant` + `category`/`timestamp` combinados — se mantiene la API actual (más útil para una app real, donde el nombre del comercio es el dato principal) en vez de replicar literalmente el demo de Figma, pero queda anotado por si un futuro Audit quiere revisarlo. DECISIÓN (Ciclo 2, 2026-10-01, con Alfonso): se mantiene la API de código. Mapeo Figma → código: variante `sign=negative|positive` ⇒ prop `direction` (out | in); texto principal `category` ⇒ `merchant`; texto secundario `date` ⇒ `category` + `timestamp` (unidos con « · »). Ciclo ARC 3 (2026-10-01): pesos alineados con Figma (merchant e importe en Regular 400, antes 600). Divergencia abierta: en Figma merchant e importe usan Type/Body/LG (16) y el código body-md (14).",
 } as const;

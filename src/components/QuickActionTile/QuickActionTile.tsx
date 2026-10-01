@@ -34,7 +34,7 @@ export function QuickActionTile({
     alignItems: "flex-start",
     width: 170,
     height: 100,
-    padding: 14, // fuera de la escala space.* (valor de Figma sin variable)
+    padding: space["14"],
     borderRadius: radius.lg,
     border: `1px solid ${semantic.border.default}`,
     background: semantic.bg.default,

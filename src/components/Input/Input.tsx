@@ -56,7 +56,7 @@ export function Input({
   const rootStyle: CSSProperties = {
     display: "flex",
     flexDirection: "column",
-    gap: 6, // fuera de la escala space.* (valor de Figma sin variable)
+    gap: space["6"],
     width: "100%",
     ...containerStyle,
   };

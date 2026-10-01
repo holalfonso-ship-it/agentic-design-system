@@ -1,4 +1,4 @@
-import { semantic, fontSize, lineHeight, fontFamily, fontWeight } from "../../tokens";
+import { semantic, fontSize, lineHeight, fontFamily, fontWeight, space } from "../../tokens";
 import type { CSSProperties, ReactNode } from "react";
 
 export interface StatItemProps {
@@ -30,7 +30,7 @@ export function StatItem({
   const finalStyle: CSSProperties = {
     display: "flex",
     flexDirection: "column",
-    gap: 9, // fuera de la escala space.* (valor de Figma sin variable)
+    gap: space["8"], // Figma: 9 (único uso, sin variable) → ajustado a space/8
     alignItems: "flex-start",
     width: 138,
     fontFamily: fontFamily.base,
@@ -39,7 +39,7 @@ export function StatItem({
 
   return (
     <div className={className} style={finalStyle}>
-      <div style={{ display: "flex", gap: 14, alignItems: "center" }}>
+      <div style={{ display: "flex", gap: space["14"], alignItems: "center" }}>
         <div style={{ width: 20, height: 20, display: "flex", alignItems: "center", justifyContent: "center" }}>
           {icon}
         </div>

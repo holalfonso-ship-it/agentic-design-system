@@ -32,7 +32,7 @@ export function TabBar({ items, activeKey, onChange }: TabBarProps) {
     display: "flex",
     justifyContent: "space-around",
     alignItems: "center",
-    padding: `${space["8"]}px 0 20px`, // 20: fuera de la escala space.* (valor de Figma sin variable)
+    padding: `${space["8"]}px 0 ${space["24"]}px`, // 20 → space/24 (único uso; empate 16/24 → el mayor)
     borderTop: "1px solid #E9E9E9",
     background: semantic.bg.surface,
   };
@@ -46,7 +46,7 @@ export function TabBar({ items, activeKey, onChange }: TabBarProps) {
           flexDirection: "column",
           alignItems: "center",
           gap: space["4"],
-          padding: `${space["4"]}px 10px`, // 10: fuera de la escala space.*
+          padding: `${space["4"]}px ${space["12"]}px`, // 10 → space/12 (único uso; empate 8/12 → el mayor)
           borderRadius: radius.full,
           background: selected ? tab.bg.selected : tab.bg.default,
           color: selected ? tab.text.selected : tab.text.default,

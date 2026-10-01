@@ -1,13 +1,13 @@
-# index.toon — generado 2026-10-01T08:55:27.289Z
+# index.toon — generado 2026-10-01T09:26:05.832Z
 # componentes:11 relaciones:1
 Avatar|data-display|deps:none|tokens:7|estados:3|figma:-
-Badge|data-display|deps:none|tokens:15|estados:4|figma:-
-Button|action|deps:none|tokens:14|estados:4|figma:0784c9db
-Input|form|deps:none|tokens:16|estados:4|figma:-
+Badge|data-display|deps:none|tokens:16|estados:4|figma:-
+Button|action|deps:none|tokens:17|estados:4|figma:0784c9db
+Input|form|deps:none|tokens:17|estados:4|figma:-
 Modal|overlay|deps:Button|tokens:21|estados:1|figma:-
-ProductCard|data-display|deps:none|tokens:14|estados:3|figma:6a26bf3b
-QuickActionTile|action|deps:none|tokens:13|estados:1|figma:35e5a3a3
-StatItem|data-display|deps:none|tokens:8|estados:1|figma:a753e447
-TabBar|navigation|deps:none|tokens:12|estados:2|figma:4cbc45b6
+ProductCard|data-display|deps:none|tokens:15|estados:3|figma:6a26bf3b
+QuickActionTile|action|deps:none|tokens:14|estados:1|figma:35e5a3a3
+StatItem|data-display|deps:none|tokens:10|estados:1|figma:a753e447
+TabBar|navigation|deps:none|tokens:14|estados:2|figma:4cbc45b6
 Toggle|action|deps:none|tokens:7|estados:4|figma:-
 TransactionListItem|data-display|deps:none|tokens:10|estados:2|figma:7d433c68

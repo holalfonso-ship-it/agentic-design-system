@@ -36,7 +36,7 @@ export function Badge({ variant = "neutral", children, className, style }: Badge
   const finalStyle: CSSProperties = {
     display: "inline-flex",
     alignItems: "center",
-    gap: 6, // fuera de la escala space.* (valor de Figma sin variable)
+    gap: space["6"],
     padding: `${space["4"]}px ${space["8"]}px`,
     borderRadius: radius.full,
     background: colors.bg,
