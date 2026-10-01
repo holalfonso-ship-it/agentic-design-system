@@ -14,9 +14,7 @@ export const meta = {
     "Círculo con iniciales (fallback de texto, sin soporte de imagen todavía). Tres tamaños: sm (32px), md (40px), lg (48px).",
   figma: {
     library: "Aida",
-    // Sin componentKey todavía — igual que Toggle y Badge, pendiente de
-    // que Alfonso publique la librería desde Figma desktop.
-    componentKey: null,
+    componentKey: "fc23fc95649dc4bbcbc747d3fc696723c19397ca",
     nodeId: "169:113",
     type: "component_set",
   },

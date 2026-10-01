@@ -24,12 +24,7 @@ export const meta = {
     "Campo de texto de una sola línea con label y helper text opcional. Soporta estado de error (con mensaje propio) y disabled.",
   figma: {
     library: "Aida",
-    // Sin componentKey todavía: el nodo existe en el archivo (component
-    // set 173:119, página "02. Components") pero componentKey solo se
-    // asigna cuando la librería se publica desde Figma desktop — acción
-    // manual que le corresponde a Alfonso. Node-id de referencia:
-    // https://www.figma.com/design/3EHBqyJGvIfSG3CZol393z/Aida?node-id=173-119
-    componentKey: null,
+    componentKey: "eb7c561a10ab2bbaff5037d8eb0e5a1be22f3bb2",
     nodeId: "173:119",
     type: "component_set",
   },

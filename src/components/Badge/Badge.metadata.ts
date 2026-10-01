@@ -14,9 +14,7 @@ export const meta = {
     "Etiqueta de estado corta (dot + texto) en forma de pill. Cuatro variantes de color: success, error, warning, neutral.",
   figma: {
     library: "Aida",
-    // Sin componentKey todavía — igual que Toggle, pendiente de que
-    // Alfonso publique la librería desde Figma desktop.
-    componentKey: null,
+    componentKey: "cb2b0282fce83320c1bc3c37e8cb822aea48ffc5",
     nodeId: "165:119",
     type: "component_set",
   },

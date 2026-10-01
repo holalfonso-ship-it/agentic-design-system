@@ -18,12 +18,7 @@ export const meta = {
     "Switch on/off de una sola pieza (track + knob), sin label propio: el label va fuera, a cargo de quien lo consume.",
   figma: {
     library: "Aida",
-    // Sin componentKey todavía: el nodo existe en el archivo (component
-    // set 159:119, página "02. Components") pero componentKey solo se
-    // asigna cuando la librería se publica desde Figma desktop — acción
-    // manual que le corresponde a Alfonso. Node-id de referencia:
-    // https://www.figma.com/design/3EHBqyJGvIfSG3CZol393z/Aida?node-id=159-119
-    componentKey: null,
+    componentKey: "c9816eccd399af1a9eebea274a061c677d961c80",
     nodeId: "159:119",
     type: "component_set",
   },
