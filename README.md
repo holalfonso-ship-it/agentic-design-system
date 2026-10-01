@@ -28,6 +28,8 @@ npm run dev              # demo interna (App.tsx) en localhost
 npm run generate-index   # regenera index.toon a partir de la metadata
 npm run storybook        # vitrina navegable de los 11 componentes (localhost:6006)
 npm run build-storybook  # build estático de la vitrina, para publicar
+npm test                 # tests unitarios (Vitest + Testing Library + axe-core)
+npm run test:coverage    # tests con informe de cobertura
 ```
 
 ## Storybook — la vitrina (Fase 4, 2026-09-14)

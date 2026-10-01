@@ -136,6 +136,12 @@ sea in/out. Trátalo como el caso de prueba de esta regla.
    Cubre como mínimo todas las variantes/estados listados en
    `meta.states`. Verifica con `npm run build-storybook` antes de dar
    el componente por cerrado.
+6. Añade (o actualiza) `<Nombre>.test.tsx` junto al componente — Vitest +
+   Testing Library (Fase 4, 2026-10-01). Cubre como mínimo: render de cada
+   variante/estado de `meta.states`, los callbacks de `meta.props`, el
+   comportamiento de `meta.a11y` (rol, teclado, área táctil) y una
+   comprobación de axe-core (`expectNoA11yViolations`). Corre `npm test`
+   antes de dar el componente por cerrado.
 
 ## Ciclo ARC — cómo auditar este sistema
 
