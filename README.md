@@ -26,7 +26,7 @@ documento del proyecto "Sistema de Diseño Agéntico".
 npm install
 npm run dev              # demo interna (App.tsx) en localhost
 npm run generate-index   # regenera index.toon a partir de la metadata
-npm run storybook        # vitrina navegable de los 11 componentes (localhost:6006)
+npm run storybook        # vitrina navegable de los 12 componentes (localhost:6006)
 npm run build-storybook  # build estático de la vitrina, para publicar
 npm test                 # tests unitarios (Vitest + Testing Library + axe-core)
 npm run test:coverage    # tests con informe de cobertura
@@ -34,7 +34,7 @@ npm run test:coverage    # tests con informe de cobertura
 
 ## Storybook — la vitrina (Fase 4, 2026-09-14)
 
-`npm run storybook` levanta la vitrina navegable de los 11 componentes
+`npm run storybook` levanta la vitrina navegable de los 12 componentes
 que el Post 1 ya prometía ("un Storybook navegable donde tanto personas
 como agentes puedan ver todos los componentes y sus variantes"). Cada
 componente tiene su `<Nombre>.stories.tsx` junto al código, agrupado por
@@ -199,7 +199,7 @@ conocidos de arriba.
 ## Estado del roadmap
 
 - **Fase 0-1** (fundamentos + tokens reales): completas.
-- **Fase 2** (cobertura de componentes): completa, 11 componentes.
+- **Fase 2** (cobertura de componentes): completa, 11 componentes; el componente `Icon` (12.º) llegó en el Ciclo ARC 3.
 - **Fase 3** (primer ciclo Audit → Report → Compose): completa y
   verificada (2026-09-14) — ver `claude/estado-tarea-agentic-design-system.md`
   en el proyecto de Claude para el detalle de los 9 hallazgos y su

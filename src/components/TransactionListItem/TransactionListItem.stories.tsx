@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { TransactionListItem } from "./TransactionListItem";
 import { meta as transactionListItemMeta } from "./TransactionListItem.metadata";
-import { PlaceholderIcon } from "../../stories/PlaceholderIcon";
+import { Icon } from "../Icon";
 
 const meta: Meta<typeof TransactionListItem> = {
   title: "Data Display/TransactionListItem",
@@ -18,7 +18,7 @@ const meta: Meta<typeof TransactionListItem> = {
     direction: { control: "select", options: ["in", "out"] },
   },
   args: {
-    icon: <PlaceholderIcon />,
+    icon: <Icon name="utensils" />,
     merchant: "Carrefour",
     category: "Supermercado",
     amount: "34,20 €",
@@ -40,8 +40,8 @@ export const Historial: Story = {
   parameters: { controls: { disable: true } },
   render: () => (
     <div style={{ maxWidth: 340 }}>
-      <TransactionListItem icon={<PlaceholderIcon />} merchant="Carrefour" category="Supermercado" amount="34,20 €" direction="out" timestamp="hoy" />
-      <TransactionListItem icon={<PlaceholderIcon />} merchant="Nómina" category="Ingreso" amount="1.800,00 €" direction="in" timestamp="ayer" />
+      <TransactionListItem icon={<Icon name="utensils" />} merchant="Carrefour" category="Supermercado" amount="34,20 €" direction="out" timestamp="hoy" />
+      <TransactionListItem icon={<Icon name="utensils" />} merchant="Nómina" category="Ingreso" amount="1.800,00 €" direction="in" timestamp="ayer" />
     </div>
   ),
 };

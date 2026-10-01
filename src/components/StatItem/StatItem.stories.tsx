@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { StatItem } from "./StatItem";
 import { meta as statItemMeta } from "./StatItem.metadata";
-import { PlaceholderIcon } from "../../stories/PlaceholderIcon";
+import { Icon } from "../Icon";
 
 const meta: Meta<typeof StatItem> = {
   title: "Data Display/StatItem",
@@ -14,7 +14,7 @@ const meta: Meta<typeof StatItem> = {
       },
     },
   },
-  args: { icon: <PlaceholderIcon />, label: "Balance total", amount: "€7.783,00" },
+  args: { icon: <Icon name="circle-arrow-out-up-right" />, label: "Balance total", amount: "€7.783,00" },
 };
 export default meta;
 type Story = StoryObj<typeof StatItem>;
@@ -26,8 +26,8 @@ export const FilaDeResumen: Story = {
   parameters: { controls: { disable: true } },
   render: () => (
     <div style={{ display: "flex", gap: 20 }}>
-      <StatItem icon={<PlaceholderIcon />} label="Balance total" amount="€7.783,00" />
-      <StatItem icon={<PlaceholderIcon />} label="Total Gastos" amount="€1.204,50" />
+      <StatItem icon={<Icon name="circle-arrow-out-up-right" />} label="Balance total" amount="€7.783,00" />
+      <StatItem icon={<Icon name="circle-arrow-out-down-left" />} label="Total Gastos" amount="€1.204,50" />
     </div>
   ),
 };

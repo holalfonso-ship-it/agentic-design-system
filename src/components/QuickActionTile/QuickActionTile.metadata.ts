@@ -48,5 +48,5 @@ export const meta = {
   },
   dependencies: [],
   notes:
-    "La prop `icon` es obligatoria a propósito: en Figma el nodo por defecto trae un 'Calendar Icon' (SVG), pero el asset no se pudo descargar en esta sesión — el egress de red del entorno de Cowork bloquea figma.com por política de la organización (confirmado con curl, tanto desde la VM del dispositivo como desde el contenedor cloud). Cuando exista el componente Icon (Fase 2, en curso), sustituir por <Icon name=\"calendar\" /> o el nombre SF Symbol real una vez identificado.",
+    "La prop `icon` es obligatoria a propósito: Figma trae por defecto un 'Calendar Icon' (SF Symbol calendar.circle.fill) y Aida no redistribuye los SF Symbols (licencia de Apple). Usar <Icon name=\"calendar\" /> (Ciclo ARC 3, 2026-10-01; ver Icon.metadata.ts para el mapeo).",
 } as const;

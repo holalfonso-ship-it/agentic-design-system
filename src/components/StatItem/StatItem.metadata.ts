@@ -44,5 +44,5 @@ export const meta = {
   },
   dependencies: [],
   notes:
-    "La prop `icon` es obligatoria a propósito: en Figma se intercambia entre arrow.up.right.circle.fill y arrow.down.left.circle.fill, pero ninguno de los dos assets se pudo descargar en esta sesión — el egress de red del entorno de Cowork bloquea figma.com por política de la organización (confirmado con curl, tanto desde la VM del dispositivo como desde el contenedor cloud). Estos dos son los primeros candidatos confirmados para el componente Icon planeado en la Fase 2.",
+    "La prop `icon` es obligatoria a propósito: en Figma se intercambia entre arrow.up.right.circle.fill y arrow.down.left.circle.fill (SF Symbols, que Aida no redistribuye por la licencia de Apple). Usar <Icon name=\"circle-arrow-out-up-right\" /> o <Icon name=\"circle-arrow-out-down-left\" /> (Ciclo ARC 3, 2026-10-01; ver Icon.metadata.ts).",
 } as const;

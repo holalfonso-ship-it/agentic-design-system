@@ -1,8 +1,9 @@
-# index.toon — generado 2026-10-01T10:47:00.359Z
-# componentes:11 relaciones:2
+# index.toon — generado 2026-10-01T10:50:54.705Z
+# componentes:12 relaciones:2
 Avatar|data-display|deps:none|tokens:7|estados:3|figma:-
 Badge|data-display|deps:none|tokens:16|estados:4|figma:-
 Button|action|deps:none|tokens:14|estados:4|figma:0784c9db
+Icon|data-display|deps:none|tokens:0|estados:0|figma:-
 Input|form|deps:none|tokens:18|estados:4|figma:-
 Modal|overlay|deps:Button|tokens:21|estados:1|figma:-
 ProductCard|data-display|deps:Button|tokens:35|estados:3|figma:6a26bf3b

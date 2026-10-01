@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { QuickActionTile } from "./QuickActionTile";
 import { meta as quickActionTileMeta } from "./QuickActionTile.metadata";
-import { PlaceholderIcon } from "../../stories/PlaceholderIcon";
+import { Icon } from "../Icon";
 
 const meta: Meta<typeof QuickActionTile> = {
   title: "Action/QuickActionTile",
@@ -15,7 +15,7 @@ const meta: Meta<typeof QuickActionTile> = {
     },
   },
   args: {
-    icon: <PlaceholderIcon />,
+    icon: <Icon name="calendar" />,
     title: "Transferencias",
     subtitle: "Feb · Mar · Abr · May",
   },
@@ -30,8 +30,8 @@ export const RowDeAcciones: Story = {
   parameters: { controls: { disable: true } },
   render: () => (
     <div style={{ display: "flex", gap: 8 }}>
-      <QuickActionTile icon={<PlaceholderIcon />} title="Transferencias" subtitle="Feb · Mar · Abr · May" />
-      <QuickActionTile icon={<PlaceholderIcon />} title="Pagar" subtitle="Recibos y servicios" />
+      <QuickActionTile icon={<Icon name="house" />} title="Transferencias" subtitle="Feb · Mar · Abr · May" />
+      <QuickActionTile icon={<Icon name="house" />} title="Pagar" subtitle="Recibos y servicios" />
     </div>
   ),
 };
