@@ -13,7 +13,8 @@ const sources = import.meta.glob("../components/*/*.tsx", { query: "?raw", impor
 const metas = import.meta.glob("../components/*/*.metadata.ts", { import: "meta", eager: true }) as Record<string, any>;
 
 const IGNORED_PROPS = new Set(["className", "style", "aria-label"]);
-const stripComments = (code: string) => code.replace(/\/\*[\s\S]*?\*\//g, "").replace(/(^|[^:])\/\/[^\n]*/g, "$1");
+// Primero los comentarios de línea (pueden contener "/*" dentro), después los de bloque.
+const stripComments = (code: string) => code.replace(/(^|[^:"'\\])\/\/[^\n]*/g, "$1").replace(/\/\*[\s\S]*?\*\//g, "");
 
 function publicProps(source: string): string[] {
   const m = source.match(/export interface \w+Props[^{]*\{([\s\S]*?)\n\}/);
@@ -33,6 +34,9 @@ function usedTokens(source: string): string[] {
       // `fontSize: ...` es la clave CSS homónima, no el token: se descarta.
       const after = body.slice((m.index ?? 0) + m[0].length);
       if (m[1] === "" && /^\s*:/.test(after)) continue;
+      // Cadenas CSS como "space-around": el \b encuentra «space» pero no es el token.
+      const before = body[(m.index ?? 0) - 1];
+      if (before === '"' || before === "'" || before === "-" || after.startsWith("-")) continue;
       const tail = m[1].replace(/\["([^"]+)"\]/g, ".$1");
       paths.add(root + tail);
     }
