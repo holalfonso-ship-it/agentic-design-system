@@ -1,4 +1,4 @@
-import { tab, semantic, fontSize, fontFamily } from "../../tokens";
+import { tab, semantic, fontSize, fontFamily, radius } from "../../tokens";
 import type { CSSProperties } from "react";
 
 export interface TabBarItem {
@@ -47,7 +47,7 @@ export function TabBar({ items, activeKey, onChange }: TabBarProps) {
           alignItems: "center",
           gap: 4,
           padding: "4px 10px",
-          borderRadius: 999,
+          borderRadius: radius.full,
           background: selected ? tab.bg.selected : tab.bg.default,
           color: selected ? tab.text.selected : tab.text.default,
           fontFamily: fontFamily.base,

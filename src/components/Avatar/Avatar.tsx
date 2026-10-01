@@ -1,4 +1,4 @@
-import { button, fontFamily } from "../../tokens";
+import { button, fontFamily, fontSize } from "../../tokens";
 import type { CSSProperties } from "react";
 
 export type AvatarSize = "sm" | "md" | "lg";
@@ -11,7 +11,14 @@ export interface AvatarProps {
 }
 
 const sizeToDiameter: Record<AvatarSize, number> = { sm: 32, md: 40, lg: 48 };
-const sizeToFontSize: Record<AvatarSize, number> = { sm: 12, md: 14, lg: 20 };
+// Compose Ciclo 2 (2026-10-01, hallazgo 6): antes literales 12/14/20 (deuda
+// aceptada en la Fase 3). Coinciden exactamente con los tokens y con los
+// tamaños del component set real de Figma (169:113): label-sm, label-md, heading-md.
+const sizeToFontSize: Record<AvatarSize, number> = {
+  sm: fontSize["label-sm"],
+  md: fontSize["label-md"],
+  lg: fontSize["heading-md"],
+};
 
 /**
  * Avatar — círculo con iniciales (fallback de texto, sin foto todavía).
