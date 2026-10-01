@@ -43,3 +43,26 @@ export type LineHeightToken = keyof typeof lineHeight;
 export const fontFamily = {
   base: '"SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
 } as const;
+
+/**
+ * Pesos de fuente — NO son variables de Figma. Figma no tiene una colección de
+ * pesos: el peso vive dentro de los estilos de texto `Type/*` (Inter), así que
+ * estos tokens reflejan esos estilos, no variables.
+ *
+ * Leído con use_figma (figma.getLocalTextStylesAsync) — Ciclo ARC 2 (2026-10-01):
+ *   regular  400 → Type/Body/LG, Type/Body/MD, Type/Caption
+ *   medium   500 → Type/Label/MD, Type/Label/SM
+ *   semibold 600 → Type/Heading/LG, Type/Heading/MD
+ *   bold     700 → Type/Display/XL
+ *
+ * Nota: Figma escribe «Semi Bold» (con espacio) como estilo de Inter; aquí la
+ * clave es `semibold`.
+ */
+export const fontWeight = {
+  regular: 400,
+  medium: 500,
+  semibold: 600,
+  bold: 700,
+} as const;
+
+export type FontWeightToken = keyof typeof fontWeight;
