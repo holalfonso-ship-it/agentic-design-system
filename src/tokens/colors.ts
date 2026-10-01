@@ -76,6 +76,10 @@ export const card = {
   // bnpl/credit) — no hace falta, este objeto ya no se usa como fondo
   // "sutil" de nada.
   frozen: { bg: "#FFFFFF", text: "#5C5653" },
+  // Mancha decorativa de la cara frontal (nodo «Effect» de Figma). En Figma es un
+  // relleno con hex suelto, SIN variable: se recoge aquí para no dejar hex en el
+  // componente. Ciclo ARC 3 (2026-10-01).
+  glow: { credit: "#DDA72D", bnpl: "#876FAB" },
 } as const;
 
 export const tab = {
@@ -142,6 +146,9 @@ export const semantic = {
  */
 export const sunflower = {
   "50": "#FEF8EA",
+  // `500` (#F3B731) añadido en el Ciclo ARC 3: lo usa el logo de la ProductCard
+  // (sunflower/500 en Figma, mismo valor que `semantic/feedback/warning`).
+  "500": "#F3B731",
   "800": "#86651B",
 } as const;
 

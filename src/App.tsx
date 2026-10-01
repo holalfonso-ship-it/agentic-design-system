@@ -74,10 +74,27 @@ export default function App() {
       </section>
 
       <section style={{ display: "flex", flexDirection: "column", gap: 12, marginBottom: 24 }}>
-        <ProductCard product="bnpl" title="Compra en 3 pagos" subtitle="Próximo pago: 12 sep" amount="45,00 €" />
-        <ProductCard product="credit" title="Tarjeta Visa ····4821" subtitle="Límite disponible" amount="1.230,00 €" />
-        <ProductCard product="credit" state="frozen" title="Tarjeta Visa ····4821" subtitle="Congelada por el usuario" />
-        <ProductCard product="credit" state="blocked" title="Tarjeta Visa ····4821" subtitle="Bloqueada por sospecha de fraude" />
+        <ProductCard product="credit" cardNumber="4289" holderName="Alfonso Zamorano" />
+        <ProductCard
+          product="bnpl"
+          side="back"
+          balance="€3.500,00"
+          balanceCaption="de €3.800,00 disponibles"
+          progress={0.6}
+          primaryAction={{ label: "Ver movimientos" }}
+          secondaryAction={{ label: "Congelar tarjeta" }}
+        />
+        <ProductCard product="credit" state="frozen" cardNumber="4289" holderName="Alfonso Zamorano" />
+        <ProductCard
+          product="credit"
+          state="blocked"
+          side="back"
+          balance="€3.500,00"
+          balanceCaption="de €3.800,00 disponibles"
+          progress={0.6}
+          primaryAction={{ label: "Ver movimientos" }}
+          secondaryAction={{ label: "Contactar soporte" }}
+        />
       </section>
 
       <section style={{ marginBottom: 24 }}>

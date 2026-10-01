@@ -17,7 +17,7 @@ describe("tokens ↔ Figma", () => {
   });
 
   it("fontWeight refleja los pesos de los estilos de texto de Figma", () => {
-    expect(fontWeight).toEqual({ regular: 400, medium: 500, semibold: 600, bold: 700 });
+    expect(fontWeight).toEqual({ light: 300, regular: 400, medium: 500, semibold: 600, bold: 700, black: 900 });
   });
 });
 

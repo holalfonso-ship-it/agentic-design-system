@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { ProductCard } from "./ProductCard";
+import type { ProductCardProps } from "./ProductCard";
 import { meta as productCardMeta } from "./ProductCard.metadata";
 
 const meta: Meta<typeof ProductCard> = {
@@ -9,51 +10,78 @@ const meta: Meta<typeof ProductCard> = {
   parameters: {
     docs: {
       description: {
-        component: `${productCardMeta.description}\n\n**Cuándo usarlo:** ${productCardMeta.useWhen}\n\n\`product\` y \`state\` son dos ejes independientes (remodelado en el Compose de la Fase 3) — no todas las combinaciones antiguas de "variant" existen ya.`,
+        component: `${productCardMeta.description}\n\n**Cuándo usarlo:** ${productCardMeta.useWhen}\n\n\`product\`, \`state\` y \`side\` son tres ejes independientes (las 12 variantes del component set de Figma). Reconstruido en el Ciclo ARC 3: la API anterior (title/subtitle/amount) ya no existe.`,
       },
     },
   },
   argTypes: {
     product: { control: "select", options: ["bnpl", "credit"] },
     state: { control: "select", options: ["active", "frozen", "blocked"] },
+    side: { control: "inline-radio", options: ["front", "back"] },
+    progress: { control: { type: "range", min: 0, max: 1, step: 0.05 } },
   },
   args: {
     product: "credit",
     state: "active",
-    title: "Tarjeta Visa ····4821",
-    subtitle: "Límite disponible",
-    amount: "1.230,00 €",
+    side: "front",
+    cardNumber: "4289",
+    holderName: "Alfonso Zamorano",
+    balance: "€3.500,00",
+    balanceCaption: "de €3.800,00 disponibles",
+    progress: 0.6,
+    primaryAction: { label: "Ver movimientos" },
+    secondaryAction: { label: "Congelar tarjeta" },
   },
 };
 export default meta;
 type Story = StoryObj<typeof ProductCard>;
 
-export const BnplActiva: Story = {
-  name: "BNPL · activa",
-  args: { product: "bnpl", state: "active", title: "Compra en 3 pagos", subtitle: "Próximo pago: 12 sep", amount: "45,00 €" },
+export const CreditoFrontal: Story = { name: "Crédito · activa · frontal" };
+export const CreditoTrasera: Story = { name: "Crédito · activa · trasera", args: { side: "back" } };
+export const BnplFrontal: Story = { name: "BNPL · activa · frontal", args: { product: "bnpl" } };
+export const BnplTrasera: Story = { name: "BNPL · activa · trasera", args: { product: "bnpl", side: "back" } };
+export const CongeladaTrasera: Story = {
+  name: "Crédito · congelada · trasera",
+  args: { state: "frozen", side: "back", secondaryAction: { label: "Descongelar tarjeta" } },
 };
-export const CreditoActivo: Story = {
-  name: "Crédito · activo",
-  args: { product: "credit", state: "active" },
-};
-export const CreditoCongelado: Story = {
-  name: "Crédito · congelado",
-  args: { product: "credit", state: "frozen", subtitle: "Congelada por el usuario", amount: undefined },
-};
-export const CreditoBloqueado: Story = {
-  name: "Crédito · bloqueado",
-  args: { product: "credit", state: "blocked", subtitle: "Bloqueada por sospecha de fraude", amount: undefined },
+export const BloqueadaFrontal: Story = { name: "Crédito · bloqueada · frontal", args: { state: "blocked" } };
+export const BloqueadaTrasera: Story = {
+  name: "Crédito · bloqueada · trasera",
+  args: { state: "blocked", side: "back", secondaryAction: { label: "Contactar soporte" } },
 };
 
-export const TodosLosEstados: Story = {
-  name: "Todos los estados",
-  parameters: { controls: { disable: true } },
+const secondaryByState: Record<"active" | "frozen" | "blocked", string> = {
+  active: "Congelar tarjeta",
+  frozen: "Descongelar tarjeta",
+  blocked: "Contactar soporte",
+};
+
+export const TodasLasVariantes: Story = {
+  name: "Todas las variantes (12)",
+  parameters: { controls: { disable: true }, layout: "padded" },
   render: () => (
-    <div style={{ display: "flex", flexDirection: "column", gap: 12, maxWidth: 320 }}>
-      <ProductCard product="bnpl" title="Compra en 3 pagos" subtitle="Próximo pago: 12 sep" amount="45,00 €" />
-      <ProductCard product="credit" title="Tarjeta Visa ····4821" subtitle="Límite disponible" amount="1.230,00 €" />
-      <ProductCard product="credit" state="frozen" title="Tarjeta Visa ····4821" subtitle="Congelada por el usuario" />
-      <ProductCard product="credit" state="blocked" title="Tarjeta Visa ····4821" subtitle="Bloqueada por sospecha de fraude" />
+    <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+      {(["credit", "bnpl"] as const).flatMap((product) =>
+        (["active", "frozen", "blocked"] as const).map((state) => {
+          const base: ProductCardProps = {
+            product,
+            state,
+            cardNumber: "4289",
+            holderName: "Alfonso Zamorano",
+            balance: "€3.500,00",
+            balanceCaption: "de €3.800,00 disponibles",
+            progress: 0.6,
+            primaryAction: { label: "Ver movimientos" },
+            secondaryAction: { label: secondaryByState[state] },
+          };
+          return (
+            <div key={`${product}-${state}`} style={{ display: "flex", flexWrap: "wrap", gap: 24, alignItems: "flex-start" }}>
+              <ProductCard {...base} side="front" />
+              <ProductCard {...base} side="back" />
+            </div>
+          );
+        }),
+      )}
     </div>
   ),
 };

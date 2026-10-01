@@ -54,15 +54,20 @@ export const fontFamily = {
  *   medium   500 → Type/Label/MD, Type/Label/SM
  *   semibold 600 → Type/Heading/LG, Type/Heading/MD
  *   bold     700 → Type/Display/XL
+ *   light    300 → sin estilo de texto: los dígitos del número de la ProductCard
+ *   black    900 → sin estilo de texto: los puntos del número de la ProductCard
+ *                  (ambos escritos a mano en Figma, Ciclo ARC 3)
  *
  * Nota: Figma escribe «Semi Bold» (con espacio) como estilo de Inter; aquí la
  * clave es `semibold`.
  */
 export const fontWeight = {
+  light: 300,
   regular: 400,
   medium: 500,
   semibold: 600,
   bold: 700,
+  black: 900,
 } as const;
 
 export type FontWeightToken = keyof typeof fontWeight;
