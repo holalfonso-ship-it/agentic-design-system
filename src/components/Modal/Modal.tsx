@@ -177,7 +177,7 @@ export function Modal({
     alignItems: "center",
     justifyContent: "center",
     color: semantic.text.secondary,
-    fontSize: 18,
+    fontSize: fontSize["heading-md"], // 20 — decisión Ciclo 2 (2026-10-01): 18 no existe en la escala; Figma (178:107) usa 18 y debería alinearse
     lineHeight: 1,
   };
 
