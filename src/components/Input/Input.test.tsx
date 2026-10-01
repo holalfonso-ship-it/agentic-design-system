@@ -130,4 +130,17 @@ describe("Input", () => {
     );
     await expectNoA11yViolations(container);
   });
+
+  // Figma: la etiqueta es Medium en default/focused y Semi Bold en error/disabled.
+  it("peso de la etiqueta según estado (Medium 500 / Semi Bold 600)", () => {
+    const weight = (props: Record<string, unknown>) => {
+      const { unmount } = render(<Input label="Correo" {...props} />);
+      const w = screen.getByText("Correo").style.fontWeight;
+      unmount();
+      return w;
+    };
+    expect(weight({})).toBe("500");
+    expect(weight({ error: true, errorText: "x" })).toBe("600");
+    expect(weight({ disabled: true })).toBe("600");
+  });
 });

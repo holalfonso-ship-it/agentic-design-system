@@ -47,4 +47,13 @@ describe("TransactionListItem", () => {
     const { container } = render(<TransactionListItem merchant="M" amount="1 €" category="c" timestamp="t" direction="in" />);
     await expectNoA11yViolations(container);
   });
+
+  // Figma (76:91): merchant e importe usan Type/Body/LG (16, Regular); la fecha, Type/Caption (11).
+  it("tipografía de Figma: merchant e importe 16 / 400, meta 11", () => {
+    render(<TransactionListItem merchant="Mercadona" amount="5 €" category="Comida" />);
+    for (const el of [screen.getByText("Mercadona"), screen.getByText("−5 €")]) {
+      expect(el).toHaveStyle({ fontSize: "16px", fontWeight: "400" });
+    }
+    expect(screen.getByText("Comida")).toHaveStyle({ fontSize: "11px" });
+  });
 });

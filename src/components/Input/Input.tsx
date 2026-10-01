@@ -64,7 +64,8 @@ export function Input({
   const labelStyle: CSSProperties = {
     fontSize: fontSize["label-sm"],
     lineHeight: `${lineHeight["label-sm"]}px`,
-    fontWeight: fontWeight.semibold,
+    // Figma: Medium en default/focused y Semi Bold en error/disabled.
+    fontWeight: error || disabled ? fontWeight.semibold : fontWeight.medium,
     color: labelColor,
   };
 

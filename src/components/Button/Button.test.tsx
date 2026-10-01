@@ -49,4 +49,22 @@ describe("Button", () => {
     const { container } = render(<Button>Continuar</Button>);
     await expectNoA11yViolations(container);
   });
+
+  // Valores de Figma (component set "Button"): altura fija y padding horizontal por tamaño.
+  it.each([
+    ["sm", "44px", "16px"],
+    ["md", "48px", "24px"],
+    ["lg", "56px", "24px"],
+  ] as const)("tamaño %s: altura %s y padding horizontal %s, en las tres variantes", (size, height, padX) => {
+    for (const variant of ["primary", "secondary", "tertiary"] as const) {
+      const { unmount } = render(
+        <Button size={size} variant={variant}>
+          Ok
+        </Button>,
+      );
+      const el = screen.getByRole("button");
+      expect(el).toHaveStyle({ height, paddingLeft: padX, paddingRight: padX, paddingTop: "0px", fontWeight: "500" });
+      unmount();
+    }
+  });
 });

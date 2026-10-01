@@ -30,9 +30,6 @@ export const meta = {
     "fontSize.label-sm",
     "fontSize.body-md",
     "fontFamily.base",
-    "space.4",
-    "space.8",
-    "space.12",
     "space.16",
     "space.24",
     "fontWeight.medium",
@@ -48,5 +45,5 @@ export const meta = {
   },
   dependencies: [],
   notes:
-    "Ciclo ARC 3 (2026-10-01): peso 500 (Type/Label/*) y padding horizontal 16/24/24, alineados con Figma. Divergencia abierta: en Figma la altura es fija (sm 44, md 48, lg 56) y sin padding vertical; el código la deriva del contenido con padding vertical 8/12/16.",
+    "Ciclo ARC 3 (2026-10-01): peso 500 (Type/Label/*) y padding horizontal 16/24/24 y altura fija sm 44, md 48, lg 56 (sin padding vertical), alineados con Figma en las tres variantes. Antes la altura se derivaba del contenido y el tertiary tenía un padding propio (8/4).",
 } as const;

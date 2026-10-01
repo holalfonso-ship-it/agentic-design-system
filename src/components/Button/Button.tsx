@@ -9,14 +9,14 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   size?: ButtonSize;
 }
 
-// Horizontales alineados con Figma (Ciclo 3): sm 16, md 24, lg 24. Los 14/18/22 que
-// había antes no existían en Figma. Las partes verticales (8/12/16) se mantienen:
-// en Figma la altura es fija (44/48/56) y el código la deriva del contenido
-// (divergencia registrada en la metadata).
-const sizeToPadding: Record<ButtonSize, string> = {
-  sm: `${space["8"]}px ${space["16"]}px`,
-  md: `${space["12"]}px ${space["24"]}px`,
-  lg: `${space["16"]}px ${space["24"]}px`,
+// Alineado con Figma (Ciclo 3): altura fija 44/48/56 sin padding vertical y
+// horizontales 16/24/24 en las tres variantes (primary, secondary y tertiary).
+// Las alturas no son spacing: son el tamaño del componente.
+const sizeToHeight: Record<ButtonSize, number> = { sm: 44, md: 48, lg: 56 };
+const sizeToPaddingX: Record<ButtonSize, number> = {
+  sm: space["16"],
+  md: space["24"],
+  lg: space["24"],
 };
 
 const sizeToFontSize: Record<ButtonSize, number> = {
@@ -44,7 +44,12 @@ export function Button({
     fontFamily: fontFamily.base,
     fontSize: sizeToFontSize[size],
     fontWeight: fontWeight.medium,
-    padding: variant === "tertiary" ? `${space["8"]}px ${space["4"]}px` : sizeToPadding[size],
+    display: "inline-flex",
+    alignItems: "center",
+    justifyContent: "center",
+    boxSizing: "border-box",
+    height: sizeToHeight[size],
+    padding: `0 ${sizeToPaddingX[size]}px`,
     borderRadius: radius.md,
     border: styles.border ?? "none",
     background: styles.bg,

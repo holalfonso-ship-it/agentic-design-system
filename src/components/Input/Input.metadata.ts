@@ -59,6 +59,7 @@ export const meta = {
     "space.12",
     "space.6",
     "space.16",
+    "fontWeight.medium",
     "fontWeight.semibold",
   ],
   states: ["default", "focused", "error", "disabled"],
