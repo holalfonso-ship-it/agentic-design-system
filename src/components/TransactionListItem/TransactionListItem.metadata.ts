@@ -28,6 +28,9 @@ export const meta = {
     "semantic.feedback.success",
     "semantic.feedback.error",
     "fontFamily.base",
+    "space.12",
+    "space.4",
+    "fontWeight.semibold",
   ],
   states: ["in", "out"],
   useWhen:

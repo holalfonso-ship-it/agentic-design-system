@@ -21,6 +21,10 @@ export const meta = {
     "fontSize.caption",
     "fontFamily.base",
     "radius.full",
+    "space.8",
+    "space.4",
+    "fontWeight.semibold",
+    "fontWeight.medium",
   ],
   states: ["default", "selected"],
   useWhen:

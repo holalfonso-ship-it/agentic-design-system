@@ -30,6 +30,9 @@ export const meta = {
     "fontSize.label-sm",
     "fontSize.body-md",
     "fontFamily.base",
+    "space.8",
+    "space.4",
+    "fontWeight.semibold",
   ],
   states: ["default", "hover", "pressed", "disabled"],
   useWhen:

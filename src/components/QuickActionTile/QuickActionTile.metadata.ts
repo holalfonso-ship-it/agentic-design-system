@@ -31,6 +31,9 @@ export const meta = {
     "lineHeight.body-lg",
     "lineHeight.label-sm",
     "fontFamily.base",
+    "space.16",
+    "fontWeight.regular",
+    "fontWeight.medium",
   ],
   states: ["default"],
   useWhen:

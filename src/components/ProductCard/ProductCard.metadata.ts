@@ -27,6 +27,9 @@ export const meta = {
     "fontSize.caption",
     "fontSize.body-md",
     "fontFamily.base",
+    "space.16",
+    "fontWeight.semibold",
+    "fontWeight.bold",
   ],
   states: ["active", "frozen", "blocked"],
   useWhen:

@@ -76,6 +76,12 @@ export const meta = {
     "lineHeight.heading-md",
     "lineHeight.body-md",
     "fontFamily.base",
+    "space.12",
+    "space.8",
+    "space.4",
+    "space.16",
+    "space.24",
+    "fontWeight.bold",
   ],
   states: ["default"],
   useWhen:

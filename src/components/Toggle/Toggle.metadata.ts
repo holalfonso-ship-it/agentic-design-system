@@ -39,6 +39,7 @@ export const meta = {
     "semantic.bg.surface",
     "semantic.border.default",
     "radius.full",
+    "space.2",
   ],
   states: ["on", "off", "on-disabled", "off-disabled"],
   useWhen:

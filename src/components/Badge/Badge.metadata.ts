@@ -37,6 +37,9 @@ export const meta = {
     "fontSize.label-sm",
     "lineHeight.label-sm",
     "fontFamily.base",
+    "space.4",
+    "space.8",
+    "fontWeight.medium",
   ],
   states: ["success", "error", "warning", "neutral"],
   useWhen:

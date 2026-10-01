@@ -27,6 +27,8 @@ export const meta = {
     "lineHeight.label-md",
     "lineHeight.heading-lg",
     "fontFamily.base",
+    "fontWeight.medium",
+    "fontWeight.semibold",
   ],
   states: ["default"],
   useWhen:

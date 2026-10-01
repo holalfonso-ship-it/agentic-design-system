@@ -56,6 +56,9 @@ export const meta = {
     "fontSize.body-md",
     "lineHeight.label-sm",
     "lineHeight.body-md",
+    "space.12",
+    "space.16",
+    "fontWeight.semibold",
   ],
   states: ["default", "focused", "error", "disabled"],
   useWhen:

@@ -38,6 +38,7 @@ export const meta = {
     "fontSize.label-sm",
     "fontSize.label-md",
     "fontSize.heading-md",
+    "fontWeight.semibold",
   ],
   states: ["sm", "md", "lg"],
   useWhen:

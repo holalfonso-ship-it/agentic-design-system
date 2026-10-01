@@ -184,6 +184,14 @@ versionado y el changelog se generan a partir de ellos (ver README,
   real se aplica en Figma al estado pressed/loading, no al default
   visual). Señala cualquier otro valor que no cuadre al auditar — no lo
   "corrijas" inventando un valor nuevo, repórtalo.
+- **Spacing y fontWeight** (Ciclo ARC 2, 2026-10-01): `src/tokens/spacing.ts`
+  (`space["16"]`, escala `space/*` de Figma: 0, 2, 4, 8, 12, 16, 24, 32, 40, 48,
+  64) y `fontWeight` en `typography.ts` (`regular`/`medium`/`semibold`/`bold`).
+  Los pesos NO son variables de Figma: salen de los estilos de texto `Type/*`.
+  Nunca escribas un `fontWeight` numérico ni un padding/gap/margin con un valor
+  que ya esté en la escala: `src/test/tokens.test.ts` lo hace fallar. Un valor
+  fuera de la escala (hoy 6, 9, 10, 14, 18, 20, 22) no se inventa como token: se
+  deja literal con un comentario «fuera de la escala» y se reporta en el Audit.
 - Stack: React + TypeScript + Vite. Sin librería de estilos externa — los
   componentes usan estilos inline a propósito, en esta fase, para
   mantener el árbol de dependencias mínimo mientras se valida la
