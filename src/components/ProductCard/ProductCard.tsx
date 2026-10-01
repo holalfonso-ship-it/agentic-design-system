@@ -1,4 +1,4 @@
-import { card, semantic, radius, fontSize, fontFamily } from "../../tokens";
+import { card, semantic, radius, fontSize, fontFamily, space, fontWeight } from "../../tokens";
 import type { CSSProperties } from "react";
 
 export type ProductCardProduct = "bnpl" | "credit";
@@ -49,8 +49,8 @@ export function ProductCard({ product, state = "active", title, subtitle, amount
   const containerStyle: CSSProperties = {
     display: "flex",
     flexDirection: "column",
-    gap: 6,
-    padding: 16,
+    gap: 6, // fuera de la escala space.* (valor de Figma sin variable)
+    padding: space["16"],
     // Corregido en el Compose de la Fase 3: el radio real del componente
     // es radius/md (12px), no radius/lg (16px) — confirmado sobre los
     // nodos reales 35:959 y 46:68.
@@ -64,7 +64,7 @@ export function ProductCard({ product, state = "active", title, subtitle, amount
 
   const eyebrowStyle: CSSProperties = {
     fontSize: fontSize.caption,
-    fontWeight: 600,
+    fontWeight: fontWeight.semibold,
     color: palette.text,
     textTransform: "uppercase",
     letterSpacing: "0.04em",
@@ -72,7 +72,7 @@ export function ProductCard({ product, state = "active", title, subtitle, amount
 
   const titleStyle: CSSProperties = {
     fontSize: fontSize["heading-md"],
-    fontWeight: 700,
+    fontWeight: fontWeight.bold,
     color: palette.text,
     margin: 0,
   };

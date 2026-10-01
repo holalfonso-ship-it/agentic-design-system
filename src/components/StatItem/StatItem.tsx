@@ -1,4 +1,4 @@
-import { semantic, fontSize, lineHeight, fontFamily } from "../../tokens";
+import { semantic, fontSize, lineHeight, fontFamily, fontWeight } from "../../tokens";
 import type { CSSProperties, ReactNode } from "react";
 
 export interface StatItemProps {
@@ -30,7 +30,7 @@ export function StatItem({
   const finalStyle: CSSProperties = {
     display: "flex",
     flexDirection: "column",
-    gap: 9,
+    gap: 9, // fuera de la escala space.* (valor de Figma sin variable)
     alignItems: "flex-start",
     width: 138,
     fontFamily: fontFamily.base,
@@ -49,7 +49,7 @@ export function StatItem({
             fontFamily: fontFamily.base,
             fontSize: fontSize["label-md"],
             lineHeight: `${lineHeight["label-md"]}px`,
-            fontWeight: 500,
+            fontWeight: fontWeight.medium,
             color: semantic.text.secondary,
             whiteSpace: "nowrap",
           }}
@@ -63,7 +63,7 @@ export function StatItem({
           fontFamily: fontFamily.base,
           fontSize: fontSize["heading-lg"],
           lineHeight: `${lineHeight["heading-lg"]}px`,
-          fontWeight: 600,
+          fontWeight: fontWeight.semibold,
           color: semantic.text.secondary,
           whiteSpace: "nowrap",
         }}

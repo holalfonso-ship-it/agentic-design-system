@@ -1,4 +1,4 @@
-import { button, radius, fontSize, fontFamily } from "../../tokens";
+import { button, radius, fontSize, fontFamily, space, fontWeight } from "../../tokens";
 import type { CSSProperties, ButtonHTMLAttributes } from "react";
 
 export type ButtonVariant = "primary" | "secondary" | "tertiary";
@@ -9,6 +9,9 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   size?: ButtonSize;
 }
 
+// 14/18/22 horizontales: fuera de la escala space.* (valores de Figma sin variable).
+// Las partes verticales (8/12/16) sí coinciden con la escala, pero se dejan en la
+// misma cadena para no partir un valor que en Figma es un solo padding.
 const sizeToPadding: Record<ButtonSize, string> = {
   sm: "8px 14px",
   md: "12px 18px",
@@ -39,8 +42,8 @@ export function Button({
   const finalStyle: CSSProperties = {
     fontFamily: fontFamily.base,
     fontSize: sizeToFontSize[size],
-    fontWeight: 600,
-    padding: variant === "tertiary" ? "8px 4px" : sizeToPadding[size],
+    fontWeight: fontWeight.semibold,
+    padding: variant === "tertiary" ? `${space["8"]}px ${space["4"]}px` : sizeToPadding[size],
     borderRadius: radius.md,
     border: styles.border ?? "none",
     background: styles.bg,

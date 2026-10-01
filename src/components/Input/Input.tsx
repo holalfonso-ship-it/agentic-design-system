@@ -1,4 +1,4 @@
-import { semantic, neutral, radius, fontSize, lineHeight } from "../../tokens";
+import { semantic, neutral, radius, fontSize, lineHeight, space, fontWeight } from "../../tokens";
 import type { CSSProperties, InputHTMLAttributes } from "react";
 import { useId, useState } from "react";
 
@@ -56,7 +56,7 @@ export function Input({
   const rootStyle: CSSProperties = {
     display: "flex",
     flexDirection: "column",
-    gap: 6,
+    gap: 6, // fuera de la escala space.* (valor de Figma sin variable)
     width: "100%",
     ...containerStyle,
   };
@@ -64,7 +64,7 @@ export function Input({
   const labelStyle: CSSProperties = {
     fontSize: fontSize["label-sm"],
     lineHeight: `${lineHeight["label-sm"]}px`,
-    fontWeight: 600,
+    fontWeight: fontWeight.semibold,
     color: labelColor,
   };
 
@@ -72,7 +72,7 @@ export function Input({
     display: "flex",
     alignItems: "center",
     height: 48,
-    padding: "12px 16px",
+    padding: `${space["12"]}px ${space["16"]}px`,
     borderRadius: radius.md,
     background: fieldBg,
     border: `${borderWidth}px solid ${borderColor}`,

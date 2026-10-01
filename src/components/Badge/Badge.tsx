@@ -1,4 +1,4 @@
-import { radius, fontSize, lineHeight, fontFamily, semantic, sunflower, neutral } from "../../tokens";
+import { radius, fontSize, lineHeight, fontFamily, semantic, sunflower, neutral, space, fontWeight } from "../../tokens";
 import type { CSSProperties, ReactNode } from "react";
 
 export type BadgeVariant = "success" | "error" | "warning" | "neutral";
@@ -36,14 +36,14 @@ export function Badge({ variant = "neutral", children, className, style }: Badge
   const finalStyle: CSSProperties = {
     display: "inline-flex",
     alignItems: "center",
-    gap: 6,
-    padding: "4px 8px",
+    gap: 6, // fuera de la escala space.* (valor de Figma sin variable)
+    padding: `${space["4"]}px ${space["8"]}px`,
     borderRadius: radius.full,
     background: colors.bg,
     fontFamily: fontFamily.base,
     fontSize: fontSize["label-sm"],
     lineHeight: `${lineHeight["label-sm"]}px`,
-    fontWeight: 500,
+    fontWeight: fontWeight.medium,
     color: colors.text,
     whiteSpace: "nowrap",
     ...style,

@@ -1,4 +1,4 @@
-import { button, fontFamily, fontSize } from "../../tokens";
+import { button, fontFamily, fontSize, fontWeight } from "../../tokens";
 import type { CSSProperties } from "react";
 
 export type AvatarSize = "sm" | "md" | "lg";
@@ -41,7 +41,7 @@ export function Avatar({ initials, size = "md", className, style }: AvatarProps)
     color: button.primary.text.default, // button/primary/text/default — blanco, pensado para texto sobre marca
     fontFamily: fontFamily.base,
     fontSize: sizeToFontSize[size],
-    fontWeight: 600,
+    fontWeight: fontWeight.semibold,
     flexShrink: 0,
     userSelect: "none",
     ...style,

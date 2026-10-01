@@ -1,4 +1,4 @@
-import { fontSize, fontFamily, semantic } from "../../tokens";
+import { fontSize, fontFamily, semantic, space, fontWeight } from "../../tokens";
 import type { CSSProperties, ReactNode } from "react";
 
 export interface TransactionListItemProps {
@@ -26,8 +26,8 @@ export function TransactionListItem({
   const row: CSSProperties = {
     display: "flex",
     alignItems: "center",
-    gap: 12,
-    padding: "12px 4px",
+    gap: space["12"],
+    padding: `${space["12"]}px ${space["4"]}px`,
     fontFamily: fontFamily.base,
   };
 
@@ -58,7 +58,7 @@ export function TransactionListItem({
   const info: CSSProperties = { display: "flex", flexDirection: "column", flex: 1, minWidth: 0 };
   const merchantStyle: CSSProperties = {
     fontSize: fontSize["body-md"],
-    fontWeight: 600,
+    fontWeight: fontWeight.semibold,
     color: semantic.text.primary,
     margin: 0,
   };
@@ -69,7 +69,7 @@ export function TransactionListItem({
   };
   const amountStyle: CSSProperties = {
     fontSize: fontSize["body-md"],
-    fontWeight: 600,
+    fontWeight: fontWeight.semibold,
     color: direction === "in" ? semantic.feedback.success : semantic.feedback.error,
   };
 

@@ -1,4 +1,4 @@
-import { semantic, neutral, radius, fontSize, lineHeight, fontFamily } from "../../tokens";
+import { semantic, neutral, radius, fontSize, lineHeight, fontFamily, space, fontWeight } from "../../tokens";
 import { Button } from "../Button";
 import { useEffect, useRef } from "react";
 import type { CSSProperties, ReactNode } from "react";
@@ -125,8 +125,8 @@ export function Modal({
   const handleWrapStyle: CSSProperties = {
     display: "flex",
     justifyContent: "center",
-    paddingTop: 12,
-    paddingBottom: 8,
+    paddingTop: space["12"],
+    paddingBottom: space["8"],
   };
 
   const handleBarStyle: CSSProperties = {
@@ -140,14 +140,14 @@ export function Modal({
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
-    gap: 8,
-    padding: "4px 16px 16px 24px",
+    gap: space["8"],
+    padding: `${space["4"]}px ${space["16"]}px ${space["16"]}px ${space["24"]}px`,
   };
 
   const titleStyle: CSSProperties = {
     fontSize: fontSize["heading-md"],
     lineHeight: `${lineHeight["heading-md"]}px`,
-    fontWeight: 700,
+    fontWeight: fontWeight.bold,
     color: semantic.text.primary,
     margin: 0,
   };
@@ -189,7 +189,7 @@ export function Modal({
   };
 
   const bodyStyle: CSSProperties = {
-    padding: "8px 24px",
+    padding: `${space["8"]}px ${space["24"]}px`,
     fontSize: fontSize["body-md"],
     lineHeight: `${lineHeight["body-md"]}px`,
     color: semantic.text.secondary,
@@ -197,8 +197,8 @@ export function Modal({
 
   const footerStyle: CSSProperties = {
     display: "flex",
-    gap: 12,
-    padding: "16px 24px 24px",
+    gap: space["12"],
+    padding: `${space["16"]}px ${space["24"]}px ${space["24"]}px`,
   };
 
   const hasDefaultFooter = !footer && (primaryActionLabel || onPrimaryAction);

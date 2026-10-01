@@ -1,4 +1,4 @@
-import { semanticAction, semantic, neutral, radius } from "../../tokens";
+import { semanticAction, semantic, neutral, radius, space } from "../../tokens";
 import type { CSSProperties } from "react";
 
 export interface ToggleProps {
@@ -12,7 +12,7 @@ export interface ToggleProps {
 
 const TRACK_WIDTH = 51;
 const TRACK_HEIGHT = 31;
-const INSET = 2;
+const INSET = space["2"];
 const KNOB_SIZE = TRACK_HEIGHT - INSET * 2;
 
 /**

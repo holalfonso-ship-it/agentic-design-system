@@ -1,4 +1,4 @@
-import { tab, semantic, fontSize, fontFamily, radius } from "../../tokens";
+import { tab, semantic, fontSize, fontFamily, radius, space, fontWeight } from "../../tokens";
 import type { CSSProperties } from "react";
 
 export interface TabBarItem {
@@ -32,7 +32,7 @@ export function TabBar({ items, activeKey, onChange }: TabBarProps) {
     display: "flex",
     justifyContent: "space-around",
     alignItems: "center",
-    padding: "8px 0 20px",
+    padding: `${space["8"]}px 0 20px`, // 20: fuera de la escala space.* (valor de Figma sin variable)
     borderTop: "1px solid #E9E9E9",
     background: semantic.bg.surface,
   };
@@ -45,14 +45,14 @@ export function TabBar({ items, activeKey, onChange }: TabBarProps) {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          gap: 4,
-          padding: "4px 10px",
+          gap: space["4"],
+          padding: `${space["4"]}px 10px`, // 10: fuera de la escala space.*
           borderRadius: radius.full,
           background: selected ? tab.bg.selected : tab.bg.default,
           color: selected ? tab.text.selected : tab.text.default,
           fontFamily: fontFamily.base,
           fontSize: fontSize.caption,
-          fontWeight: selected ? 600 : 500,
+          fontWeight: selected ? fontWeight.semibold : fontWeight.medium,
           border: "none",
           cursor: "pointer",
         };

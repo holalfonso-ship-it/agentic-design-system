@@ -1,4 +1,4 @@
-import { semantic, labels, radius, fontSize, lineHeight, fontFamily } from "../../tokens";
+import { semantic, labels, radius, fontSize, lineHeight, fontFamily, space, fontWeight } from "../../tokens";
 import type { CSSProperties, ReactNode } from "react";
 
 export interface QuickActionTileProps {
@@ -30,11 +30,11 @@ export function QuickActionTile({
   const finalStyle: CSSProperties = {
     display: "flex",
     flexDirection: "column",
-    gap: 16,
+    gap: space["16"],
     alignItems: "flex-start",
     width: 170,
     height: 100,
-    padding: 14,
+    padding: 14, // fuera de la escala space.* (valor de Figma sin variable)
     borderRadius: radius.lg,
     border: `1px solid ${semantic.border.default}`,
     background: semantic.bg.default,
@@ -55,7 +55,7 @@ export function QuickActionTile({
             fontFamily: fontFamily.base,
             fontSize: fontSize["body-lg"],
             lineHeight: `${lineHeight["body-lg"]}px`,
-            fontWeight: 400,
+            fontWeight: fontWeight.regular,
             color: labels.primary,
             whiteSpace: "nowrap",
           }}
@@ -68,7 +68,7 @@ export function QuickActionTile({
             fontFamily: fontFamily.base,
             fontSize: fontSize["label-sm"],
             lineHeight: `${lineHeight["label-sm"]}px`,
-            fontWeight: 500,
+            fontWeight: fontWeight.medium,
             color: semantic.text.disabled,
             whiteSpace: "nowrap",
           }}
