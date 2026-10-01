@@ -17,7 +17,7 @@ describe("Input", () => {
 
   it("error: aria-invalid=true y muestra errorText en lugar del helperText", () => {
     render(<Input label="Correo" error helperText="ayuda" errorText="Correo no válido" />);
-    expect(screen.getByRole("textbox")).toHaveAttribute("aria-invalid", "true");
+    expect(screen.getByLabelText("Correo")).toHaveAttribute("aria-invalid", "true");
     expect(screen.getByText("Correo no válido")).toBeInTheDocument();
     expect(screen.queryByText("ayuda")).not.toBeInTheDocument();
   });
@@ -32,11 +32,68 @@ describe("Input", () => {
     expect(screen.getByLabelText("Correo")).not.toHaveAttribute("aria-invalid", "true");
   });
 
-  // Hallazgo detectado al escribir estos tests (2026-10-01): helperText/errorText
-  // viven DENTRO del <label>, así que el nombre accesible del campo pasa a ser
-  // «Correo Correo no válido» y no hay aria-describedby. Pendiente para el
-  // próximo Audit (mover el texto de ayuda fuera del <label> + aria-describedby).
-  it.todo("el nombre accesible es solo la etiqueta; helper/error se asocian con aria-describedby");
+  // Hallazgo 12 del Ciclo 2 (2026-10-01), corregido en el Compose: helperText y
+  // errorText ya no viven dentro del <label>, así que no contaminan el nombre
+  // accesible y se asocian al campo con aria-describedby.
+  it("el nombre accesible es solo la etiqueta, también con helperText y con error", () => {
+    render(
+      <>
+        <Input label="Correo" helperText="Usaremos este correo para avisarte" />
+        <Input label="Teléfono" error errorText="No válido" />
+      </>,
+    );
+    expect(screen.getByRole("textbox", { name: "Correo" })).toBeInTheDocument();
+    expect(screen.getByRole("textbox", { name: "Teléfono" })).toBeInTheDocument();
+  });
+
+  it("asocia helperText y errorText al campo con aria-describedby", () => {
+    render(
+      <>
+        <Input label="Correo" helperText="Usaremos este correo para avisarte" />
+        <Input label="Teléfono" error errorText="No válido" />
+      </>,
+    );
+    expect(screen.getByRole("textbox", { name: "Correo" })).toHaveAccessibleDescription("Usaremos este correo para avisarte");
+    expect(screen.getByRole("textbox", { name: "Teléfono" })).toHaveAccessibleDescription("No válido");
+  });
+
+  it("sin texto de ayuda no hay aria-describedby", () => {
+    render(<Input label="Correo" />);
+    expect(screen.getByRole("textbox")).not.toHaveAttribute("aria-describedby");
+  });
+
+  it("conserva el aria-describedby del consumidor y le suma el del texto de ayuda", () => {
+    render(
+      <>
+        <p id="extra">Nota extra</p>
+        <Input label="Correo" helperText="ayuda" aria-describedby="extra" />
+      </>,
+    );
+    expect(screen.getByRole("textbox")).toHaveAccessibleDescription("Nota extra ayuda");
+  });
+
+  it("hacer clic en la etiqueta enfoca el campo", async () => {
+    render(<Input label="Correo" />);
+    await userEvent.click(screen.getByText("Correo"));
+    expect(screen.getByRole("textbox")).toHaveFocus();
+  });
+
+  it("respeta el id que pasa el consumidor", () => {
+    render(<Input label="Correo" id="mi-correo" helperText="ayuda" />);
+    expect(screen.getByRole("textbox")).toHaveAttribute("id", "mi-correo");
+    expect(screen.getByLabelText("Correo")).toBe(document.getElementById("mi-correo"));
+  });
+
+  it("dos Input a la vez no comparten ids", () => {
+    render(
+      <>
+        <Input label="A" helperText="a" />
+        <Input label="B" helperText="b" />
+      </>,
+    );
+    const [a, b] = screen.getAllByRole("textbox");
+    expect(a.id).not.toBe(b.id);
+  });
 
   it("acepta texto y llama a onChange", async () => {
     const onChange = vi.fn();

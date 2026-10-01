@@ -1,6 +1,6 @@
 import { semantic, neutral, radius, fontSize, lineHeight } from "../../tokens";
 import type { CSSProperties, InputHTMLAttributes } from "react";
-import { useState } from "react";
+import { useId, useState } from "react";
 
 export interface InputProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, "size"> {
@@ -22,11 +22,16 @@ export function Input({
   className,
   containerStyle,
   style,
+  id,
+  "aria-describedby": ariaDescribedBy,
   onFocus,
   onBlur,
   ...rest
 }: InputProps) {
   const [focused, setFocused] = useState(false);
+  const generatedId = useId();
+  const inputId = id ?? generatedId;
+  const helperId = `${inputId}-helper`;
 
   const borderColor = disabled
     ? semantic.border.default
@@ -93,10 +98,17 @@ export function Input({
   };
 
   return (
-    <label className={className} style={rootStyle}>
-      <span style={labelStyle}>{label}</span>
+    <div className={className} style={rootStyle}>
+      {/* Compose Ciclo 2 (2026-10-01, hallazgo 12): el texto de ayuda/error ya
+          NO vive dentro del <label>, así que el nombre accesible del campo es
+          solo `label`; el texto de ayuda se asocia con aria-describedby. */}
+      <label htmlFor={inputId} style={labelStyle}>
+        {label}
+      </label>
       <span style={fieldStyle}>
         <input
+          id={inputId}
+          aria-describedby={[ariaDescribedBy, helperCopy ? helperId : undefined].filter(Boolean).join(" ") || undefined}
           disabled={disabled}
           style={inputStyle}
           // aria-invalid añadido en el Compose de la Fase 3 (2026-09-14,
@@ -115,7 +127,11 @@ export function Input({
           {...rest}
         />
       </span>
-      {helperCopy ? <span style={helperStyle}>{helperCopy}</span> : null}
-    </label>
+      {helperCopy ? (
+        <span id={helperId} style={helperStyle}>
+          {helperCopy}
+        </span>
+      ) : null}
+    </div>
   );
 }
