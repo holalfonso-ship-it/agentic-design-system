@@ -2,7 +2,7 @@
   "name": "agentic-design-system",
   "private": true,
   "version": "0.1.0",
-  "description": "Fase 0-3 del sistema de diseño agéntico: tokens + componentes reales de AID (Figma), con metadata, índice y protocolo para agentes IA.",
+  "description": "Aida — sistema de diseño agéntico: tokens + componentes reales de Figma, con metadata, índice y protocolo para agentes IA.",
   "type": "module",
   "scripts": {
     "dev": "vite",

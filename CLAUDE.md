@@ -143,6 +143,11 @@ sea in/out. Trátalo como el caso de prueba de esta regla.
    comprobación de axe-core (`expectNoA11yViolations`). Corre `npm test`
    antes de dar el componente por cerrado.
 
+**Mensajes de commit:** usa Conventional Commits (`feat:`, `fix:`, `docs:`,
+`refactor:`, `test:`, `ci:`, `chore:`; `feat!:` para breaking changes). El
+versionado y el changelog se generan a partir de ellos (ver README,
+«Versionado y releases»).
+
 ## Ciclo ARC — cómo auditar este sistema
 
 - **Audit**: lee `index.toon` completo, compara contra `src/components/`

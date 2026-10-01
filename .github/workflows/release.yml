@@ -1,0 +1,22 @@
+name: Release
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    steps:
+      # Lee los commits convencionales desde la última release, mantiene
+      # abierto un PR "chore(main): release X.Y.Z" con el CHANGELOG y la
+      # versión de package.json, y al fusionarlo crea el tag y la GitHub
+      # Release. No publica en npm (el paquete es `private`).
+      - uses: googleapis/release-please-action@v4
+        with:
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json

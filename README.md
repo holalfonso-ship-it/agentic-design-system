@@ -208,3 +208,25 @@ conocidos de arriba.
   Storybook (arriba) es la primera pieza, pensada específicamente para
   poder enseñar el sistema fuera del repo. Tests unitarios, CI y
   versionado siguen pendientes.
+
+## Versionado y releases (Fase 4, 2026-10-01)
+
+Versionado semántico automático con [release-please](https://github.com/googleapis/release-please).
+Se deriva de los mensajes de commit, así que **todo commit a `main` usa
+Conventional Commits**:
+
+| Prefijo | Efecto (mientras estemos en 0.x) |
+| --- | --- |
+| `feat:` | sube minor (0.1.0 → 0.2.0) y aparece en el changelog |
+| `fix:` | sube patch (0.1.0 → 0.1.1) y aparece en el changelog |
+| `feat!:` o pie `BREAKING CHANGE:` | sube minor (en 0.x) y se marca como breaking |
+| `docs:`, `refactor:`, `perf:` | aparecen en el changelog, sin forzar release |
+| `test:`, `ci:`, `chore:` | no aparecen en el changelog |
+
+Tras cada push a `main`, release-please mantiene abierto un PR
+`chore(main): release X.Y.Z` con el `CHANGELOG.md` y la versión de
+`package.json`. Fusionarlo crea el tag `vX.Y.Z` y la GitHub Release. El
+paquete es `private`: por ahora **no se publica en npm** (decisión
+pendiente de `Icon` y de las `componentKey` de Figma). Un cambio que rompa
+la API de un componente (p. ej. el de `ProductCard` en la Fase 3) debe ir
+siempre como `feat!:` con el detalle de migración en el cuerpo.
