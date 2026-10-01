@@ -28,6 +28,9 @@ export const meta = {
     "radius.lg",
     "fontSize.body-lg",
     "fontSize.label-sm",
+    "lineHeight.body-lg",
+    "lineHeight.label-sm",
+    "fontFamily.base",
   ],
   states: ["default"],
   useWhen:

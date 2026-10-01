@@ -35,6 +35,8 @@ export const meta = {
     "semantic.text.secondary",
     "radius.full",
     "fontSize.label-sm",
+    "lineHeight.label-sm",
+    "fontFamily.base",
   ],
   states: ["success", "error", "warning", "neutral"],
   useWhen:

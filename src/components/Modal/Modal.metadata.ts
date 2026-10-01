@@ -75,6 +75,7 @@ export const meta = {
     "fontSize.body-md",
     "lineHeight.heading-md",
     "lineHeight.body-md",
+    "fontFamily.base",
   ],
   states: ["default"],
   useWhen:

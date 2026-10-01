@@ -34,12 +34,16 @@ export const meta = {
   tokens: [
     "button.primary.bg.default",
     "button.primary.text.default",
+    "fontFamily.base",
+    "fontSize.label-sm",
+    "fontSize.label-md",
+    "fontSize.heading-md",
   ],
   states: ["sm", "md", "lg"],
   useWhen:
     "Representar a una persona o cuenta cuando no hay foto disponible: cabecera de perfil, lista de contactos/beneficiarios, remitente de una transacción. Reusa intencionadamente el color de marca de Button primary — no es un token de avatar propio, porque Figma no tiene ninguno todavía.",
   a11y: {
-    role: "img",
+    role: "ninguno (<span> con las iniciales como texto; no es un img)",
     keyboardSupport: false,
     minTouchTarget: null,
     notes:

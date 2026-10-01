@@ -20,7 +20,15 @@ export const meta = {
     direction: ["in", "out"],
     timestamp: "string?",
   },
-  tokens: ["fontSize.body-md", "fontSize.caption", "semantic.text.primary", "semantic.text.secondary", "semantic.feedback.success", "semantic.feedback.error"],
+  tokens: [
+    "fontSize.body-md",
+    "fontSize.caption",
+    "semantic.text.primary",
+    "semantic.text.secondary",
+    "semantic.feedback.success",
+    "semantic.feedback.error",
+    "fontFamily.base",
+  ],
   states: ["in", "out"],
   useWhen:
     "Para listar movimientos/transacciones en un feed o historial. Para resumir un producto financiero completo (no una transacción puntual), usar ProductCard.",
@@ -31,5 +39,5 @@ export const meta = {
   },
   dependencies: [],
   notes:
-    "Corregido en el Audit de la Fase 3 (2026-09-14): los colores del icono (fondo circular), el texto principal, el texto secundario y el monto estaban hardcodeados con valores que no correspondían a ningún token ni nodo real. Releído el component set real (76:91) vía get_design_context: se quitó el fondo circular del icono (no existe en Figma) y se corrigieron los 3 colores de texto/monto a sus tokens reales — ver comentarios en TransactionListItem.tsx. Nota aparte, no corregida aquí: el componente real de Figma modela los campos como `category` (texto principal) + `date` (texto secundario), no como `merchant` + `category`/`timestamp` combinados — se mantiene la API actual (más útil para una app real, donde el nombre del comercio es el dato principal) en vez de replicar literalmente el demo de Figma, pero queda anotado por si un futuro Audit quiere revisarlo.",
+    "Corregido en el Audit de la Fase 3 (2026-09-14): los colores del icono (fondo circular), el texto principal, el texto secundario y el monto estaban hardcodeados con valores que no correspondían a ningún token ni nodo real. Releído el component set real (76:91) vía get_design_context: se quitó el fondo circular del icono (no existe en Figma) y se corrigieron los 3 colores de texto/monto a sus tokens reales — ver comentarios en TransactionListItem.tsx. Nota aparte, no corregida aquí: el componente real de Figma modela los campos como `category` (texto principal) + `date` (texto secundario), no como `merchant` + `category`/`timestamp` combinados — se mantiene la API actual (más útil para una app real, donde el nombre del comercio es el dato principal) en vez de replicar literalmente el demo de Figma, pero queda anotado por si un futuro Audit quiere revisarlo. DECISIÓN (Ciclo 2, 2026-10-01, con Alfonso): se mantiene la API de código. Mapeo Figma → código: variante `sign=negative|positive` ⇒ prop `direction` (out | in); texto principal `category` ⇒ `merchant`; texto secundario `date` ⇒ `category` + `timestamp` (unidos con « · »).",
 } as const;

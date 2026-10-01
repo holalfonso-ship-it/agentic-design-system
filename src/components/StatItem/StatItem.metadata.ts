@@ -20,7 +20,14 @@ export const meta = {
     label: "string",
     amount: "string",
   },
-  tokens: ["semantic.text.secondary", "fontSize.label-md", "fontSize.heading-lg"],
+  tokens: [
+    "semantic.text.secondary",
+    "fontSize.label-md",
+    "fontSize.heading-lg",
+    "lineHeight.label-md",
+    "lineHeight.heading-lg",
+    "fontFamily.base",
+  ],
   states: ["default"],
   useWhen:
     "Fila de resumen de balance en el home (p. ej. 'Balance total', 'Total Gastos'): un StatItem por métrica, con un icono direccional que comunica si el número sube o baja. No usar para tarjetas de producto (crédito/BNPL) — para eso, ProductCard. No usar para una acción táctil — para eso, QuickActionTile.",

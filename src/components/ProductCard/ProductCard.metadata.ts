@@ -24,6 +24,9 @@ export const meta = {
     "radius.md",
     "fontSize.heading-md",
     "fontSize.heading-lg",
+    "fontSize.caption",
+    "fontSize.body-md",
+    "fontFamily.base",
   ],
   states: ["active", "frozen", "blocked"],
   useWhen:

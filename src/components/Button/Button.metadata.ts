@@ -27,6 +27,9 @@ export const meta = {
     "button.tertiary.text",
     "radius.md",
     "fontSize.label-md",
+    "fontSize.label-sm",
+    "fontSize.body-md",
+    "fontFamily.base",
   ],
   states: ["default", "hover", "pressed", "disabled"],
   useWhen:
