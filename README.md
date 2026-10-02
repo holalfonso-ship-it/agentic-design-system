@@ -20,6 +20,22 @@ documento del proyecto "Sistema de Diseño Agéntico".
 - **`CLAUDE.md`** — el protocolo de consulta para cualquier agente que
   trabaje en este repo: el Pilar 3.
 
+## Instalar desde npm
+
+```bash
+npm install agentic-design-system   # requiere react y react-dom >= 18
+```
+
+```ts
+import { Button, ProductCard, Icon } from "agentic-design-system";
+import { ButtonMeta } from "agentic-design-system/metadata"; // metadata para agentes
+```
+
+El paquete incluye también `index.toon` y `CLAUDE.md`
+(`agentic-design-system/index.toon`). Ojo: ese `CLAUDE.md` describe el
+flujo de trabajo del repo (`src/components`, Ciclo ARC); en un proyecto
+consumidor sirve como referencia del protocolo, no como ruta literal.
+
 ## Empezar
 
 ```bash
@@ -226,7 +242,8 @@ Conventional Commits**:
 Tras cada push a `main`, release-please mantiene abierto un PR
 `chore(main): release X.Y.Z` con el `CHANGELOG.md` y la versión de
 `package.json`. Fusionarlo crea el tag `vX.Y.Z` y la GitHub Release. El
-paquete es `private`: por ahora **no se publica en npm** (decisión
-pendiente de `Icon` y de las `componentKey` de Figma). Un cambio que rompa
+paquete se publica en npm (público, MIT) a mano con `npm publish`, tras
+fusionar el PR de release: `prepublishOnly` regenera el índice, pasa los
+tests y construye `dist/`. Un cambio que rompa
 la API de un componente (p. ej. el de `ProductCard` en la Fase 3) debe ir
 siempre como `feat!:` con el detalle de migración en el cuerpo.
