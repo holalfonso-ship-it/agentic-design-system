@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.0](https://github.com/holalfonso-ship-it/agentic-design-system/compare/agentic-design-system-v0.3.0...agentic-design-system-v0.4.0) (2026-10-02)
+
+
+### Funcionalidades
+
+* añade entrada de librería y build para npm ([00e6309](https://github.com/holalfonso-ship-it/agentic-design-system/commit/00e6309c1f8bf49fa5afeba0fc6c6f6925e7daf9))
+* prepara el paquete para publicarlo en npm ([0c086bb](https://github.com/holalfonso-ship-it/agentic-design-system/commit/0c086bbf235ac4d9037628b01841ebf3a26df329))
+
 ## [0.3.0](https://github.com/holalfonso-ship-it/agentic-design-system/compare/agentic-design-system-v0.2.0...agentic-design-system-v0.3.0) (2026-10-02)
 
 
