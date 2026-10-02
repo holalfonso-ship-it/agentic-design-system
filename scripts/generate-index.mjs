@@ -13,9 +13,10 @@
  */
 import { readdirSync, readFileSync, writeFileSync, statSync } from "node:fs";
 import { join } from "node:path";
+import { fileURLToPath } from "node:url";
 
-const COMPONENTS_DIR = new URL("../src/components", import.meta.url).pathname;
-const OUTPUT_PATH = new URL("../index.toon", import.meta.url).pathname;
+const COMPONENTS_DIR = fileURLToPath(new URL("../src/components", import.meta.url));
+const OUTPUT_PATH = fileURLToPath(new URL("../index.toon", import.meta.url));
 
 function extractField(source, field) {
   // extrae `name: "Valor"` o `name: 'Valor'` de un objeto meta literal simple
