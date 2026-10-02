@@ -1,5 +1,30 @@
 # Changelog
 
+## [0.3.0](https://github.com/holalfonso-ship-it/agentic-design-system/compare/agentic-design-system-v0.2.0...agentic-design-system-v0.3.0) (2026-10-02)
+
+
+### ⚠ BREAKING CHANGES
+
+* **ProductCard:** ProductCard ya no acepta title, subtitle ni amount; ahora usa side, cardNumber, holderName, logo, statusIcon, balance, balanceCaption, progress, primaryAction y secondaryAction.
+
+### Funcionalidades
+
+* **Icon:** componente Icon con glifos de Lucide mapeados a los SF Symbols de Figma ([d84d50e](https://github.com/holalfonso-ship-it/agentic-design-system/commit/d84d50e667be909ee137fedb731d7187727d2c45))
+* **ProductCard:** reconstruir según el component set de Figma (12 variantes) ([1f7aa59](https://github.com/holalfonso-ship-it/agentic-design-system/commit/1f7aa593687905563649e3a82af8dd653ecaee7c))
+* **ProductCard:** usa Icon lock como icono de estado por defecto ([6082f85](https://github.com/holalfonso-ship-it/agentic-design-system/commit/6082f85e46da0252a32b0f6e67eaf6bb7957d19e))
+
+
+### Correcciones
+
+* alinear con Figma pesos y paddings, y ajustar spacing fuera de escala ([d1e8789](https://github.com/holalfonso-ship-it/agentic-design-system/commit/d1e87893fcd6b3bbab9cbaaefd33e2f75b0623be))
+* **Button,TransactionListItem,Input:** altura del Button, tamaños de TransactionListItem y peso de la etiqueta de Input según Figma ([c8d841f](https://github.com/holalfonso-ship-it/agentic-design-system/commit/c8d841f3392a2f00938b06f48ae73ae513d7d1c4))
+
+
+### Documentación
+
+* **CLAUDE.md:** el Audit revisa las SOPs sin verificar ([e276de1](https://github.com/holalfonso-ship-it/agentic-design-system/commit/e276de1419a1614630e9e1ace29837c87908d8ee))
+* **ProductCard:** las stories bloqueadas muestran el icono por defecto ([66b7f35](https://github.com/holalfonso-ship-it/agentic-design-system/commit/66b7f35ea9be9b0c4030f77b8082c40849cea565))
+
 ## [0.2.0](https://github.com/holalfonso-ship-it/agentic-design-system/compare/agentic-design-system-v0.1.0...agentic-design-system-v0.2.0) (2026-10-01)
 
 

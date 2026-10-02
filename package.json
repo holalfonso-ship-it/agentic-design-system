@@ -1,7 +1,7 @@
 {
   "name": "agentic-design-system",
   "private": true,
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Aida — sistema de diseño agéntico: tokens + componentes reales de Figma, con metadata, índice y protocolo para agentes IA.",
   "type": "module",
   "scripts": {
