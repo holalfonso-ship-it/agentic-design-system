@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.3](https://github.com/holalfonso-ship-it/agentic-design-system/compare/agentic-design-system-v0.4.2...agentic-design-system-v0.4.3) (2026-10-02)
+
+
+### Correcciones
+
+* **ProductCard:** la pista de crédito usa su propio token card.credit.progressTrack ([cb64fae](https://github.com/holalfonso-ship-it/agentic-design-system/commit/cb64fae1482bb7431bf4667acae7fc9acd0f6f95))
+
 ## [0.4.2](https://github.com/holalfonso-ship-it/agentic-design-system/compare/agentic-design-system-v0.4.1...agentic-design-system-v0.4.2) (2026-10-02)
 
 
