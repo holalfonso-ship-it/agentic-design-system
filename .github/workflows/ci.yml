@@ -32,6 +32,9 @@ jobs:
           npm run generate-index
           git diff --exit-code -I '^# index.toon' -- index.toon
 
+      - name: Lint
+        run: npm run lint
+
       - name: Tipos y build
         run: npm run build
 
