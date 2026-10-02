@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.1](https://github.com/holalfonso-ship-it/agentic-design-system/compare/agentic-design-system-v0.4.0...agentic-design-system-v0.4.1) (2026-10-02)
+
+
+### Correcciones
+
+* **scripts:** generate-index funciona con espacios en la ruta ([8f61e7e](https://github.com/holalfonso-ship-it/agentic-design-system/commit/8f61e7ed601f9b8835404ff3b95d1657ef4e5222))
+
 ## [0.4.0](https://github.com/holalfonso-ship-it/agentic-design-system/compare/agentic-design-system-v0.3.0...agentic-design-system-v0.4.0) (2026-10-02)
 
 
