@@ -10,6 +10,8 @@ import { describe, it, expect } from "vitest";
  *   - todo token declarado en meta.tokens se usa realmente (o es de una dependencia)
  */
 const sources = import.meta.glob("../components/*/*.tsx", { query: "?raw", import: "default", eager: true }) as Record<string, string>;
+// La forma de cada meta la valida este mismo test; aquí se lee de forma laxa.
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const metas = import.meta.glob("../components/*/*.metadata.ts", { import: "meta", eager: true }) as Record<string, any>;
 
 const IGNORED_PROPS = new Set(["className", "style", "aria-label"]);

@@ -204,7 +204,12 @@ export function Modal({
   const hasDefaultFooter = !footer && (primaryActionLabel || onPrimaryAction);
 
   return (
+    // El clic en el fondo es un atajo de ratón; el equivalente de teclado
+    // (Escape y el botón Cerrar) ya existe, así que no se duplica aquí.
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
     <div style={backdropStyle} onClick={onClose}>
+      {/* Solo evita que el clic dentro del sheet cierre el modal. */}
+      {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */}
       <div
         ref={sheetRef}
         className={className}
