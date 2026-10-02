@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.2](https://github.com/holalfonso-ship-it/agentic-design-system/compare/agentic-design-system-v0.4.1...agentic-design-system-v0.4.2) (2026-10-02)
+
+
+### Correcciones
+
+* **ProductCard:** la pista BNPL usa su propio token card.bnpl.progressTrack ([d6beec9](https://github.com/holalfonso-ship-it/agentic-design-system/commit/d6beec9b4028c29f3ecdba8e85acc06293530d11))
+
 ## [0.4.1](https://github.com/holalfonso-ship-it/agentic-design-system/compare/agentic-design-system-v0.4.0...agentic-design-system-v0.4.1) (2026-10-02)
 
 
