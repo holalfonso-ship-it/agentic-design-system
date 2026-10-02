@@ -164,14 +164,26 @@ describe("ProductCard — cara trasera", () => {
   });
 });
 
-describe("ProductCard — punto de estado", () => {
-  it("solo se ve en blocked; en frozen no, salvo que el consumidor pase su icono", () => {
-    const { container, rerender } = render(<ProductCard product="credit" state="blocked" />);
-    expect(container.querySelectorAll("[aria-hidden='true'] > span")).toHaveLength(1);
-    rerender(<ProductCard product="credit" state="frozen" />);
+describe("ProductCard — icono de estado", () => {
+  it("blocked: por defecto un candado de Icon (16 px) en el color de error", () => {
+    render(<ProductCard product="credit" state="blocked" />);
+    const svg = screen.getByRole("group").querySelector("span[aria-hidden='true'] > svg");
+    expect(svg).not.toBeNull();
+    expect(svg).toHaveAttribute("width", "16");
+    expect(svg).toHaveAttribute("height", "16");
+    expect(svg).toHaveAttribute("stroke", semantic.feedback.error);
+  });
+
+  it("frozen no muestra icono por defecto, salvo que el consumidor pase el suyo", () => {
+    const { rerender } = render(<ProductCard product="credit" state="frozen" />);
     expect(screen.getByRole("group").querySelectorAll("span[aria-hidden='true']")).toHaveLength(0);
     rerender(<ProductCard product="credit" state="frozen" statusIcon={<i data-testid="ic" />} />);
     expect(screen.getByTestId("ic")).toBeInTheDocument();
+  });
+
+  it("active no muestra icono de estado", () => {
+    render(<ProductCard product="bnpl" />);
+    expect(screen.getByRole("group").querySelectorAll("span[aria-hidden='true']")).toHaveLength(0);
   });
 });
 

@@ -10,6 +10,7 @@ import {
   fontWeight,
 } from "../../tokens";
 import { Button } from "../Button";
+import { Icon } from "../Icon";
 import type { CSSProperties, ReactNode } from "react";
 
 export type ProductCardProduct = "bnpl" | "credit";
@@ -33,7 +34,7 @@ export interface ProductCardProps {
   holderName?: string;
   /** Front: logo de la red de pago (48×48). Si no se pasa, se dibuja el logo de Figma. */
   logo?: ReactNode;
-  /** Icono de estado (16×16) junto a la etiqueta del producto. Si no se pasa, el círculo de Figma. */
+  /** Icono de estado (16×16) junto a la etiqueta del producto. Si no se pasa, un candado (`Icon lock`) en "blocked". */
   statusIcon?: ReactNode;
   /** Back: importe principal, p. ej. «€3.500,00». */
   balance?: string;
@@ -118,15 +119,15 @@ export function ProductCard({
     fontWeight: fontWeight.medium,
   };
 
-  // Figma: el status-badge solo se ve en "blocked" (en frozen es blanco sobre blanco o no existe).
-  // Si el consumidor pasa su propio icono, se muestra en cualquier estado distinto de "active".
+  // Figma: el status-badge («icon-placeholder», una elipse) solo se ve en "blocked"; en frozen
+  // es blanco sobre blanco, un aro gris o no existe, según producto y cara. El hueco por defecto
+  // es un candado de Icon. Si el consumidor pasa su propio icono, se muestra en cualquier estado
+  // distinto de "active".
   const showStatus = state === "blocked" || (statusIcon !== undefined && state !== "active");
   const statusColor = state === "blocked" ? semantic.feedback.error : palette.text;
   const status = showStatus ? (
     <span style={{ display: "inline-flex", alignItems: "center", flexShrink: 0 }} aria-hidden="true">
-      {statusIcon ?? (
-        <span style={{ width: 16, height: 16, borderRadius: radius.full, background: statusColor }} />
-      )}
+      {statusIcon ?? <Icon name="lock" size={16} color={statusColor} />}
     </span>
   ) : null;
 
