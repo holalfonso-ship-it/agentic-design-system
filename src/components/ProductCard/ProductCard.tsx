@@ -226,9 +226,10 @@ export function ProductCard({
   }
 
   const clamped = progress === undefined ? undefined : Math.min(1, Math.max(0, progress));
-  // Figma: en "active" la pista usa card/credit/text (blanco) también en BNPL y el relleno el bgSubtle
-  // del producto; en "frozen"/"blocked" pista y relleno comparten color.
-  const trackColor = state === "active" ? card.credit.text : palette.text;
+  // Figma: en "active" la pista es card/credit/text (crédito) o card/bnpl/progress-track (BNPL), ambos
+  // blancos, y el relleno el bgSubtle del producto; en "frozen"/"blocked" pista y relleno comparten color.
+  const activeTrack = product === "bnpl" ? card.bnpl.progressTrack : card.credit.text;
+  const trackColor = state === "active" ? activeTrack : palette.text;
   const fillColor = state === "active" ? card[product].bgSubtle : palette.text;
   const blocked = state === "blocked";
 

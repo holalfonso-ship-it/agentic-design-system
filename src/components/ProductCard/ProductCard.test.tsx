@@ -188,11 +188,18 @@ describe("ProductCard — icono de estado", () => {
 });
 
 describe("ProductCard — barra de progreso", () => {
-  it("active: pista blanca (card.credit.text) también en BNPL y relleno bgSubtle del producto", () => {
+  it("active: BNPL usa su propio token de pista (card.bnpl.progressTrack) y relleno bgSubtle del producto", () => {
     render(<ProductCard product="bnpl" side="back" progress={0.5} />);
     const bar = screen.getByRole("progressbar");
-    expect(bar).toHaveStyle({ background: card.credit.text });
+    expect(bar).toHaveStyle({ background: card.bnpl.progressTrack });
     expect(bar.firstElementChild).toHaveStyle({ background: card.bnpl.bgSubtle, width: "50%" });
+  });
+});
+
+describe("ProductCard — barra de progreso en crédito", () => {
+  it("active: la pista de crédito sigue siendo card.credit.text", () => {
+    render(<ProductCard product="credit" side="back" progress={0.5} />);
+    expect(screen.getByRole("progressbar")).toHaveStyle({ background: card.credit.text });
   });
 });
 

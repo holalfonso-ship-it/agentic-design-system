@@ -67,7 +67,11 @@ export const card = {
   // abajo). Border por defecto para los estados active/frozen — ver
   // ProductCard.tsx para el borde del estado blocked.
   border: "#C0BEBC",
-  bnpl: { bg: "#DCF3A2", bgSubtle: "#EFF9D4", text: "#151211" },
+  // progressTrack = card/bnpl/progress-track (Component Colors, alias de
+  // semantic/text/inverse). Pista de la barra de progreso en active. Mismo blanco
+  // que card/credit/text, pero con nombre propio: antes la pista de BNPL usaba un
+  // token de otro producto. Ciclo ARC 4 (2026-10-02).
+  bnpl: { bg: "#DCF3A2", bgSubtle: "#EFF9D4", text: "#151211", progressTrack: "#FFFFFF" },
   credit: { bg: "#452476", bgSubtle: "#C8BCD8", text: "#FFFFFF" },
   // Compartido por cualquier producto en estado "frozen" o "blocked" —
   // confirmado sobre el component set real (product=credit/bnpl,
