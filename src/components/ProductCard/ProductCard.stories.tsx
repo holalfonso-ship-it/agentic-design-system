@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { ProductCard } from "./ProductCard";
-import { Icon } from "../Icon";
 import type { ProductCardProps } from "./ProductCard";
 import { meta as productCardMeta } from "./ProductCard.metadata";
 
@@ -45,10 +44,10 @@ export const CongeladaTrasera: Story = {
   name: "Crédito · congelada · trasera",
   args: { state: "frozen", side: "back", secondaryAction: { label: "Descongelar tarjeta" } },
 };
-export const BloqueadaFrontal: Story = { name: "Crédito · bloqueada · frontal", args: { state: "blocked", statusIcon: <Icon name="lock" size={16} /> } };
+export const BloqueadaFrontal: Story = { name: "Crédito · bloqueada · frontal", args: { state: "blocked" } };
 export const BloqueadaTrasera: Story = {
   name: "Crédito · bloqueada · trasera",
-  args: { state: "blocked", side: "back", secondaryAction: { label: "Contactar soporte" }, statusIcon: <Icon name="lock" size={16} /> },
+  args: { state: "blocked", side: "back", secondaryAction: { label: "Contactar soporte" } },
 };
 
 const secondaryByState: Record<"active" | "frozen" | "blocked", string> = {
