@@ -163,6 +163,10 @@ versionado y el changelog se generan a partir de ellos (ver README,
   arriba) y, cuando encuentres flags `"flagged"` sin una entrada
   `"resolved"` que los referencie, intenta cerrarlos como parte del
   propio ciclo Audit en vez de solo señalarlos.
+  Revisa además la base **SOPs — Aida** del Workspace de Notion (los
+  procedimientos viven allí, no en este archivo): reporta las SOPs cuya
+  «Última verificación» sea anterior al Audit previo, y actualízalas o
+  márcalas como «Obsoleta» según lo que encuentres.
 - **Report**: busca en el código consumidor (fuera de `src/components/`)
   estilos inline o valores hardcodeados que dupliquen un token existente
   o un patrón que se repita 3+ veces sin estar extraído a componente.
