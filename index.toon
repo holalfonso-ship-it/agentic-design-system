@@ -1,4 +1,4 @@
-# index.toon — generado 2026-10-02T11:45:54.757Z
+# index.toon — generado 2026-10-02T11:56:23.676Z
 # componentes:12 relaciones:3
 Avatar|data-display|deps:none|tokens:7|estados:3|figma:fc23fc95
 Badge|data-display|deps:none|tokens:16|estados:4|figma:cb2b0282
@@ -6,7 +6,7 @@ Button|action|deps:none|tokens:14|estados:4|figma:0784c9db
 Icon|data-display|deps:none|tokens:0|estados:0|figma:-
 Input|form|deps:none|tokens:18|estados:4|figma:eb7c561a
 Modal|overlay|deps:Button|tokens:21|estados:1|figma:e36936c4
-ProductCard|data-display|deps:Button,Icon|tokens:36|estados:3|figma:6a26bf3b
+ProductCard|data-display|deps:Button,Icon|tokens:37|estados:3|figma:6a26bf3b
 QuickActionTile|action|deps:none|tokens:14|estados:1|figma:35e5a3a3
 StatItem|data-display|deps:none|tokens:10|estados:1|figma:a753e447
 TabBar|navigation|deps:none|tokens:14|estados:2|figma:4cbc45b6

@@ -197,9 +197,9 @@ describe("ProductCard — barra de progreso", () => {
 });
 
 describe("ProductCard — barra de progreso en crédito", () => {
-  it("active: la pista de crédito sigue siendo card.credit.text", () => {
+  it("active: crédito usa su propio token de pista (card.credit.progressTrack)", () => {
     render(<ProductCard product="credit" side="back" progress={0.5} />);
-    expect(screen.getByRole("progressbar")).toHaveStyle({ background: card.credit.text });
+    expect(screen.getByRole("progressbar")).toHaveStyle({ background: card.credit.progressTrack });
   });
 });
 
