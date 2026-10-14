@@ -1,0 +1,3 @@
+{"date":"2026-01-12","requestedBy":"agente de checkout","brief":"Fila de movimiento con estado 'pendiente' y botón de cancelar","closestComponent":"ListItem","closestCategory":"data-display","reason":"ListItem solo modela dos estados (in/out); falta un estado intermedio y una acción secundaria inline","decision":"flagged"}
+{"date":"2026-01-20","requestedBy":"usuario","brief":"Selector de rango de fechas","closestComponent":null,"closestCategory":null,"reason":"No existe ningún componente de selección de fechas ni categoría que encaje","decision":"flagged"}
+{"date":"2026-02-03","resolves":"2026-01-12","resolution":"extended","detail":"ListItem gana la variante status='pending' y la prop trailingAction","decision":"resolved"}

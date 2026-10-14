@@ -7,6 +7,7 @@ const config: StorybookConfig = {
     name: "@storybook/react-vite",
     options: {},
   },
+  staticDirs: [{ from: "../starter-kit", to: "/starter-kit" }],
   docs: {
     defaultName: "Documentación",
   },
