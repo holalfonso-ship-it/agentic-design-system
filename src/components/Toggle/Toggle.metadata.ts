@@ -46,5 +46,19 @@ export const meta = {
     notes:
       "Renderizado como <button role=\"switch\" aria-checked>, no <input type=\"checkbox\">, para que el estado se anuncie correctamente en lectores de pantalla. El consumidor debe pasar aria-label (no hay label de texto propio). Corregido en el Compose de la Fase 3 (2026-09-14, hallazgo 8 del Audit): el área táctil real ya es 51×44 (el <button> es más alto que el track visual, que sigue viéndose igual, 51×31) — cumple el mínimo recomendado de 44×44 sin que el consumidor tenga que añadir padding.",
   },
+  // Do's y don'ts (2026-10-14): texto de las guías de uso. Cada par se dibuja en la
+  // story «Do's y don'ts» del componente; el ejemplo visual vive en la story.
+  guidelines: [
+    {
+      do: "Pon el nombre visible al lado y pásalo también como aria-label.",
+      dont: "No dejes el Toggle solo, sin texto ni aria-label.",
+      reason: "El Toggle no tiene label propio. Sin nombre accesible, el lector anuncia solo «interruptor», sin decir qué activa.",
+    },
+    {
+      do: "Úsalo para un ajuste que se aplica al instante.",
+      dont: "No lo pongas en un formulario con botón de guardar.",
+      reason: "Un switch promete efecto inmediato. Si el cambio espera a «Guardar», el patrón correcto es un Checkbox, que aún no existe en el sistema (flag).",
+    },
+  ],
   dependencies: [],
 } as const;

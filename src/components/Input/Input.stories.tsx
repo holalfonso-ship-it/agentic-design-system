@@ -1,3 +1,5 @@
+import { Guidelines, withExamples } from "../../stories/Guidelines";
+import { meta as guidelinesMeta } from "./Input.metadata";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Input } from "./Input";
 import { meta as inputMeta } from "./Input.metadata";
@@ -45,4 +47,29 @@ export const LosCuatroEstados: Story = {
       <Input label="Documento" placeholder="Placeholder" helperText="Texto de ayuda" disabled />
     </div>
   ),
+};
+
+
+const examples = [
+  {
+    good: (
+      <Input
+        label="Email"
+        defaultValue="alfonso@"
+        error
+        errorText="Introduce un email válido, por ejemplo nombre@dominio.com"
+      />
+    ),
+    bad: <Input label="Email" defaultValue="alfonso@" error errorText="Error" />,
+  },
+  {
+    good: <Input label="Importe" helperText="Entre 10 € y 5.000 €" />,
+    bad: <Input label="Importe (entre 10 € y 5.000 €, sin decimales ni símbolo)" />,
+  },
+];
+
+export const DosYDonts: Story = {
+  name: "Do's y don'ts",
+  parameters: { controls: { disable: true } },
+  render: () => <Guidelines items={withExamples(guidelinesMeta.guidelines, examples)} />,
 };

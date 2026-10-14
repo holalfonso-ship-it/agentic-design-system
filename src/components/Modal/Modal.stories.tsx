@@ -1,3 +1,5 @@
+import { Guidelines, withExamples, Code } from "../../stories/Guidelines";
+import { meta as guidelinesMeta } from "./Modal.metadata";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
 import { Modal } from "./Modal";
@@ -41,4 +43,46 @@ export const ConfirmacionDeTransferencia: Story = {
     }
     return <Wrapper />;
   },
+};
+
+
+const examples = [
+  {
+    good: (
+      <Code>{`<Modal
+  open={abierto}
+  onClose={cerrar}
+  title="¿Eliminar la tarjeta virtual?"
+  primaryActionLabel="Eliminar"
+  onPrimaryAction={eliminar}
+>
+  Esta acción no se puede deshacer.
+</Modal>`}</Code>
+    ),
+    bad: (
+      <Code>{`<Modal
+  open={abierto}
+  onClose={cerrar}
+  title="Guardado"
+  primaryActionLabel="OK"
+  onPrimaryAction={cerrar}
+>
+  Tus cambios se han guardado.
+</Modal>`}</Code>
+    ),
+  },
+  {
+    good: <Code>{'navigate("/alta-beneficiario")\n// varios pasos: pantalla propia'}</Code>,
+    bad: (
+      <Code>{`<Modal title="Paso 2 de 5" ...>
+  <AsistenteAltaBeneficiario />
+</Modal>`}</Code>
+    ),
+  },
+];
+
+export const DosYDonts: Story = {
+  name: "Do's y don'ts",
+  parameters: { controls: { disable: true } },
+  render: () => <Guidelines items={withExamples(guidelinesMeta.guidelines, examples)} />,
 };

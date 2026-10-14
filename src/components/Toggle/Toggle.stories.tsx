@@ -1,3 +1,5 @@
+import { Guidelines, withExamples, Demo, Code } from "../../stories/Guidelines";
+import { meta as guidelinesMeta } from "./Toggle.metadata";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
 import { Toggle } from "./Toggle";
@@ -57,4 +59,36 @@ export const LosCuatroEstados: Story = {
       <Toggle checked={false} disabled aria-label="Ubicación (bloqueado)" />
     </div>
   ),
+};
+
+
+const examples = [
+  {
+    good: (
+      <Demo code={'<span>Notificaciones</span>\n<Toggle checked aria-label="Notificaciones" />'}>
+        <span style={{ marginRight: 8 }}>Notificaciones</span>
+        <Toggle checked aria-label="Notificaciones" />
+      </Demo>
+    ),
+    bad: (
+      <Demo code={'<Toggle checked />'}>
+        <Toggle checked />
+      </Demo>
+    ),
+  },
+  {
+    good: <Code>{'<Toggle checked={notificaciones} onChange={guardarAlInstante} aria-label="Notificaciones" />'}</Code>,
+    bad: (
+      <Code>{`<form onSubmit={guardar}>
+  <Toggle checked={notificaciones} aria-label="Notificaciones" />
+  <Button type="submit">Guardar</Button>
+</form>`}</Code>
+    ),
+  },
+];
+
+export const DosYDonts: Story = {
+  name: "Do's y don'ts",
+  parameters: { controls: { disable: true } },
+  render: () => <Guidelines items={withExamples(guidelinesMeta.guidelines, examples)} />,
 };

@@ -88,5 +88,19 @@ export const meta = {
     notes:
       "Renderizado con role=\"dialog\" y aria-modal=\"true\", con aria-label tomado de title. El botón de cerrar tiene aria-label propio (\"Cerrar\"). Corregido en el Compose de la Fase 3 (2026-09-14, hallazgo 8 del Audit): se cierra con Escape, hay focus trap dentro del sheet mientras está abierto (Tab/Shift+Tab no se escapan), se devuelve el foco al elemento que abrió el modal al cerrarlo, y el botón cerrar tiene un hit target de 44×44 (el círculo visual sigue siendo 32×32, solo creció el área clicable).",
   },
+  // Do's y don'ts (2026-10-14): texto de las guías de uso. Cada par se dibuja en la
+  // story «Do's y don'ts» del componente; el ejemplo visual vive en la story.
+  guidelines: [
+    {
+      do: "Úsalo para una decisión que bloquea el flujo: confirmar algo destructivo.",
+      dont: "No lo uses para avisos informativos como «Guardado».",
+      reason: "El Modal exige foco exclusivo. Un mensaje que no pide decisión interrumpe sin motivo; ese caso es un toast, que el sistema todavía no cubre (flag).",
+    },
+    {
+      do: "Si el flujo tiene varios pasos, dale una pantalla propia.",
+      dont: "No metas un asistente de varios pasos dentro de un Modal.",
+      reason: "Es un bottom sheet para un formulario corto o un detalle. Un flujo de varios pasos pide una pantalla dedicada, con su propio contexto y navegación.",
+    },
+  ],
   dependencies: ["Button"],
 } as const;
