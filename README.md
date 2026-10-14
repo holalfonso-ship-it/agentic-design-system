@@ -42,7 +42,7 @@ consumidor sirve como referencia del protocolo, no como ruta literal.
 npm install
 npm run dev              # demo interna (App.tsx) en localhost
 npm run generate-index   # regenera index.toon a partir de la metadata
-npm run storybook        # vitrina navegable de los 16 componentes (localhost:6006)
+npm run storybook        # vitrina navegable de los 17 componentes (localhost:6006)
 npm run build-storybook  # build estático de la vitrina, para publicar
 npm test                 # tests unitarios (Vitest + Testing Library + axe-core)
 npm run test:coverage    # tests con informe de cobertura
@@ -50,7 +50,7 @@ npm run test:coverage    # tests con informe de cobertura
 
 ## Storybook — la vitrina (Fase 4, 2026-09-14)
 
-`npm run storybook` levanta la vitrina navegable de los 16 componentes
+`npm run storybook` levanta la vitrina navegable de los 17 componentes
 que el Post 1 ya prometía ("un Storybook navegable donde tanto personas
 como agentes puedan ver todos los componentes y sus variantes"). Cada
 componente tiene su `<Nombre>.stories.tsx` junto al código, agrupado por

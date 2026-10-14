@@ -142,7 +142,7 @@ sea in/out. Trátalo como el caso de prueba de esta regla.
    de generalidades. Cada par se dibuja en la story «Do's y don'ts» del
    componente, con un ejemplo por par en el mismo orden (`withExamples` lanza si
    no cuadran). Si el ejemplo no se puede dibujar (overlays, patrones de uso),
-   usa `<Code>`. `src/test/guidelines.test.ts` lo exige a los 16 componentes.
+   usa `<Code>`. `src/test/guidelines.test.ts` lo exige a los 17 componentes.
 7. Añade (o actualiza) `<Nombre>.test.tsx` junto al componente — Vitest +
    Testing Library (Fase 4, 2026-10-01). Cubre como mínimo: render de cada
    variante/estado de `meta.states`, los callbacks de `meta.props`, el

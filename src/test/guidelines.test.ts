@@ -15,8 +15,8 @@ const stories = import.meta.glob("../components/*/*.stories.tsx", { eager: true 
 describe("do's y don'ts", () => {
   afterEach(cleanup);
 
-  it("encuentra los 16 componentes", () => {
-    expect(Object.keys(metas)).toHaveLength(16);
+  it("encuentra los 17 componentes", () => {
+    expect(Object.keys(metas)).toHaveLength(17);
   });
 
   for (const [path, meta] of Object.entries(metas)) {
