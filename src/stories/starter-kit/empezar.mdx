@@ -1,0 +1,38 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Starter kit/Empezar" />
+
+# Starter kit
+
+Lo mínimo para que un agente de IA consulte y modifique tu sistema de diseño sin inventarse componentes.
+Sale de Aida y está recortado a las piezas que no dependen de su código. Licencia MIT.
+
+Tres pilares, tres tipos de archivo:
+
+1. **Metadata por componente.** El agente sabe qué es cada componente, cuándo usarlo y cuándo no.
+2. **Índice generado.** El agente ve el sistema entero sin abrir cada archivo.
+3. **Protocolo.** El agente sabe qué hacer, incluida la salida legítima «nada encaja».
+
+## Empezar en 10 minutos
+
+1. Copia `CLAUDE.md`, `flags.jsonl` y `scripts/generate-index.mjs` a tu repo.
+2. En `CLAUDE.md`, ajusta las categorías y apunta tu «componente bajo vigilancia».
+3. Por cada componente, crea `<Nombre>.metadata.ts` desde la plantilla.
+4. Añade a `package.json`: `"generate-index": "node scripts/generate-index.mjs"`.
+5. Ejecuta `npm run generate-index` y commitea `index.toon`.
+6. Pide a tu agente algo que **no** encaje. Si abre un flag en vez de construir, funciona.
+
+## Archivos
+
+| Archivo | Qué es | Descarga |
+|---|---|---|
+| [CLAUDE.md](/?path=/docs/starter-kit-claude-md--documentación) | Pilar 3 · Protocolo | [Descargar](/starter-kit/CLAUDE.md) |
+| [flags.jsonl](/?path=/docs/starter-kit-flags-jsonl--documentación) | Pilar 3 · Protocolo | [Descargar](/starter-kit/flags.jsonl) |
+| [flags.example.jsonl](/?path=/docs/starter-kit-flags-example-jsonl--documentación) | Pilar 3 · Protocolo | [Descargar](/starter-kit/flags.example.jsonl) |
+| [Component.metadata.ts](/?path=/docs/starter-kit-component-metadata-ts--documentación) | Pilar 1 · Metadata | [Descargar](/starter-kit/templates/Component.metadata.ts) |
+| [generate-index.mjs](/?path=/docs/starter-kit-generate-index-mjs--documentación) | Pilar 2 · Índice | [Descargar](/starter-kit/scripts/generate-index.mjs) |
+| [index.toon.example](/?path=/docs/starter-kit-index-toon-example--documentación) | Pilar 2 · Índice | [Descargar](/starter-kit/index.toon.example) |
+| [index-toon.md](/?path=/docs/starter-kit-index-toon-md--documentación) | Pilar 2 · Índice | [Descargar](/starter-kit/docs/index-toon.md) |
+| [Button.metadata.ts](/?path=/docs/starter-kit-button-metadata-ts--documentación) | Ejemplo | [Descargar](/starter-kit/examples/components/Button/Button.metadata.ts) |
+| [Modal.metadata.ts](/?path=/docs/starter-kit-modal-metadata-ts--documentación) | Ejemplo | [Descargar](/starter-kit/examples/components/Modal/Modal.metadata.ts) |
+| [README.md](/?path=/docs/starter-kit-readme-md--documentación) | Empezar | [Descargar](/starter-kit/README.md) |

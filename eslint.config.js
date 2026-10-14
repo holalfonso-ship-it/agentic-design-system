@@ -6,7 +6,7 @@ import globals from "globals";
 
 // Lint mínimo y bloqueante en CI: reglas recomendadas, sin estilo (no hay Prettier).
 export default tseslint.config(
-  { ignores: ["dist", "storybook-static", "coverage", "node_modules"] },
+  { ignores: ["dist", "storybook-static", "coverage", "node_modules", "starter-kit"] },
   js.configs.recommended,
   ...tseslint.configs.recommended,
   jsxA11y.flatConfigs.recommended,

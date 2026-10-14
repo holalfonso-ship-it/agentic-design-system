@@ -64,6 +64,10 @@ propio navegador.
 `npm run build-storybook` genera `storybook-static/` (gitignored, igual
 que `dist/`) para publicarlo donde haga falta.
 
+## Starter kit — para llevarte el método a tu repo
+
+La carpeta [`starter-kit/`](./starter-kit) (incluida en el paquete npm) recorta Aida a las piezas que no dependen de su código: un `CLAUDE.md` genérico con la regla de «cuando nada encaja», la plantilla de metadata, el generador de `index.toon`, `flags.jsonl` listo para usar y ejemplos. Cada archivo tiene su página con descarga en el Storybook (sección **Starter kit**). Empieza por su [README](./starter-kit/README.md).
+
 ## Sincronizar valores exactos desde Figma
 
 **Estado: hecho — Fase 1 (2026-09-01).** Los tokens de `src/tokens/*.ts`

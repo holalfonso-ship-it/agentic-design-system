@@ -1,0 +1,20 @@
+import { Meta, Source } from "@storybook/addon-docs/blocks";
+import code from "../../../starter-kit/scripts/generate-index.mjs?raw";
+
+<Meta title="Starter kit/generate-index.mjs" />
+
+# generate-index.mjs
+
+**Pilar 2 · Índice** · `starter-kit/scripts/generate-index.mjs`
+
+El generador del índice. Recorre la carpeta de componentes, lee cada metadata y escribe `index.toon`. No tiene dependencias.
+
+**Cómo usarlo.** Cópialo a `scripts/` y añade a `package.json`: `"generate-index": "node scripts/generate-index.mjs"`. Acepta `--components` y `--out`.
+
+<p>
+  <a href="/starter-kit/scripts/generate-index.mjs" download>Descargar generate-index.mjs</a>
+  {" · "}
+  <a href="/?path=/docs/starter-kit-empezar--documentación" target="_top">Volver al kit</a>
+</p>
+
+<Source code={code} language="javascript" dark />
