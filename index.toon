@@ -1,5 +1,5 @@
-# index.toon — generado 2026-10-14T15:15:20.201Z
-# componentes:15 relaciones:3
+# index.toon — generado 2026-10-14T15:21:38.634Z
+# componentes:16 relaciones:3
 Avatar|data-display|deps:none|tokens:7|estados:3|figma:fc23fc95
 Badge|data-display|deps:none|tokens:16|estados:4|figma:cb2b0282
 Button|action|deps:none|tokens:14|estados:4|figma:0784c9db
@@ -13,5 +13,6 @@ Radio|form|deps:none|tokens:13|estados:5|figma:2beac255
 Select|form|deps:none|tokens:18|estados:5|figma:54f83af3
 StatItem|data-display|deps:none|tokens:10|estados:1|figma:a753e447
 TabBar|navigation|deps:none|tokens:14|estados:2|figma:4cbc45b6
+Textarea|form|deps:none|tokens:18|estados:4|figma:e05ab7d9
 Toggle|action|deps:none|tokens:7|estados:4|figma:c9816ecc
 TransactionListItem|data-display|deps:none|tokens:10|estados:2|figma:7d433c68

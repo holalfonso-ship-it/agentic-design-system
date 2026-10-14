@@ -16,6 +16,7 @@ export * from "./components/Radio";
 export * from "./components/Select";
 export * from "./components/StatItem";
 export * from "./components/TabBar";
+export * from "./components/Textarea";
 export * from "./components/Toggle";
 export * from "./components/TransactionListItem";
 export * from "./tokens";
