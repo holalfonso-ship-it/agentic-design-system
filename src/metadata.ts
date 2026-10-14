@@ -13,6 +13,7 @@ export { meta as ProductCardMeta } from "./components/ProductCard/ProductCard.me
 export { meta as QuickActionTileMeta } from "./components/QuickActionTile/QuickActionTile.metadata";
 export { meta as RadioMeta } from "./components/Radio/Radio.metadata";
 export { meta as SelectMeta } from "./components/Select/Select.metadata";
+export { meta as SliderMeta } from "./components/Slider/Slider.metadata";
 export { meta as StatItemMeta } from "./components/StatItem/StatItem.metadata";
 export { meta as TabBarMeta } from "./components/TabBar/TabBar.metadata";
 export { meta as TextareaMeta } from "./components/Textarea/Textarea.metadata";

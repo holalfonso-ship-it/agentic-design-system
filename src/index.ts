@@ -14,6 +14,7 @@ export * from "./components/ProductCard";
 export * from "./components/QuickActionTile";
 export * from "./components/Radio";
 export * from "./components/Select";
+export * from "./components/Slider";
 export * from "./components/StatItem";
 export * from "./components/TabBar";
 export * from "./components/Textarea";
