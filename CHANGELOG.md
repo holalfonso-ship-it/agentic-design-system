@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.6.0](https://github.com/holalfonso-ship-it/agentic-design-system/compare/agentic-design-system-v0.5.0...agentic-design-system-v0.6.0) (2026-10-14)
+
+
+### Funcionalidades
+
+* Checkbox, Radio y Select (familia Formularios) ([e2ec7be](https://github.com/holalfonso-ship-it/agentic-design-system/commit/e2ec7be672abc2da5bfdffae9c6b48ed90c4f5f3))
+* Checkbox, Radio y Select (familia Formularios) ([70a8d6d](https://github.com/holalfonso-ship-it/agentic-design-system/commit/70a8d6d5e5677009548fb4200115b400d5bfcac3))
+* do's y don'ts visuales en Storybook, con el texto en la metadata ([04ca48a](https://github.com/holalfonso-ship-it/agentic-design-system/commit/04ca48a81c527fb9281a50526a40ae2fad17f5fc))
+* do's y don'ts visuales en Storybook, con el texto en la metadata ([a12bd45](https://github.com/holalfonso-ship-it/agentic-design-system/commit/a12bd45599f9a9e1c3dfa89d45ceafdad53025d2))
+* Slider (cierra la familia Formularios) ([f875870](https://github.com/holalfonso-ship-it/agentic-design-system/commit/f87587024bff51e21da9d58235a3aabc04d8daf2))
+* Slider (cierra la familia Formularios) ([00316e7](https://github.com/holalfonso-ship-it/agentic-design-system/commit/00316e7884f1722a09cfd0b880813cbe64f6a46d))
+* Textarea (familia Formularios) ([a0c1668](https://github.com/holalfonso-ship-it/agentic-design-system/commit/a0c16683f90a8bddc4edb5132b9653104b1bf803))
+* Textarea (familia Formularios) ([c240d58](https://github.com/holalfonso-ship-it/agentic-design-system/commit/c240d587e8393531afb6b2f33a0eddc0ac96a071))
+
 ## [0.5.0](https://github.com/holalfonso-ship-it/agentic-design-system/compare/agentic-design-system-v0.4.3...agentic-design-system-v0.5.0) (2026-10-14)
 
 
