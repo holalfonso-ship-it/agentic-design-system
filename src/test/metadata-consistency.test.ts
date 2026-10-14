@@ -55,8 +55,8 @@ const names = Object.keys(sources)
   .sort();
 
 describe("metadata ↔ código", () => {
-  it("encuentra los 12 componentes", () => {
-    expect(names).toHaveLength(12);
+  it("encuentra los 15 componentes", () => {
+    expect(names).toHaveLength(15);
   });
 
   describe.each(names)("%s", (name) => {

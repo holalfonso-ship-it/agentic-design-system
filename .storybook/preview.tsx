@@ -17,7 +17,7 @@ const preview: Preview = {
           "Data Display",
           ["Avatar", "Badge", "ProductCard", "StatItem", "TransactionListItem"],
           "Form",
-          ["Input"],
+          ["Checkbox", "Input", "Radio", "Select"],
           "Overlay",
           ["Modal"],
           "Starter kit",
