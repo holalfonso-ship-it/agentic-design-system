@@ -110,7 +110,10 @@ export const semantic = {
   // distinto de semantic/bg/default (el fondo violeta claro de Quick
   // Action Tile).
   bg: { default: "#EDEAF3", surface: "#FFFFFF" },
-  border: { default: "#C0BEBC" },
+  // `strong` (#5C5653, semantic/border/strong) añadido al diseñar los controles de
+  // formulario (Checkbox, Radio, Select; 2026-10-14): `border/default` (#C0BEBC) da
+  // solo ~1,8:1 sobre blanco, así que el borde de un control usa este.
+  border: { default: "#C0BEBC", strong: "#5C5653" },
   // `primary` (#151211, neutral/900) añadido en la Fase 2 (2026-09-03)
   // al construir el Input: es el color de "Texto introducido" en los
   // estados default/focused/error — coincide con card.credit.text
@@ -177,6 +180,8 @@ export const labels = {
 export const semanticAction = {
   primary: {
     bg: { default: "#361C5C", disabled: "#F7F6F6" },
+    // semantic/action/primary/text/default: glifo del Checkbox marcado (blanco, igual que button.primary.text.default).
+    text: { default: "#FFFFFF" },
   },
 } as const;
 
