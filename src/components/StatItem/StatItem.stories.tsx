@@ -1,3 +1,5 @@
+import { Guidelines, withExamples, Code } from "../../stories/Guidelines";
+import { meta as guidelinesMeta } from "./StatItem.metadata";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { StatItem } from "./StatItem";
 import { meta as statItemMeta } from "./StatItem.metadata";
@@ -30,4 +32,26 @@ export const FilaDeResumen: Story = {
       <StatItem icon={<Icon name="circle-arrow-out-down-left" />} label="Total Gastos" amount="€1.204,50" />
     </div>
   ),
+};
+
+
+const examples = [
+  {
+    good: <StatItem icon={<Icon name="circle-arrow-out-up-right" />} label="Total gastos" amount="1.240,00 €" />,
+    bad: <StatItem icon={<Icon name="circle-arrow-out-up-right" />} label="Total" amount="1.240,00 €" />,
+  },
+  {
+    good: <Code>{'<StatItem icon={...} label="Balance total" amount="3.420,00 €" />\n// solo informa'}</Code>,
+    bad: (
+      <Code>{`<div onClick={abrirDetalle}>
+  <StatItem icon={...} label="Balance total" amount="3.420,00 €" />
+</div>`}</Code>
+    ),
+  },
+];
+
+export const DosYDonts: Story = {
+  name: "Do's y don'ts",
+  parameters: { controls: { disable: true } },
+  render: () => <Guidelines items={withExamples(guidelinesMeta.guidelines, examples)} />,
 };

@@ -1,3 +1,5 @@
+import { Guidelines, withExamples, Demo, Code } from "../../stories/Guidelines";
+import { meta as guidelinesMeta } from "./Icon.metadata";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Icon, iconNames } from "./Icon";
 import { meta as iconMeta } from "./Icon.metadata";
@@ -43,4 +45,34 @@ export const Catalogo: Story = {
       ))}
     </div>
   ),
+};
+
+
+const examples = [
+  {
+    good: (
+      <Demo code={'<Icon name="wallet" /> Monedero'}>
+        <Icon name="wallet" /> <span>Monedero</span>
+      </Demo>
+    ),
+    bad: (
+      <Demo code={'<Icon name="wallet" title="Monedero" /> Monedero'}>
+        <Icon name="wallet" title="Monedero" /> <span>Monedero</span>
+      </Demo>
+    ),
+  },
+  {
+    good: (
+      <Code>{`<Button aria-label="Cerrar" onClick={cerrar}>
+  <Icon name="x" />
+</Button>`}</Code>
+    ),
+    bad: <Code>{'<Icon name="x" onClick={cerrar} />'}</Code>,
+  },
+];
+
+export const DosYDonts: Story = {
+  name: "Do's y don'ts",
+  parameters: { controls: { disable: true } },
+  render: () => <Guidelines items={withExamples(guidelinesMeta.guidelines, examples)} />,
 };

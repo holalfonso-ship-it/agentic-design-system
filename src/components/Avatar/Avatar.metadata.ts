@@ -48,6 +48,20 @@ export const meta = {
     notes:
       "Puramente presentacional. Si el consumidor lo envuelve en un elemento interactivo (p. ej. para abrir un perfil), ese elemento necesita su propio aria-label — el Avatar en sí no expone el nombre completo de la persona, solo iniciales.",
   },
+  // Do's y don'ts (2026-10-14): texto de las guías de uso. Cada par se dibuja en la
+  // story «Do's y don'ts» del componente; el ejemplo visual vive en la story.
+  guidelines: [
+    {
+      do: "Pasa una o dos iniciales: «AZ».",
+      dont: "No pases el nombre entero ni tres o más letras.",
+      reason: "El Avatar está pensado para una o dos iniciales dentro de un círculo de 32, 40 o 48 px; con el nombre entero deja de ser una marca reconocible de un vistazo.",
+    },
+    {
+      do: "Si abre un perfil, envuélvelo en un button con aria-label con el nombre completo.",
+      dont: "No pongas un onClick en un div alrededor del Avatar.",
+      reason: "El Avatar es un span con iniciales, no expone el nombre completo; un div clicable no es focuseable ni se anuncia como acción.",
+    },
+  ],
   dependencies: [],
   notes:
     "No soporta imagen todavía (solo iniciales) — cuando haga falta, añadir una prop `src?: string` que, si está presente, renderiza una <img> en vez del texto, manteniendo el mismo círculo de fondo como fallback si la imagen falla en cargar.",

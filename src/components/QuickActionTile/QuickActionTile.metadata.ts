@@ -46,6 +46,20 @@ export const meta = {
     notes:
       "En Figma el tile completo es el área táctil. Si se usa como control interactivo, el consumidor debe envolverlo en un elemento focuseable (button o role='button') con soporte de teclado — este componente es presentacional por sí mismo, no gestiona onClick.",
   },
+  // Do's y don'ts (2026-10-14): texto de las guías de uso. Cada par se dibuja en la
+  // story «Do's y don'ts» del componente; el ejemplo visual vive en la story.
+  guidelines: [
+    {
+      do: "Título de una o dos palabras y subtítulo corto.",
+      dont: "No uses frases largas en título o subtítulo.",
+      reason: "El tile tiene un tamaño fijo de 170×100 px y una fila de acciones rápidas se lee por escaneo: el texto largo no cabe y rompe la regularidad de la fila.",
+    },
+    {
+      do: "Para que sea una acción, envuélvelo en un button con su onClick.",
+      dont: "No esperes que el tile gestione el clic ni lo envuelvas en un div.",
+      reason: "El componente es presentacional, no tiene onClick. Un div no es focuseable ni responde al teclado.",
+    },
+  ],
   dependencies: [],
   notes:
     "La prop `icon` es obligatoria a propósito: Figma trae por defecto un 'Calendar Icon' (SF Symbol calendar.circle.fill) y Aida no redistribuye los SF Symbols (licencia de Apple). Usar <Icon name=\"calendar\" /> (Ciclo ARC 3, 2026-10-01; ver Icon.metadata.ts para el mapeo).",

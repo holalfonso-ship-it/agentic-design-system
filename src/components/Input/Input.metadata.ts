@@ -67,5 +67,19 @@ export const meta = {
     notes:
       "El <label htmlFor> apunta al <input id> (id propio con useId, o el que pase el consumidor), así que el nombre accesible del campo es solo `label`. helperText/errorText viven FUERA del <label> y se asocian al campo con aria-describedby (Compose del Ciclo 2, 2026-10-01, hallazgo 12: antes el texto de ayuda iba dentro del <label> y contaminaba el nombre accesible). Corregido en el Compose de la Fase 3 (2026-09-14, hallazgo 8 del Audit): el <input> ya lleva aria-invalid={error}, así que el estado de error se anuncia también a lectores de pantalla, no solo por color/texto.",
   },
+  // Do's y don'ts (2026-10-14): texto de las guías de uso. Cada par se dibuja en la
+  // story «Do's y don'ts» del componente; el ejemplo visual vive en la story.
+  guidelines: [
+    {
+      do: "Que errorText diga cómo corregirlo: «Introduce un email válido, por ejemplo nombre@dominio.com».",
+      dont: "No uses «Error» ni dejes solo el borde rojo.",
+      reason: "Un mensaje genérico no ayuda a corregir, y el color solo no basta: errorText se asocia al campo con aria-describedby para que también se anuncie.",
+    },
+    {
+      do: "Pon el formato esperado en helperText y mantén el label corto.",
+      dont: "No metas las instrucciones dentro del label.",
+      reason: "El nombre accesible del campo es solo el label; helperText vive fuera y se asocia aparte, así que un label largo contamina lo que se anuncia al enfocar.",
+    },
+  ],
   dependencies: [],
 } as const;

@@ -71,6 +71,20 @@ export const meta = {
     notes:
       "El grupo lleva aria-label con producto, estado y cara. La barra de progreso es role='progressbar' con aria-valuenow. Los botones de la cara trasera son los de Button (teclado nativo); la cara frontal no es interactiva: si navega al detalle, envolver en un elemento con role='button'. Los efectos decorativos y el logo van con aria-hidden.",
   },
+  // Do's y don'ts (2026-10-14): texto de las guías de uso. Cada par se dibuja en la
+  // story «Do's y don'ts» del componente; el ejemplo visual vive en la story.
+  guidelines: [
+    {
+      do: "Cambia la acción secundaria según el estado: «Descongelar tarjeta» cuando está congelada.",
+      dont: "No dejes «Congelar tarjeta» en una tarjeta que ya está congelada.",
+      reason: "La tarjeta comunica el estado; la acción tiene que ser coherente con él o el usuario cree que puede hacer algo que ya está hecho.",
+    },
+    {
+      do: "Si la cara frontal navega al detalle, envuélvela en un elemento con role button, foco y teclado.",
+      dont: "No pongas un onClick en un div alrededor de la tarjeta.",
+      reason: "La cara frontal no es interactiva por sí misma. Sin role, tabIndex y teclado, solo se puede abrir con ratón o toque.",
+    },
+  ],
   dependencies: ["Button", "Icon"],
   notes:
     "Reconstruido en el Ciclo ARC 3 (2026-10-01, hallazgo 15) para coincidir con el component set real (38:176): 12 variantes (product × state × Side). Antes era un bloque de texto (title/subtitle/amount) que no existía en Figma: breaking change deliberado de la API. Decisiones: (1) las etiquetas de producto son las de Figma («Crédito», «BNPL»); (2) el estado decide el estilo de las acciones — active: principal + secundaria pequeñas en fila; frozen: principal deshabilitada; blocked: principal deshabilitada y terciaria, medianas y en columna —, y el consumidor pone las etiquetas («Congelar tarjeta», «Descongelar tarjeta», «Contactar soporte»); (3) statusIcon es un hueco para un Icon: el nodo status-badge de Figma contiene una elipse de 16 px llamada icon-placeholder, que solo se ve en blocked (en frozen se unificó en Figma el 2026-10-02 a «sin marcador» en las cuatro variantes; antes era un punto blanco, un aro gris o no existía). Por defecto se dibuja un `Icon lock` de 16 px en el color de error (2026-10-02, tarea pendiente del Ciclo ARC 3); si se pasa un statusIcon propio se muestra también en frozen; (4) los efectos decorativos (mancha difuminada, girada 180° como en Figma, y brillo) se dibujan en SVG sin el ruido de Figma (feTurbulence); el número de tarjeta mezcla estilos como en Figma (puntos Black 32, dígitos Light 24); (5) en active la pista es card/credit/progress-track en crédito y card/bnpl/progress-track en BNPL (ambas blancas, alias de semantic/text/inverse; se crearon el 2026-10-02 para no usar tokens de texto ni de otro producto), y en frozen/blocked pista y relleno comparten color, así que la barra no distingue progreso (posible descuido de Figma); (6) el borde de card.border ya no se usa: Figma no tiene borde salvo en blocked (error, 2 px frontal y 1,5 px trasera).",

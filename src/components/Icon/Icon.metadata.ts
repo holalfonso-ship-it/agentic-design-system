@@ -43,6 +43,20 @@ export const meta = {
     notes:
       "Sin `title` el SVG lleva aria-hidden y no entra en el árbol de accesibilidad. Con `title` lleva role='img' y aria-label. Un icono no es interactivo: si dispara una acción, envolverlo en un Button.",
   },
+  // Do's y don'ts (2026-10-14): texto de las guías de uso. Cada par se dibuja en la
+  // story «Do's y don'ts» del componente; el ejemplo visual vive en la story.
+  guidelines: [
+    {
+      do: "Déjalo decorativo (sin title) cuando va junto a un texto que ya dice lo mismo.",
+      dont: "No repitas el significado con un title al lado del texto.",
+      reason: "Con title el icono entra en el árbol de accesibilidad: el lector lo anuncia dos veces, una por el icono y otra por el texto.",
+    },
+    {
+      do: "Si el icono dispara una acción, envuélvelo en un Button con aria-label.",
+      dont: "No le pongas un onClick directamente al Icon.",
+      reason: "Un icono no es interactivo: no recibe foco ni responde al teclado. La interacción es del Button.",
+    },
+  ],
   dependencies: [],
   notes:
     "Ciclo ARC 3 (2026-10-01). Antes la prop `icon` de varios componentes se rellenaba con un marcador porque el asset de Figma no se podía descargar por el egress de red; `use_figma` + exportAsync resolvió el bloqueo técnico, pero los iconos de Figma son SF Symbols (licencia de Apple: solo plataformas de Apple) y Aida es un repo/Storybook públicos en web. Decisión con Alfonso: set abierto de Lucide (ISC), con el aviso de copyright en icons.ts. Mapeo SF Symbol → nombre de Icon: calendar.circle.fill → calendar; arrow.up.right.circle.fill → circle-arrow-out-up-right; arrow.down.left.circle.fill → circle-arrow-out-down-left; fork.knife.circle.fill → utensils; house → house; creditcard → credit-card; wallet.pass → wallet; gearshape → settings; lock.fill (estado bloqueado) → lock; snowflake (estado congelado) → snowflake. Divergencia visual conocida: los SF Symbols de Figma son iconos rellenos o con círculo, y los de Lucide son de trazo de 2 px. Para añadir un icono: copiar sus nodos de lucide-static/icons/<nombre>.svg a icons.ts y añadir el nombre a `props.name` de esta metadata.",

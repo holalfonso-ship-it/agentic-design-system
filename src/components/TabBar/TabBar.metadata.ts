@@ -36,6 +36,20 @@ export const meta = {
     keyboardSupport: true,
     notes: "Cada tab debe exponer aria-current='page' cuando está seleccionado.",
   },
+  // Do's y don'ts (2026-10-14): texto de las guías de uso. Cada par se dibuja en la
+  // story «Do's y don'ts» del componente; el ejemplo visual vive en la story.
+  guidelines: [
+    {
+      do: "Entre 3 y 5 destinos de primer nivel.",
+      dont: "No metas 6 o más pestañas.",
+      reason: "El componente está pensado para hasta 5 destinos principales; con más, las etiquetas dejan de caber en el ancho de un móvil.",
+    },
+    {
+      do: "Para navegar dentro de una sección, usa un header con botón de volver.",
+      dont: "No uses la TabBar para pasos o subapartados de una pantalla.",
+      reason: "La TabBar es navegación de nivel raíz y debe ser la misma en toda la app; cambiarla según la pantalla desorienta.",
+    },
+  ],
   dependencies: [],
   notes:
     "Corregido en el Audit de la Fase 3 (2026-09-14): el fondo/borde del contenedor tenía hex hardcodeados sin base real (#E1E3EA/#FFFFFF) — corregidos contra el component real 'Tab Bar' (83:4772). Hallazgo nuevo, no corregido en esta pasada por quedar fuera de alcance: el componente real de Figma es una barra flotante en pill (rounded-full, ancho fijo ~354px) con solo iconos (sin labels de texto) y el tab activo resaltado con un halo del color de marca al 15% de opacidad detrás del icono — un patrón visual distinto al de este componente (barra a todo el ancho, con label debajo de cada icono, fondo/texto sólido en el seleccionado). Los tokens nav.icon.*/nav.label.* (Component Colors, Fase 2) tampoco se consumen todavía. Ninguno de los dos se resuelve aquí — son un rediseño de estructura, no un arreglo de tokens — quedan anotados para una futura decisión con Alfonso. DECISIÓN (Ciclo 2, 2026-10-01, con Alfonso): se mantiene la API genérica `items[]` de n pestañas con barra a ancho completo y label — Figma solo modela 2 pestañas de demo (variantes Home/Cards) y la API genérica es más útil para una app real. La divergencia con la píldora flotante de Figma es intencional, no deuda. Si se quiere la píldora, se construye como componente aparte, no como rediseño de este.",

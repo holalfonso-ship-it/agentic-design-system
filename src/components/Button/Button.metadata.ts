@@ -43,6 +43,25 @@ export const meta = {
     minTouchTarget: 44,
     notes: "El estado disabled debe comunicarse también por atributo aria-disabled, no solo por color.",
   },
+  // Do's y don'ts (2026-10-14): texto de las guías de uso. Cada par se dibuja en la
+  // story «Do's y don'ts» del componente; el ejemplo visual vive en la story.
+  guidelines: [
+    {
+      do: "Una sola acción primary por pantalla o sección; la alternativa va en tertiary.",
+      dont: "No pongas dos primary compitiendo.",
+      reason: "Primary marca la acción principal. Con dos, ninguna lo es y el usuario no sabe cuál se espera de él.",
+    },
+    {
+      do: "Etiqueta con verbo y objeto: «Enviar transferencia».",
+      dont: "No uses etiquetas vacías como «Aceptar» u «OK».",
+      reason: "El texto es lo único que un lector de pantalla anuncia del botón; debe decir qué va a pasar sin necesitar el contexto.",
+    },
+    {
+      do: "Usa Button para disparar una acción (abrir un formulario, confirmar).",
+      dont: "No lo uses para navegar entre pantallas.",
+      reason: "Navegar es un enlace o, a nivel raíz, la TabBar. El sistema aún no tiene Link: si lo necesitas, abre un flag en lugar de disfrazar un Button.",
+    },
+  ],
   dependencies: [],
   notes:
     "Ciclo ARC 3 (2026-10-01): peso 500 (Type/Label/*) y padding horizontal 16/24/24 y altura fija sm 44, md 48, lg 56 (sin padding vertical), alineados con Figma en las tres variantes. Antes la altura se derivaba del contenido y el tertiary tenía un padding propio (8/4).",

@@ -1,3 +1,5 @@
+import { Guidelines, withExamples, Code } from "../../stories/Guidelines";
+import { meta as guidelinesMeta } from "./TabBar.metadata";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
 import { TabBar } from "./TabBar";
@@ -35,4 +37,56 @@ export const Interactivo: Story = {
     }
     return <Wrapper />;
   },
+};
+
+
+const cuatro = [
+  { key: "home", label: "Inicio" },
+  { key: "cards", label: "Tarjetas" },
+  { key: "activity", label: "Movimientos" },
+  { key: "profile", label: "Perfil" },
+];
+const siete = [
+  { key: "home", label: "Inicio" },
+  { key: "cards", label: "Tarjetas" },
+  { key: "pay", label: "Pagos" },
+  { key: "activity", label: "Movimientos" },
+  { key: "save", label: "Ahorro" },
+  { key: "profile", label: "Perfil" },
+  { key: "settings", label: "Ajustes" },
+];
+
+const examples = [
+  {
+    good: (
+      <div style={{ width: "100%" }}>
+        <TabBar items={cuatro} activeKey="home" />
+      </div>
+    ),
+    bad: (
+      <div style={{ width: "100%" }}>
+        <TabBar items={siete} activeKey="home" />
+      </div>
+    ),
+  },
+  {
+    good: (
+      <Code>{`<header>
+  <button aria-label="Volver">‹</button>
+  <h1>Detalle del movimiento</h1>
+</header>`}</Code>
+    ),
+    bad: (
+      <Code>{`<TabBar
+  items={[{ key: "detalle", label: "Detalle" }, { key: "recibo", label: "Recibo" }]}
+  activeKey="detalle"
+/>`}</Code>
+    ),
+  },
+];
+
+export const DosYDonts: Story = {
+  name: "Do's y don'ts",
+  parameters: { controls: { disable: true } },
+  render: () => <Guidelines items={withExamples(guidelinesMeta.guidelines, examples)} />,
 };

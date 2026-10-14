@@ -1,3 +1,5 @@
+import { Guidelines, withExamples, Demo, Code } from "../../stories/Guidelines";
+import { meta as guidelinesMeta } from "./Button.metadata";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Button } from "./Button";
 import { meta as buttonMeta } from "./Button.metadata";
@@ -59,4 +61,44 @@ export const Sizes: Story = {
       <Button size="lg">Large</Button>
     </div>
   ),
+};
+
+
+const examples = [
+  {
+    good: (
+      <Demo code={'<Button variant="primary">Continuar</Button>\n<Button variant="tertiary">Cancelar</Button>'}>
+        <Button variant="primary">Continuar</Button>
+        <Button variant="tertiary">Cancelar</Button>
+      </Demo>
+    ),
+    bad: (
+      <Demo code={'<Button variant="primary">Pagar</Button>\n<Button variant="primary">Continuar</Button>'}>
+        <Button variant="primary">Pagar</Button>
+        <Button variant="primary">Continuar</Button>
+      </Demo>
+    ),
+  },
+  {
+    good: (
+      <Demo code={'<Button>Enviar transferencia</Button>'}>
+        <Button>Enviar transferencia</Button>
+      </Demo>
+    ),
+    bad: (
+      <Demo code={'<Button>Aceptar</Button>'}>
+        <Button>Aceptar</Button>
+      </Demo>
+    ),
+  },
+  {
+    good: <Code>{'<Button onClick={abrirFormulario}>Añadir beneficiario</Button>'}</Code>,
+    bad: <Code>{'<Button onClick={() => navigate("/ajustes")}>Ir a ajustes</Button>'}</Code>,
+  },
+];
+
+export const DosYDonts: Story = {
+  name: "Do's y don'ts",
+  parameters: { controls: { disable: true } },
+  render: () => <Guidelines items={withExamples(guidelinesMeta.guidelines, examples)} />,
 };

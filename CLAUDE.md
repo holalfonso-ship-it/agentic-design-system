@@ -120,7 +120,7 @@ sea in/out. Trátalo como el caso de prueba de esta regla.
 2. Todo componente lleva un `<Nombre>.metadata.ts` junto al código — sin
    metadata, el componente no es visible para el índice ni para otros
    agentes. Campos obligatorios: `name`, `category`, `description`,
-   `props`, `tokens`, `useWhen`, `a11y`.
+   `props`, `tokens`, `useWhen`, `a11y`, `guidelines`.
 3. Si el componente corresponde a algo publicado en Figma, registra
    `figma.library` y `figma.componentKey` en la metadata — es lo que
    permite trazar código → diseño y detectar cuando Figma cambia y el
@@ -136,7 +136,14 @@ sea in/out. Trátalo como el caso de prueba de esta regla.
    Cubre como mínimo todas las variantes/estados listados en
    `meta.states`. Verifica con `npm run build-storybook` antes de dar
    el componente por cerrado.
-6. Añade (o actualiza) `<Nombre>.test.tsx` junto al componente — Vitest +
+6. **Do's y don'ts** (2026-10-14): `guidelines` en la metadata es una lista de
+   pares `{ do, dont, reason }` (mínimo 2) con el texto de la guía de uso; sale
+   de `useWhen`, `a11y` y de los errores reales que cometen quienes lo usan, no
+   de generalidades. Cada par se dibuja en la story «Do's y don'ts» del
+   componente, con un ejemplo por par en el mismo orden (`withExamples` lanza si
+   no cuadran). Si el ejemplo no se puede dibujar (overlays, patrones de uso),
+   usa `<Code>`. `src/test/guidelines.test.ts` lo exige a los 12 componentes.
+7. Añade (o actualiza) `<Nombre>.test.tsx` junto al componente — Vitest +
    Testing Library (Fase 4, 2026-10-01). Cubre como mínimo: render de cada
    variante/estado de `meta.states`, los callbacks de `meta.props`, el
    comportamiento de `meta.a11y` (rol, teclado, área táctil) y una

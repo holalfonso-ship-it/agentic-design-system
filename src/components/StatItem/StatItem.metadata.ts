@@ -42,6 +42,20 @@ export const meta = {
     notes:
       "Puramente presentacional, no interactivo. El icono es decorativo salvo que comunique información no repetida en el texto (p. ej. la dirección de la tendencia) — en ese caso debe llevar aria-label o texto oculto equivalente en vez de depender solo del color/forma.",
   },
+  // Do's y don'ts (2026-10-14): texto de las guías de uso. Cada par se dibuja en la
+  // story «Do's y don'ts» del componente; el ejemplo visual vive en la story.
+  guidelines: [
+    {
+      do: "Que el label diga lo que el icono sugiere: «Total gastos».",
+      dont: "No dejes que el icono cargue el significado con un label vago como «Total».",
+      reason: "El icono direccional es decorativo salvo que aporte información que el texto no da. Si solo el icono dice que son gastos, un lector de pantalla no lo sabrá.",
+    },
+    {
+      do: "Úsalo solo para informar una métrica.",
+      dont: "No lo hagas clicable.",
+      reason: "Si la métrica lleva a una acción, el patrón es QuickActionTile envuelto en un button; StatItem es solo lectura.",
+    },
+  ],
   dependencies: [],
   notes:
     "La prop `icon` es obligatoria a propósito: en Figma se intercambia entre arrow.up.right.circle.fill y arrow.down.left.circle.fill (SF Symbols, que Aida no redistribuye por la licencia de Apple). Usar <Icon name=\"circle-arrow-out-up-right\" /> o <Icon name=\"circle-arrow-out-down-left\" /> (Ciclo ARC 3, 2026-10-01; ver Icon.metadata.ts).",

@@ -1,3 +1,5 @@
+import { Guidelines, withExamples, Demo } from "../../stories/Guidelines";
+import { meta as guidelinesMeta } from "./Badge.metadata";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Badge } from "./Badge";
 import { meta as badgeMeta } from "./Badge.metadata";
@@ -37,4 +39,38 @@ export const LasCuatroVariantes: Story = {
       <Badge variant="neutral">Programado</Badge>
     </div>
   ),
+};
+
+
+const examples = [
+  {
+    good: (
+      <Demo code={'<Badge variant="success">Completado</Badge>'}>
+        <Badge variant="success">Completado</Badge>
+      </Demo>
+    ),
+    bad: (
+      <Demo code={'<Badge variant="success">Tu transferencia se ha completado correctamente</Badge>'}>
+        <Badge variant="success">Tu transferencia se ha completado correctamente</Badge>
+      </Demo>
+    ),
+  },
+  {
+    good: (
+      <Demo code={'<Badge variant="error">Rechazado</Badge>'}>
+        <Badge variant="error">Rechazado</Badge>
+      </Demo>
+    ),
+    bad: (
+      <Demo code={'<Badge variant="success">Rechazado</Badge>'}>
+        <Badge variant="success">Rechazado</Badge>
+      </Demo>
+    ),
+  },
+];
+
+export const DosYDonts: Story = {
+  name: "Do's y don'ts",
+  parameters: { controls: { disable: true } },
+  render: () => <Guidelines items={withExamples(guidelinesMeta.guidelines, examples)} />,
 };

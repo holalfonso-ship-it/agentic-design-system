@@ -1,3 +1,5 @@
+import { Guidelines, withExamples, Demo, Code } from "../../stories/Guidelines";
+import { meta as guidelinesMeta } from "./Avatar.metadata";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Avatar } from "./Avatar";
 import { meta as avatarMeta } from "./Avatar.metadata";
@@ -35,4 +37,38 @@ export const LosTresTamanos: Story = {
       <Avatar initials="CJ" size="lg" />
     </div>
   ),
+};
+
+
+const examples = [
+  {
+    good: (
+      <Demo code={'<Avatar initials="AZ" size="sm" />'}>
+        <Avatar initials="AZ" size="sm" />
+      </Demo>
+    ),
+    bad: (
+      <Demo code={'<Avatar initials="Alfonso Zamorano" size="sm" />'}>
+        <Avatar initials="Alfonso Zamorano" size="sm" />
+      </Demo>
+    ),
+  },
+  {
+    good: (
+      <Code>{`<button type="button" aria-label="Abrir perfil de Alfonso Zamorano" onClick={abrirPerfil}>
+  <Avatar initials="AZ" />
+</button>`}</Code>
+    ),
+    bad: (
+      <Code>{`<div onClick={abrirPerfil}>
+  <Avatar initials="AZ" />
+</div>`}</Code>
+    ),
+  },
+];
+
+export const DosYDonts: Story = {
+  name: "Do's y don'ts",
+  parameters: { controls: { disable: true } },
+  render: () => <Guidelines items={withExamples(guidelinesMeta.guidelines, examples)} />,
 };

@@ -1,3 +1,5 @@
+import { Guidelines, withExamples, Code } from "../../stories/Guidelines";
+import { meta as guidelinesMeta } from "./QuickActionTile.metadata";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { QuickActionTile } from "./QuickActionTile";
 import { meta as quickActionTileMeta } from "./QuickActionTile.metadata";
@@ -34,4 +36,36 @@ export const RowDeAcciones: Story = {
       <QuickActionTile icon={<Icon name="house" />} title="Pagar" subtitle="Recibos y servicios" />
     </div>
   ),
+};
+
+
+const examples = [
+  {
+    good: <QuickActionTile icon={<Icon name="wallet" />} title="Pagar" subtitle="Recibos y tarjetas" />,
+    bad: (
+      <QuickActionTile
+        icon={<Icon name="wallet" />}
+        title="Realizar una transferencia"
+        subtitle="Envía dinero a cualquier cuenta bancaria del mundo"
+      />
+    ),
+  },
+  {
+    good: (
+      <Code>{`<button type="button" onClick={abrirPagos}>
+  <QuickActionTile icon={<Icon name="wallet" />} title="Pagar" subtitle="Recibos" />
+</button>`}</Code>
+    ),
+    bad: (
+      <Code>{`<div onClick={abrirPagos}>
+  <QuickActionTile icon={<Icon name="wallet" />} title="Pagar" subtitle="Recibos" />
+</div>`}</Code>
+    ),
+  },
+];
+
+export const DosYDonts: Story = {
+  name: "Do's y don'ts",
+  parameters: { controls: { disable: true } },
+  render: () => <Guidelines items={withExamples(guidelinesMeta.guidelines, examples)} />,
 };

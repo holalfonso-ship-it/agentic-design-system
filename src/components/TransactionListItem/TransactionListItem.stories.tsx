@@ -1,3 +1,5 @@
+import { Guidelines, withExamples, Code } from "../../stories/Guidelines";
+import { meta as guidelinesMeta } from "./TransactionListItem.metadata";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { TransactionListItem } from "./TransactionListItem";
 import { meta as transactionListItemMeta } from "./TransactionListItem.metadata";
@@ -44,4 +46,26 @@ export const Historial: Story = {
       <TransactionListItem icon={<Icon name="utensils" />} merchant="Nómina" category="Ingreso" amount="1.800,00 €" direction="in" timestamp="ayer" />
     </div>
   ),
+};
+
+
+const examples = [
+  {
+    good: <TransactionListItem merchant="Mercadona" category="Supermercado" amount="42,50 €" direction="out" timestamp="hoy" />,
+    bad: <TransactionListItem merchant="Mercadona" category="Supermercado" amount="−42,50 €" direction="out" timestamp="hoy" />,
+  },
+  {
+    good: (
+      <Code>{`{"date":"2026-10-14","requestedBy":"agente de pagos","brief":"Fila con estado pendiente","closestComponent":"TransactionListItem","closestCategory":"data-display","reason":"Solo modela in/out; falta un estado intermedio","decision":"flagged"}`}</Code>
+    ),
+    bad: (
+      <TransactionListItem merchant="Transferencia a Marta" category="⏳ Pendiente" amount="120,00 €" direction="out" timestamp="hoy" />
+    ),
+  },
+];
+
+export const DosYDonts: Story = {
+  name: "Do's y don'ts",
+  parameters: { controls: { disable: true } },
+  render: () => <Guidelines items={withExamples(guidelinesMeta.guidelines, examples)} />,
 };

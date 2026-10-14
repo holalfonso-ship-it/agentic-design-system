@@ -1,3 +1,5 @@
+import { Guidelines, withExamples, Code } from "../../stories/Guidelines";
+import { meta as guidelinesMeta } from "./ProductCard.metadata";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { ProductCard } from "./ProductCard";
 import type { ProductCardProps } from "./ProductCard";
@@ -84,4 +86,53 @@ export const TodasLasVariantes: Story = {
       )}
     </div>
   ),
+};
+
+
+const examples = [
+  {
+    good: (
+      <ProductCard
+        product="credit"
+        state="frozen"
+        side="back"
+        balance="€3.500,00"
+        balanceCaption="de €3.800,00 disponibles"
+        progress={0.6}
+        primaryAction={{ label: "Ver movimientos" }}
+        secondaryAction={{ label: "Descongelar tarjeta" }}
+      />
+    ),
+    bad: (
+      <ProductCard
+        product="credit"
+        state="frozen"
+        side="back"
+        balance="€3.500,00"
+        balanceCaption="de €3.800,00 disponibles"
+        progress={0.6}
+        primaryAction={{ label: "Ver movimientos" }}
+        secondaryAction={{ label: "Congelar tarjeta" }}
+      />
+    ),
+  },
+  {
+    good: (
+      <Code>{`<div role="button" tabIndex={0} aria-label="Ver detalle de la tarjeta"
+  onClick={abrirDetalle} onKeyDown={alPulsarEnterOEspacio}>
+  <ProductCard side="front" ... />
+</div>`}</Code>
+    ),
+    bad: (
+      <Code>{`<div onClick={abrirDetalle}>
+  <ProductCard side="front" ... />
+</div>`}</Code>
+    ),
+  },
+];
+
+export const DosYDonts: Story = {
+  name: "Do's y don'ts",
+  parameters: { controls: { disable: true } },
+  render: () => <Guidelines items={withExamples(guidelinesMeta.guidelines, examples)} />,
 };
