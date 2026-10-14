@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.5.0](https://github.com/holalfonso-ship-it/agentic-design-system/compare/agentic-design-system-v0.4.3...agentic-design-system-v0.5.0) (2026-10-14)
+
+
+### Funcionalidades
+
+* starter kit descargable, incluido en el paquete y en Storybook ([d066eb9](https://github.com/holalfonso-ship-it/agentic-design-system/commit/d066eb964fd1f8236000c61d96c7fed217955cea))
+* starter kit descargable, incluido en el paquete y en Storybook ([e5cca49](https://github.com/holalfonso-ship-it/agentic-design-system/commit/e5cca49bee07f10905f0f0d5853e2116ad60f46f))
+
 ## [0.4.3](https://github.com/holalfonso-ship-it/agentic-design-system/compare/agentic-design-system-v0.4.2...agentic-design-system-v0.4.3) (2026-10-02)
 
 
