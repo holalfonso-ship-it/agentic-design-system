@@ -19,7 +19,7 @@ const preview: Preview = {
           "Form",
           ["Checkbox", "Input", "Radio", "Select", "Slider", "Textarea"],
           "Feedback",
-          ["Alert", "Toast"],
+          ["Alert", "Toast", "Tooltip", "Spinner", "Skeleton"],
           "Overlay",
           ["Modal"],
           "Starter kit",

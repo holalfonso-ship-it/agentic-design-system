@@ -27,8 +27,8 @@ const componentSources = Object.entries(sources).filter(([p]) => !/\.(stories|te
 const stripComments = (c: string) => c.replace(/(^|[^:"'\\])\/\/[^\n]*/g, "$1").replace(/\/\*[\s\S]*?\*\//g, "");
 
 describe("los componentes no se saltan los tokens", () => {
-  it("encuentra los 19 componentes", () => {
-    expect(componentSources).toHaveLength(19);
+  it("encuentra los 22 componentes", () => {
+    expect(componentSources).toHaveLength(22);
   });
 
   it("ningún fontWeight es un número literal (usar fontWeight.*)", () => {
