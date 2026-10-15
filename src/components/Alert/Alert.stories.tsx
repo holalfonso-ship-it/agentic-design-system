@@ -21,7 +21,9 @@ const meta: Meta<typeof Alert> = {
     actionLabel: { control: "text" },
   },
   args: { type: "info", title: "Información", children: "Tu cuenta se actualizará mañana por la mañana." },
-  decorators: [(Story) => <div style={{ width: 360 }}><Story /></div>],
+  // 360 px para las stories de un solo aviso; la página «Do's y don'ts» necesita todo el ancho
+  // para repartir «Hacer» y «Evitar» en dos columnas.
+  decorators: [(Story, ctx) => (ctx.id.endsWith("--dos-y-donts") ? <Story /> : <div style={{ width: 360 }}><Story /></div>)],
 };
 export default meta;
 type Story = StoryObj<typeof Alert>;
