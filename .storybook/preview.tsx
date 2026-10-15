@@ -18,6 +18,8 @@ const preview: Preview = {
           ["Avatar", "Badge", "ProductCard", "StatItem", "TransactionListItem"],
           "Form",
           ["Checkbox", "Input", "Radio", "Select", "Slider", "Textarea"],
+          "Feedback",
+          ["Alert", "Toast"],
           "Overlay",
           ["Modal"],
           "Starter kit",
