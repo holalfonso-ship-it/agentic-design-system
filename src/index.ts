@@ -3,6 +3,7 @@
  * Componentes, tipos y tokens. La metadata por componente vive en
  * `agentic-design-system/metadata`.
  */
+export * from "./components/Alert";
 export * from "./components/Avatar";
 export * from "./components/Badge";
 export * from "./components/Button";
@@ -18,6 +19,7 @@ export * from "./components/Slider";
 export * from "./components/StatItem";
 export * from "./components/TabBar";
 export * from "./components/Textarea";
+export * from "./components/Toast";
 export * from "./components/Toggle";
 export * from "./components/TransactionListItem";
 export * from "./tokens";

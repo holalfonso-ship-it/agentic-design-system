@@ -1,5 +1,6 @@
-# index.toon — generado 2026-10-14T15:27:18.329Z
-# componentes:17 relaciones:3
+# index.toon — generado 2026-10-15T08:27:41.557Z
+# componentes:19 relaciones:5
+Alert|feedback|deps:Icon|tokens:24|estados:4|figma:56a45958
 Avatar|data-display|deps:none|tokens:7|estados:3|figma:fc23fc95
 Badge|data-display|deps:none|tokens:16|estados:4|figma:cb2b0282
 Button|action|deps:none|tokens:14|estados:4|figma:0784c9db
@@ -15,5 +16,6 @@ Slider|form|deps:none|tokens:15|estados:3|figma:c2845b34
 StatItem|data-display|deps:none|tokens:10|estados:1|figma:a753e447
 TabBar|navigation|deps:none|tokens:14|estados:2|figma:4cbc45b6
 Textarea|form|deps:none|tokens:18|estados:4|figma:e05ab7d9
+Toast|feedback|deps:Icon|tokens:19|estados:4|figma:4e6d074d
 Toggle|action|deps:none|tokens:7|estados:4|figma:c9816ecc
 TransactionListItem|data-display|deps:none|tokens:10|estados:2|figma:7d433c68

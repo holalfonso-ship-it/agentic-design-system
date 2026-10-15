@@ -109,7 +109,9 @@ export const semantic = {
   // (2026-09-03) sobre el knob del Toggle — es semantic/bg/surface,
   // distinto de semantic/bg/default (el fondo violeta claro de Quick
   // Action Tile).
-  bg: { default: "#EDEAF3", surface: "#FFFFFF" },
+  // `inverse` (#151211, neutral/900) añadido al diseñar Toast (2026-10-15): fondo oscuro de
+  // los avisos efímeros, para que se distingan del Alert.
+  bg: { default: "#EDEAF3", surface: "#FFFFFF", inverse: "#151211" },
   // `strong` (#5C5653, semantic/border/strong) añadido al diseñar los controles de
   // formulario (Checkbox, Radio, Select; 2026-10-14): `border/default` (#C0BEBC) da
   // solo ~1,8:1 sobre blanco, así que el borde de un control usa este.
@@ -118,7 +120,9 @@ export const semantic = {
   // al construir el Input: es el color de "Texto introducido" en los
   // estados default/focused/error — coincide con card.credit.text
   // ya documentado más arriba, confirmando que es el mismo alias.
-  text: { primary: "#151211", secondary: "#2E2824", disabled: "#5C5653" },
+  // `inverse` (#FFFFFF, neutral/white) añadido con Toast (2026-10-15): texto e iconos sobre
+  // `bg.inverse`.
+  text: { primary: "#151211", secondary: "#2E2824", disabled: "#5C5653", inverse: "#FFFFFF" },
   // `brand.primary` (#361C5C, plum/700) añadido en la Fase 2
   // (2026-09-03) al construir el Input: es el borde del estado
   // "focused" — mismo valor exacto que semanticAction.primary.bg.default
@@ -139,7 +143,44 @@ export const semantic = {
     success: "#2DAF17",
     "success-subtle": "#EAF7E8",
     "error-subtle": "#F9E7E6",
+    // `warning` (#F3B731, sunflower/500), `warning-subtle` (#FEF8EA, sunflower/50),
+    // `info` (#361C5C, plum/700) e `info-subtle` (#EDEAF3, plum/50): añadidos al diseñar
+    // Alert y Toast (familia Feedback, 2026-10-15). `warning` ya existía en Figma pero
+    // ningún componente de código lo consumía; `warning-subtle`, `info` e `info-subtle`
+    // se crearon en la colección "Semantic Colors" como alias de la paleta existente
+    // (el archivo no tiene familia azul: info reutiliza plum, el color de marca).
+    // Contraste del icono sobre su fondo suave: info 12:1, error 4:1; success (2,6:1) y
+    // warning (1,7:1) NO llegan a 3:1, por eso su icono usa `green["900"]` y
+    // `sunflower["800"]` (5,1:1) y el color de feedback queda solo para el borde.
+    warning: "#F3B731",
+    "warning-subtle": "#FEF8EA",
+    info: "#361C5C",
+    "info-subtle": "#EDEAF3",
   },
+} as const;
+
+/**
+ * Primitivos de la familia green consumidos directos por Alert y Toast (icono de
+ * success): green/500 no llega a 3:1 sobre green/50. Confirmado en la colección
+ * "Primitive Colors" (2026-10-15). Solo existen 50, 400, 500 y 900 en el archivo.
+ */
+export const green = {
+  // `400` (#57BF45): icono de success sobre `semantic.bg.inverse` en Toast (7,9:1).
+  "400": "#57BF45",
+  "900": "#134A0A",
+} as const;
+
+/**
+ * Primitivos de las familias plum y red consumidos directos por Toast (iconos sobre el
+ * fondo oscuro `semantic.bg.inverse`): plum/100 para info (10,3:1) y red/400 para error
+ * (5,5:1). Confirmados en la colección "Primitive Colors" (2026-10-15).
+ */
+export const plum = {
+  "100": "#C8BCD8",
+} as const;
+
+export const red = {
+  "400": "#F1574F",
 } as const;
 
 /**
