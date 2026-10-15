@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.7.0](https://github.com/holalfonso-ship-it/agentic-design-system/compare/agentic-design-system-v0.6.0...agentic-design-system-v0.7.0) (2026-10-15)
+
+
+### Funcionalidades
+
+* Alert y Toast (familia Feedback) ([94cc0e4](https://github.com/holalfonso-ship-it/agentic-design-system/commit/94cc0e42592d6486a0b2576bcb79c64ed91034e4))
+* Alert y Toast (familia Feedback) ([4bc613a](https://github.com/holalfonso-ship-it/agentic-design-system/commit/4bc613a5626f3097e71bc9083ca608bf4fbfce64))
+
 ## [0.6.0](https://github.com/holalfonso-ship-it/agentic-design-system/compare/agentic-design-system-v0.5.0...agentic-design-system-v0.6.0) (2026-10-14)
 
 
