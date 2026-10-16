@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.10.0](https://github.com/holalfonso-ship-it/agentic-design-system/compare/agentic-design-system-v0.9.0...agentic-design-system-v0.10.0) (2026-10-16)
+
+
+### Funcionalidades
+
+* Popover, Dropdown menu y Drawer (familia Overlay) ([4d6322b](https://github.com/holalfonso-ship-it/agentic-design-system/commit/4d6322ba7bc04b97270b1505a85100b46ae88aae))
+
 ## [0.9.0](https://github.com/holalfonso-ship-it/agentic-design-system/compare/agentic-design-system-v0.8.0...agentic-design-system-v0.9.0) (2026-10-16)
 
 
