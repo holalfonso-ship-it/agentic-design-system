@@ -69,5 +69,5 @@ export const meta = {
       reason: "Con pocas opciones un desplegable obliga a abrir y cerrar para ver algo que cabía a la vista.",
     },
   ],
-  dependencies: [],
+  dependencies: ["Icon"],
 } as const;

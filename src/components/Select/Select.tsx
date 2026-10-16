@@ -1,6 +1,7 @@
 import { semantic, neutral, radius, fontSize, lineHeight, space, fontWeight } from "../../tokens";
 import type { CSSProperties, SelectHTMLAttributes } from "react";
 import { useId, useState } from "react";
+import { Icon } from "../Icon";
 
 export interface SelectOption {
   value: string;
@@ -20,6 +21,11 @@ export interface SelectProps
   className?: string;
   containerStyle?: CSSProperties;
 }
+
+// Chevron: instancia de Icon «chevron-down» de 20 px (a ese tamaño su geometría es 10×5,
+// la del Figma). Su centro queda a 12 px del borde derecho, como en el diseño.
+const CHEVRON = 20;
+const CHEVRON_RIGHT = space["12"] - 5;
 
 /**
  * Select — lista desplegable de una sola elección con label y helper text.
@@ -109,7 +115,7 @@ export function Select({
     border: "none",
     outline: "none",
     background: "transparent",
-    padding: `0 ${space["12"] + 10 + space["12"]}px 0 ${space["12"]}px`,
+    padding: `0 ${CHEVRON_RIGHT + CHEVRON + space["12"]}px 0 ${space["12"]}px`,
     fontSize: fontSize["body-md"],
     lineHeight: `${lineHeight["body-md"]}px`,
     color: disabled
@@ -166,22 +172,12 @@ export function Select({
             </option>
           ))}
         </select>
-        <svg
-          aria-hidden="true"
-          width="10"
-          height="7"
-          viewBox="0 0 10 7"
-          fill="none"
-          style={{ position: "absolute", right: space["12"], pointerEvents: "none" }}
-        >
-          <path
-            d="M1 1L5 5L9 1"
-            stroke={disabled ? semantic.text.disabled : semantic.text.primary}
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
+        <Icon
+          name="chevron-down"
+          size={CHEVRON}
+          color={disabled ? semantic.text.disabled : semantic.text.primary}
+          style={{ position: "absolute", right: CHEVRON_RIGHT, pointerEvents: "none" }}
+        />
       </span>
       {helperCopy ? (
         <span id={helperId} style={helperStyle}>

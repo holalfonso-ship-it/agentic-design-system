@@ -1,5 +1,6 @@
 import { semantic, neutral, radius, fontSize, lineHeight, fontFamily, space, fontWeight } from "../../tokens";
 import { Button } from "../Button";
+import { Icon } from "../Icon";
 import { useEffect, useRef } from "react";
 import type { CSSProperties, ReactNode } from "react";
 
@@ -177,8 +178,6 @@ export function Modal({
     alignItems: "center",
     justifyContent: "center",
     color: semantic.text.secondary,
-    fontSize: fontSize["heading-md"], // 20 — decisión Ciclo 2 (2026-10-01): 18 no existe en la escala; Figma (178:107) usa 18 y debería alinearse
-    lineHeight: 1,
   };
 
   const dividerStyle: CSSProperties = {
@@ -225,7 +224,9 @@ export function Modal({
         <div style={headerStyle}>
           <h2 style={titleStyle}>{title}</h2>
           <button type="button" onClick={onClose} style={closeButtonStyle} aria-label="Cerrar">
-            <span style={closeGlyphStyle}>×</span>
+            <span style={closeGlyphStyle}>
+              <Icon name="x" size={16} />
+            </span>
           </button>
         </div>
         <hr style={dividerStyle} />
