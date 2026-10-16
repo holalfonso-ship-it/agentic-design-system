@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.9.0](https://github.com/holalfonso-ship-it/agentic-design-system/compare/agentic-design-system-v0.8.0...agentic-design-system-v0.9.0) (2026-10-16)
+
+
+### Funcionalidades
+
+* **icon:** amplía el set a 31 iconos y migra Checkbox, Select y Moda… ([e359d1d](https://github.com/holalfonso-ship-it/agentic-design-system/commit/e359d1d2d2558eb8a62fef736df7f36b217e3537))
+* **icon:** amplía el set a 31 iconos y migra Checkbox, Select y Modal a Icon ([ae6e5d9](https://github.com/holalfonso-ship-it/agentic-design-system/commit/ae6e5d934fae37a7200926f4aab58aa9cd6cf2c8))
+* Tooltip, Spinner y Skeleton (familia Feedback) ([7315e91](https://github.com/holalfonso-ship-it/agentic-design-system/commit/7315e91c3cc13ea5c8b157e2faf55d0cd827f0f2))
+* Tooltip, Spinner y Skeleton (familia Feedback) ([7dfa3ba](https://github.com/holalfonso-ship-it/agentic-design-system/commit/7dfa3ba188f2ddbea50a93ffdd731475c7746d05))
+
 ## [0.8.0](https://github.com/holalfonso-ship-it/agentic-design-system/compare/agentic-design-system-v0.7.0...agentic-design-system-v0.8.0) (2026-10-15)
 
 
