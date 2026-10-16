@@ -12,6 +12,9 @@ const meta: Meta<typeof Modal> = {
   tags: ["autodocs"],
   parameters: {
     docs: {
+      // El overlay es position: fixed: dentro de la página de docs quedaría recortado por la tarjeta
+      // de la story, así que se dibuja en su propio iframe.
+      story: { inline: false, iframeHeight: 520 },
       description: {
         component: `${modalMeta.description}\n\n**Cuándo usarlo:** ${modalMeta.useWhen}`,
       },
