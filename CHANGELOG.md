@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.10.2](https://github.com/holalfonso-ship-it/agentic-design-system/compare/agentic-design-system-v0.10.1...agentic-design-system-v0.10.2) (2026-10-16)
+
+
+### Correcciones
+
+* Popover y DropdownMenu abiertos por defecto no roban el foco al cargar ([d88dde4](https://github.com/holalfonso-ship-it/agentic-design-system/commit/d88dde4bd46979ede6d0f4a1f40b863bffd8fad9))
+* Popover y DropdownMenu abiertos por defecto no roban el foco al cargar ([408e135](https://github.com/holalfonso-ship-it/agentic-design-system/commit/408e1359a3a3d2523666131904eb4d3b1c4aef62))
+
 ## [0.10.1](https://github.com/holalfonso-ship-it/agentic-design-system/compare/agentic-design-system-v0.10.0...agentic-design-system-v0.10.1) (2026-10-16)
 
 
