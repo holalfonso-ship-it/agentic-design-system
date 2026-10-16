@@ -107,6 +107,11 @@ describe("Popover", () => {
     expect(screen.getByRole("dialog")).toBeInTheDocument();
   });
 
+  it("defaultOpen no roba el foco al cargar", () => {
+    setup({ defaultOpen: true });
+    expect(screen.getByRole("dialog")).not.toHaveFocus();
+  });
+
   it("la posición cambia el lado donde se dibuja", async () => {
     setup({ placement: "top-end" });
     await userEvent.click(screen.getByRole("button", { name: "Abrir" }));
