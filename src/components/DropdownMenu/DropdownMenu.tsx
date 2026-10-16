@@ -148,7 +148,8 @@ export function DropdownMenu({
   const above = placement.startsWith("top");
   const alignEnd = placement.endsWith("end");
 
-  const wrapperStyle: CSSProperties = { position: "relative", display: "inline-flex" };
+  // fit-content: en un contenedor flex que estira, el menú se anclaría al borde del contenedor y no al botón.
+  const wrapperStyle: CSSProperties = { position: "relative", display: "inline-flex", width: "fit-content", height: "fit-content" };
 
   const menuStyle: CSSProperties = {
     position: "absolute",

@@ -101,7 +101,8 @@ export function Popover({
   const above = placement.startsWith("top");
   const alignEnd = placement.endsWith("end");
 
-  const wrapperStyle: CSSProperties = { position: "relative", display: "inline-flex" };
+  // fit-content: en un contenedor flex que estira, el panel se anclaría al borde del contenedor y no al botón.
+  const wrapperStyle: CSSProperties = { position: "relative", display: "inline-flex", width: "fit-content", height: "fit-content" };
 
   const panelStyle: CSSProperties = {
     position: "absolute",
@@ -138,16 +139,17 @@ export function Popover({
     color: semantic.text.secondary,
   };
 
-  // Hit target de 44 de alto; el margen negativo lo devuelve a los 20 que dibuja Figma.
-  const hitExtra = (44 - lineHeight["label-md"]) / 2;
+  // Hit target de 44 de alto sin mover el diseño de Figma (la acción dibuja 20): sobresale
+  // 8 por arriba (lo que mide el gap, así no pisa el texto) y 16 por abajo (el padding del panel).
   const actionStyle: CSSProperties = {
     minHeight: 44,
-    margin: `${-hitExtra}px 0`,
-    padding: 0,
+    boxSizing: "border-box",
+    margin: `${-space["8"]}px 0 ${-space["16"]}px`,
+    padding: `${space["8"]}px 0 0`,
     border: "none",
     background: "transparent",
     display: "inline-flex",
-    alignItems: "center",
+    alignItems: "flex-start",
     cursor: "pointer",
     fontFamily: fontFamily.base,
     fontSize: fontSize["label-md"],
