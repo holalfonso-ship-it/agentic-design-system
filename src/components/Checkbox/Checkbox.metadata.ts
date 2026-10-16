@@ -65,5 +65,5 @@ export const meta = {
       reason: "Una casilla comunica «se enviará al guardar»; un interruptor comunica «ya está activo». Mezclarlos confunde cuándo se aplica el cambio.",
     },
   ],
-  dependencies: [],
+  dependencies: ["Icon"],
 } as const;

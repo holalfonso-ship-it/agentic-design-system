@@ -1,9 +1,10 @@
 /**
  * Metadata ejecutable — Pilar 1 del sistema de diseño agéntico.
- * Fuente: página "03. Icons" (51:2498) del archivo Figma "Aida" — una librería de
- * SF Symbols de Apple (1.524 componentes). Aida no redistribuye los glifos de
- * Apple (licencia): cada SF Symbol usado por los componentes se mapea a un glifo
- * de Lucide (ISC). Ver `notes`.
+ * Fuente: component set «Icon (Lucide)» (246:269) en la página "03. Icons" del archivo
+ * Figma "Aida" — mismos nombres que `props.name` (variante Name=<nombre>), 20×20 y
+ * trazo ligado a semantic/text/primary. La página conserva además la librería de SF
+ * Symbols de Apple (1.524 componentes), que Aida no redistribuye (licencia): cada SF
+ * Symbol usado por los componentes se mapea a un glifo de Lucide (ISC). Ver `notes`.
  */
 export const meta = {
   name: "Icon",
@@ -12,8 +13,8 @@ export const meta = {
     "Icono de la librería: glifo SVG en línea con tamaño y color configurables. Decorativo por defecto; con `title` pasa a ser una imagen con nombre accesible.",
   figma: {
     library: "Aida",
-    nodeId: "51:2498",
-    type: "icon_library",
+    nodeId: "246:269",
+    type: "component_set",
   },
   props: {
     name: [
@@ -32,6 +33,22 @@ export const meta = {
       "circle-check",
       "triangle-alert",
       "circle-alert",
+      "check",
+      "minus",
+      "plus",
+      "chevron-down",
+      "chevron-up",
+      "chevron-left",
+      "chevron-right",
+      "search",
+      "ellipsis",
+      "ellipsis-vertical",
+      "menu",
+      "arrow-left",
+      "arrow-right",
+      "eye",
+      "eye-off",
+      "circle-help",
     ],
     size: "number (default 20)",
     color: "string (default currentColor)",
@@ -63,5 +80,5 @@ export const meta = {
   ],
   dependencies: [],
   notes:
-    "Ciclo ARC 3 (2026-10-01). Antes la prop `icon` de varios componentes se rellenaba con un marcador porque el asset de Figma no se podía descargar por el egress de red; `use_figma` + exportAsync resolvió el bloqueo técnico, pero los iconos de Figma son SF Symbols (licencia de Apple: solo plataformas de Apple) y Aida es un repo/Storybook públicos en web. Decisión con Alfonso: set abierto de Lucide (ISC), con el aviso de copyright en icons.ts. Mapeo SF Symbol → nombre de Icon: calendar.circle.fill → calendar; arrow.up.right.circle.fill → circle-arrow-out-up-right; arrow.down.left.circle.fill → circle-arrow-out-down-left; fork.knife.circle.fill → utensils; house → house; creditcard → credit-card; wallet.pass → wallet; gearshape → settings; lock.fill (estado bloqueado) → lock; snowflake (estado congelado) → snowflake. Divergencia visual conocida: los SF Symbols de Figma son iconos rellenos o con círculo, y los de Lucide son de trazo de 2 px. Para añadir un icono: copiar sus nodos de lucide-static/icons/<nombre>.svg a icons.ts y añadir el nombre a `props.name` de esta metadata.",
+    "Ciclo ARC 3 (2026-10-01). Antes la prop `icon` de varios componentes se rellenaba con un marcador porque el asset de Figma no se podía descargar por el egress de red; `use_figma` + exportAsync resolvió el bloqueo técnico, pero los iconos de Figma son SF Symbols (licencia de Apple: solo plataformas de Apple) y Aida es un repo/Storybook públicos en web. Decisión con Alfonso: set abierto de Lucide (ISC), con el aviso de copyright en icons.ts. Mapeo SF Symbol → nombre de Icon: calendar.circle.fill → calendar; arrow.up.right.circle.fill → circle-arrow-out-up-right; arrow.down.left.circle.fill → circle-arrow-out-down-left; fork.knife.circle.fill → utensils; house → house; creditcard → credit-card; wallet.pass → wallet; gearshape → settings; lock.fill (estado bloqueado) → lock; snowflake (estado congelado) → snowflake. Divergencia visual conocida: los SF Symbols de Figma son iconos rellenos o con círculo, y los de Lucide son de trazo de 2 px. Ampliación del 2026-10-16: +16 iconos de uso general para los componentes de formulario y overlay (check, minus, plus, chevron-down/up/left/right, search, ellipsis, ellipsis-vertical, menu, arrow-left, arrow-right, eye, eye-off, circle-help) y creación en Figma del component set «Icon (Lucide)» con los 31 glifos, para que Figma y código compartan lista y nombres. Sin excepciones: Alert y Toast (iconos y cierre), Checkbox (check y minus), Select (chevron-down) y Modal (x) usan Icon en código y son instancias del set «Icon (Lucide)» en Figma; ningún componente dibuja ya glifos propios. Para añadir un icono: copiar sus nodos de lucide-static/icons/<nombre>.svg a icons.ts y añadir el nombre a `props.name` de esta metadata.",
 } as const;

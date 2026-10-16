@@ -102,5 +102,5 @@ export const meta = {
       reason: "Es un bottom sheet para un formulario corto o un detalle. Un flujo de varios pasos pide una pantalla dedicada, con su propio contexto y navegación.",
     },
   ],
-  dependencies: ["Button"],
+  dependencies: ["Button", "Icon"],
 } as const;

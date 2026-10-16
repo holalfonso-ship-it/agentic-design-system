@@ -1,6 +1,7 @@
 import { semantic, semanticAction, neutral, radius, space, fontSize, lineHeight } from "../../tokens";
 import type { CSSProperties, InputHTMLAttributes } from "react";
 import { useEffect, useRef, useState } from "react";
+import { Icon } from "../Icon";
 
 export interface CheckboxProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, "type" | "size"> {
@@ -142,15 +143,7 @@ export function Checkbox({
         />
         <span aria-hidden="true" style={ringStyle} />
         {filled ? (
-          <svg aria-hidden="true" width="14" height="14" viewBox="0 0 14 14" fill="none" style={{ pointerEvents: "none" }}>
-            <path
-              d={indeterminate ? "M3 7H11" : "M2.5 7.5L5.5 10.5L11.5 3.5"}
-              stroke={glyph}
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
+          <Icon name={indeterminate ? "minus" : "check"} size={20} color={glyph} style={{ pointerEvents: "none" }} />
         ) : null}
       </span>
       <span style={labelStyle}>{label}</span>
