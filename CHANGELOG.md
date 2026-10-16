@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.10.1](https://github.com/holalfonso-ship-it/agentic-design-system/compare/agentic-design-system-v0.10.0...agentic-design-system-v0.10.1) (2026-10-16)
+
+
+### Correcciones
+
+* overlays bien anclados y visibles en Storybook ([37ff0e5](https://github.com/holalfonso-ship-it/agentic-design-system/commit/37ff0e54438cdce0ecca7dc4720ea3995ac421ef))
+* overlays bien anclados y visibles en Storybook ([4dd2c3f](https://github.com/holalfonso-ship-it/agentic-design-system/commit/4dd2c3f2518d5569afd6fd6f2a5062af6f7f5989))
+
 ## [0.10.0](https://github.com/holalfonso-ship-it/agentic-design-system/compare/agentic-design-system-v0.9.0...agentic-design-system-v0.10.0) (2026-10-16)
 
 
