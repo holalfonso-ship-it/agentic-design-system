@@ -181,6 +181,10 @@ export const plum = {
 
 export const red = {
   "400": "#F1574F",
+  // `900` (#5A0702): texto de las acciones destructivas del Dropdown menu sobre `bg.surface`
+  // (14,3:1) y sobre `feedback.error-subtle` en hover (12:1). `feedback.error` (#E60C00) no
+  // llega a 4,5:1 sobre el subtle (3,98:1). Añadido al diseñar el Dropdown menu (2026-10-16).
+  "900": "#5A0702",
 } as const;
 
 /**

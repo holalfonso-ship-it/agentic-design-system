@@ -1,7 +1,8 @@
 import { semantic, neutral, radius, fontSize, lineHeight, fontFamily, space, fontWeight } from "../../tokens";
 import { Button } from "../Button";
 import { Icon } from "../Icon";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
+import { useModalBehavior } from "../../hooks/useModalBehavior";
 import type { CSSProperties, ReactNode } from "react";
 
 export interface ModalProps {
@@ -18,9 +19,6 @@ export interface ModalProps {
   className?: string;
   style?: CSSProperties;
 }
-
-const FOCUSABLE_SELECTOR =
-  'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
 /**
  * Modal — bottom sheet: backdrop + sheet (handle, header con título y botón
@@ -59,43 +57,8 @@ export function Modal({
   style,
 }: ModalProps) {
   const sheetRef = useRef<HTMLDivElement>(null);
-  const previousFocusRef = useRef<HTMLElement | null>(null);
-
-  useEffect(() => {
-    if (!open) return;
-
-    previousFocusRef.current = document.activeElement as HTMLElement | null;
-    const sheet = sheetRef.current;
-    const firstFocusable = sheet?.querySelector<HTMLElement>(FOCUSABLE_SELECTOR);
-    firstFocusable?.focus();
-
-    function handleKeyDown(event: KeyboardEvent) {
-      if (event.key === "Escape") {
-        onClose();
-        return;
-      }
-      if (event.key !== "Tab" || !sheet) return;
-
-      const focusable = sheet.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR);
-      if (focusable.length === 0) return;
-      const first = focusable[0];
-      const last = focusable[focusable.length - 1];
-
-      if (event.shiftKey && document.activeElement === first) {
-        event.preventDefault();
-        last.focus();
-      } else if (!event.shiftKey && document.activeElement === last) {
-        event.preventDefault();
-        first.focus();
-      }
-    }
-
-    document.addEventListener("keydown", handleKeyDown);
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-      previousFocusRef.current?.focus();
-    };
-  }, [open, onClose]);
+  // Foco, Escape, focus trap y devolución del foco: ver useModalBehavior.
+  useModalBehavior(open, onClose, sheetRef);
 
   if (!open) return null;
 
