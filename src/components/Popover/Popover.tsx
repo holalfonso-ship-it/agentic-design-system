@@ -77,12 +77,21 @@ export function Popover({
     wrapperRef.current?.querySelector<HTMLElement>("[aria-haspopup]")?.focus();
   }, [setOpen]);
 
+  // Abierto desde el primer render (defaultOpen u open): no roba el foco al cargar la página.
+  const skipFocus = useRef(open);
+
   useEffect(() => {
-    if (!open) return;
-    const panel = panelRef.current;
-    // Al abrirse el foco entra en el panel: en lo primero interactivo, o en el panel.
-    const target = panel?.querySelector<HTMLElement>("button, [href], input, select, textarea") ?? panel;
-    target?.focus();
+    if (!open) {
+      skipFocus.current = false;
+      return;
+    }
+    if (!skipFocus.current) {
+      // Al abrirse el foco entra en el panel: en lo primero interactivo, o en el panel.
+      const panel = panelRef.current;
+      const target = panel?.querySelector<HTMLElement>("button, [href], input, select, textarea") ?? panel;
+      target?.focus();
+    }
+    skipFocus.current = false;
 
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") closeAndRestore();

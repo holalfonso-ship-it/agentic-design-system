@@ -56,6 +56,11 @@ describe("DropdownMenu", () => {
     expect(screen.getByRole("menuitem", { name: "Ajustes" })).toHaveFocus();
   });
 
+  it("defaultOpen no roba el foco al cargar", () => {
+    setup({ defaultOpen: true });
+    expect(screen.getByRole("menuitem", { name: "Ajustes" })).not.toHaveFocus();
+  });
+
   it("flecha abajo en el botón lo abre", async () => {
     setup();
     screen.getByRole("button", { name: "Opciones" }).focus();

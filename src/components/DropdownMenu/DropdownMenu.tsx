@@ -104,9 +104,16 @@ export function DropdownMenu({
     if (index !== undefined) rowRefs.current[index]?.focus();
   }, []);
 
+  // Abierto desde el primer render (defaultOpen u open): no roba el foco al cargar la página.
+  const skipFocus = useRef(open);
+
   useEffect(() => {
-    if (!open) return;
-    focusRow(enabled[0]);
+    if (!open) {
+      skipFocus.current = false;
+      return;
+    }
+    if (!skipFocus.current) focusRow(enabled[0]);
+    skipFocus.current = false;
 
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") closeAndRestore();
