@@ -14,7 +14,7 @@ export const meta = {
     "Lista de acciones anclada a un botón. Cada fila (Menu item) lleva icono opcional, etiqueta y marca de selección; tone=destructive para lo que borra o bloquea; admite separadores y filas deshabilitadas.",
   figma: {
     library: "Aida",
-    // Pendiente de publicar la librería: la key es la del componente 253:212 (Dropdown menu).
+    // Librería publicada (2026-10-16): la key es la del componente 253:212 (Dropdown menu).
     // La fila es el component set Menu item, 253:211, key 0bb9fc1cd5e79099c6459a05929d110e267488d7.
     componentKey: "bbfd6fb04b8738a081a7fc79f2654737b651f90f",
     nodeId: "253:212",

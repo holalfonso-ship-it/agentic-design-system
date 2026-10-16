@@ -12,7 +12,7 @@ export const meta = {
     "Bocadillo oscuro con una ayuda breve que aparece al pasar el ratón o enfocar con teclado. Cuatro posiciones: top, bottom, left y right.",
   figma: {
     library: "Aida",
-    // Pendiente de publicar la librería: la key es la del component set 243:236 en el archivo.
+    // Librería publicada (2026-10-16): la key es la del component set 243:236 en el archivo.
     componentKey: "ebff1b5e2c32564e1faae323b65fb4e9889e16ee",
     nodeId: "243:236",
     type: "component_set",

@@ -14,7 +14,7 @@ export const meta = {
     "Aviso en línea, persistente y no bloqueante: icono, título opcional, mensaje y acción opcional. Cuatro tipos: info, success, warning y error.",
   figma: {
     library: "Aida",
-    // Pendiente de publicar la librería: la key es la del component set 239:178 en el archivo.
+    // Librería publicada (2026-10-16): la key es la del component set 239:178 en el archivo.
     componentKey: "56a4595801c489f8c52a5ab1ec5143d44f00730a",
     nodeId: "239:178",
     type: "component_set",

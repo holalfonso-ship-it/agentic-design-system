@@ -14,7 +14,7 @@ export const meta = {
     "Aviso efímero y no bloqueante sobre fondo inverso: icono, título opcional, mensaje, acción opcional y cierre. Cuatro tipos: info, success, warning y error. Incluye ToastProvider y useToast para mostrarlo, apilarlo y retirarlo solo.",
   figma: {
     library: "Aida",
-    // Pendiente de publicar la librería: la key es la del component set 241:201 en el archivo.
+    // Librería publicada (2026-10-16): la key es la del component set 241:201 en el archivo.
     componentKey: "4e6d074dcc56e6d9842b960a6546907bd91f370f",
     nodeId: "241:201",
     type: "component_set",
