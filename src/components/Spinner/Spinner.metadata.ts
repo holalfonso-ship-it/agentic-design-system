@@ -11,7 +11,7 @@ export const meta = {
     "Indicador de carga de duración desconocida: un anillo gris con un cuarto oscuro que gira. Tres tamaños: sm (16), md (24) y lg (32).",
   figma: {
     library: "Aida",
-    // Pendiente de publicar la librería: la key es la del component set 243:269 en el archivo.
+    // Librería publicada (2026-10-16): la key es la del component set 243:269 en el archivo.
     componentKey: "9c6429e4031c6d39641eb4d7ac2cd22fa9a904de",
     nodeId: "243:269",
     type: "component_set",

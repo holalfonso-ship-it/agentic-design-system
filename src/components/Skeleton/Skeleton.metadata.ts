@@ -12,7 +12,7 @@ export const meta = {
     "Hueco gris que ocupa el lugar del contenido mientras carga. Tres formas: text (una línea), circle (avatar) y rect (imagen o tarjeta).",
   figma: {
     library: "Aida",
-    // Pendiente de publicar la librería: la key es la del component set 243:289 en el archivo.
+    // Librería publicada (2026-10-16): la key es la del component set 243:289 en el archivo.
     componentKey: "6b3ae2bae301c57213019e9be3e46d3ac661fbf3",
     nodeId: "243:289",
     type: "component_set",

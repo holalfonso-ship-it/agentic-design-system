@@ -12,7 +12,7 @@ export const meta = {
     "Panel lateral modal de 280 px: fondo oscurecido, cabecera con título y botón cerrar, divider, cuerpo con scroll y footer opcional con acción secundaria y primaria. Entra por el lado final (side=end) o el inicial (side=start).",
   figma: {
     library: "Aida",
-    // Pendiente de publicar la librería: la key es la del component set 254:237 en el archivo.
+    // Librería publicada (2026-10-16): la key es la del component set 254:237 en el archivo.
     componentKey: "0abde49a4779fbeec4b2e2a586244d551b211abf",
     nodeId: "254:237",
     type: "component_set",

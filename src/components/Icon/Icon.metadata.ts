@@ -13,6 +13,8 @@ export const meta = {
     "Icono de la librería: glifo SVG en línea con tamaño y color configurables. Decorativo por defecto; con `title` pasa a ser una imagen con nombre accesible.",
   figma: {
     library: "Aida",
+    // Librería publicada (2026-10-16): key del component set «Icon (Lucide)» 246:269.
+    componentKey: "aadc897cc9ff32e53b95a77d51a59b5e14aebcb6",
     nodeId: "246:269",
     type: "component_set",
   },

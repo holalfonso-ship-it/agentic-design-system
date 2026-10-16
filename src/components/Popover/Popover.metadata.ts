@@ -12,7 +12,7 @@ export const meta = {
     "Panel flotante anclado a un elemento, con título opcional, contenido breve y una acción opcional. No es modal: no bloquea la pantalla y se cierra con Escape o al pulsar fuera.",
   figma: {
     library: "Aida",
-    // Pendiente de publicar la librería: la key es la del componente 252:155 en el archivo.
+    // Librería publicada (2026-10-16): la key es la del componente 252:155 en el archivo.
     componentKey: "1e81ba9c9dd4036d2b1ae34b2d3af54a1aeeb6ba",
     nodeId: "252:155",
     type: "component",
