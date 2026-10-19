@@ -38,6 +38,12 @@ jobs:
       - name: Tipos y build
         run: npm run build
 
+      - name: Instalar navegador de Playwright (addon-vitest)
+        # @storybook/addon-vitest ejecuta las stories en un navegador real
+        # (proyecto "storybook" en vite.config.ts, provider: playwright).
+        # Sin este paso, "Tests" falla en segundos al no encontrar Chromium.
+        run: npx playwright install --with-deps chromium
+
       - name: Tests
         run: npm run test:coverage -- --coverage.reporter=text --coverage.reporter=lcov
 
