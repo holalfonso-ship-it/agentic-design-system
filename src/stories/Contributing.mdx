@@ -6,11 +6,11 @@ import * as PopoverStories from "../components/Popover/Popover.stories";
 <style>{`
 .aida-timeline { counter-reset: aida-step; }
 .aida-timeline ol { list-style: none; padding-left: 0; margin: 24px 0; }
-.aida-timeline li { counter-increment: aida-step; position: relative; padding-left: 48px; margin-bottom: 20px; }
-.aida-timeline li:not(:last-child) {
-  border-left: 2px solid #E3DED9; margin-left: 15px; padding-left: 33px;
+.aida-timeline li {
+  counter-increment: aida-step; position: relative; margin-bottom: 20px;
+  margin-left: 15px; padding-left: 33px; border-left: 2px solid #E3DED9;
 }
-.aida-timeline li:last-child { padding-left: 48px; }
+.aida-timeline li:last-child { border-left-color: transparent; }
 .aida-timeline li::before {
   content: counter(aida-step);
   position: absolute; left: -17px; top: 0;
