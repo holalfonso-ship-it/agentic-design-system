@@ -1,0 +1,205 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import * as PopoverStories from "../components/Popover/Popover.stories";
+import "./docs-visuals.css";
+
+<Meta title="Contribución" />
+
+# Contribuir a Aida
+
+Esta página es para quien va a diseñar o programar el siguiente componente de
+**Aida**. No repite el framework completo (eso vive en `CLAUDE.md`, en la
+raíz del repo), sino que da el camino corto: qué mirar primero, cuándo
+extender en vez de crear, y qué tiene que estar hecho antes de abrir una PR.
+
+Lo que hace distinto a este sistema de otros onboardings de design system:
+cada componente nace en Figma, se lleva a código con su metadata, sus tests
+y su story de Do's y don'ts, y queda trazado de vuelta a Figma y a Notion.
+No es "escribe el componente y documenta si te acuerdas".
+
+## Elige tu puerta
+
+<div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 16, margin: "24px 0" }}>
+  <div className="aida-door aida-door--light" style={{ borderRadius: 12, padding: 24, background: "#DCF3A2", color: "#151211", fontFamily: '"SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif' }}>
+    <div style={{ width: 40, height: 40, borderRadius: 999, background: "rgba(21,18,17,0.1)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 16 }}>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 20l4-1 10-10-3-3L5 16l-1 4z" /><path d="M14 7l3 3" /></svg>
+    </div>
+    <p style={{ fontSize: 20, lineHeight: "28px", fontWeight: 600, margin: "0 0 8px" }}>Soy diseñadora o diseñador</p>
+    <p style={{ fontSize: 14, lineHeight: "20px", margin: 0 }}>Empiezas en Figma. Lo que más te importa:</p>
+    <ul>
+      <li>La librería <code>Aida</code>, con variables enlazadas a los tokens</li>
+      <li>El <a href="#extender-o-crear">árbol de decisión</a>: extender vs. crear</li>
+      <li>Los <strong>Do's y don'ts</strong> de cada componente, tu guía de uso, no solo del desarrollador</li>
+    </ul>
+  </div>
+  <div className="aida-door aida-door--dark" style={{ borderRadius: 12, padding: 24, background: "#452476", color: "#FFFFFF", fontFamily: '"SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif' }}>
+    <div style={{ width: 40, height: 40, borderRadius: 999, background: "rgba(255,255,255,0.14)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 16 }}>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M8 6L2 12l6 6" /><path d="M16 6l6 6-6 6" /></svg>
+    </div>
+    <p style={{ fontSize: 20, lineHeight: "28px", fontWeight: 600, margin: "0 0 8px" }}>Soy desarrollador o desarrolladora</p>
+    <p style={{ fontSize: 14, lineHeight: "20px", margin: 0 }}>Empiezas en <code>index.toon</code> y <code>CLAUDE.md</code>. Lo que más te importa:</p>
+    <ul>
+      <li>El <a href="#el-camino-en-6-pasos">camino en 6 pasos</a>, de Figma a la PR</li>
+      <li>La metadata ejecutable (<code>&lt;Nombre&gt;.metadata.ts</code>) y el índice generado</li>
+      <li>El <a href="#checklist-antes-de-abrir-la-pr">checklist</a> antes de abrir la PR</li>
+    </ul>
+  </div>
+</div>
+
+Casi siempre hace falta leer las dos puertas: quien diseña necesita saber qué
+pide la metadata, y quien programa necesita los Do's y don'ts para escribir
+la story. Tómalo como énfasis, no como carril separado.
+
+## ¿Extender o crear?
+
+Esta es la puerta dura del sistema (`CLAUDE.md`, sección "Antes de crear un
+componente nuevo"). Síguela en orden, no es una sugerencia:
+
+<div className="aida-timeline aida-timeline--gate">
+
+1. **Lee `index.toon`** antes de explorar `src/components` a mano. Es el
+   grafo de componentes generado por `npm run generate-index`.
+2. **Busca por categoría**, no por nombre exacto: `action`, `navigation`,
+   `data-display`, `form`, `feedback`, `overlay`.
+3. **¿Un componente existente cubre ≥70% de las props que necesitas?**
+   Extiéndelo (nueva variante, nueva prop) en vez de crear uno nuevo.
+4. **¿Necesitas un color, radio o tamaño nuevo?** Mira `src/tokens/`
+   primero. Ningún componente debe tener un hex o un px a mano que ya
+   exista como token.
+5. **¿Nada de lo anterior encaja?** No fuerces el componente más parecido
+   ni te inventes uno nuevo por tu cuenta. Añade una línea a
+   `flags.jsonl` (ver el esquema en `CLAUDE.md`) y responde explicando
+   por qué no encaja, citando el componente o categoría más cercana. El
+   flag **es** el resultado correcto, no construyas nada "mientras tanto".
+
+</div>
+
+`flags.jsonl` es el backlog real del sistema: en vez de adivinar qué falta,
+se prioriza con los casos reales donde el sistema no dio la talla.
+
+## El camino en 6 pasos
+
+Tomando `Popover` como ejemplo (familia Overlay, Fase 5, 2026-10-16):
+
+<div className="aida-timeline">
+
+1. **Diseña el componente en Figma**, en la librería `Aida`, con cada
+   color, radio y espaciado enlazado a una variable, no a un valor suelto.
+   Anota el `componentKey` y el `nodeId`; los necesitas en el paso 3.
+2. **Escribe el componente** en `src/components/<Nombre>/<Nombre>.tsx`,
+   consumiendo tokens de `src/tokens/`, nunca un hex o un px a mano.
+3. **Documenta la metadata** en `<Nombre>.metadata.ts`, junto al código.
+   Campos obligatorios: `name`, `category`, `description`, `props`,
+   `tokens`, `useWhen`, `a11y`, `guidelines`. Si el componente viene de
+   Figma, registra `figma.library` y `figma.componentKey`: es lo que
+   permite detectar cuando Figma cambia y el código no se actualizó (o
+   viceversa). Sin metadata, el componente es invisible para el índice y
+   para cualquier agente.
+4. **Añade `<Nombre>.stories.tsx`** con `tags: ["autodocs"]`: cada story
+   reutiliza `description` y `useWhen` de la metadata, así que nunca se
+   desincronizan. Incluye la story **Do's y don'ts**: `guidelines` en la
+   metadata es una lista de pares `{ do, dont, reason }` (mínimo 2), y
+   cada par se dibuja con un ejemplo en el mismo orden; `withExamples`
+   falla en voz alta si los números no cuadran. Ejemplo completo más abajo.
+5. **Escribe `<Nombre>.test.tsx`** (Vitest + Testing Library): cada
+   variante/estado, los callbacks de `props`, el comportamiento de `a11y`
+   (rol, teclado, área táctil) y una comprobación de axe-core
+   (`expectNoA11yViolations`). Corre `npm run generate-index` para que el
+   índice recoja el componente nuevo.
+6. **Verifica y abre la PR**: `npm test`, `npm run build-storybook`, y si
+   el componente toca conteos citados en `README.md`, `CLAUDE.md` o
+   `Introduction.mdx` (hoy, 25 componentes), actualízalos todos juntos.
+   Usa Conventional Commits (`feat:`, `fix:`, `docs:`...): el changelog y
+   la versión se generan a partir de ellos.
+
+</div>
+
+## Ejemplo completo: Popover, de Figma a publicado
+
+`Popover` es el panel flotante no modal de la familia Overlay: se diseñó en
+Figma (componente `252:155`, librería `Aida`) sin ninguna variable nueva,
+solo tokens que ya existían (borde en vez de sombra, como `Select` y
+`Card`). Así se ven sus Do's y don'ts reales, tal cual los lee también
+cualquier agente desde la metadata:
+
+<Canvas of={PopoverStories.DosYDonts} />
+
+El primer par es el más común al adoptar un componente de overlay: meter un
+formulario dentro de un panel que se cierra al pulsar fuera. El segundo es
+el que rompe la accesibilidad sin que se note a simple vista: gestionar el
+estado abierto/cerrado por fuera de `trigger` en vez de dejar que el
+componente lo cablee.
+
+## Checklist antes de abrir la PR
+
+<div className="aida-boxed-list aida-boxed-list--check">
+
+- El componente tiene su `<Nombre>.metadata.ts` completo (los 8 campos
+  obligatorios), y `figma.componentKey` si viene de Figma.
+- `npm run generate-index` corrido después del cambio de metadata.
+- `<Nombre>.stories.tsx` cubre todas las variantes/estados de
+  `meta.states`, con `tags: ["autodocs"]` y la story Do's y don'ts
+  (mínimo 2 pares, con un ejemplo cada uno).
+- `<Nombre>.test.tsx` cubre variantes, callbacks, a11y (rol, teclado,
+  área táctil) y pasa axe-core.
+- `npm test` y `npm run build-storybook` en verde.
+- Si tocaste tokens, vienen de `src/tokens/`, nada hardcodeado.
+- Si el conteo de componentes cambió, está actualizado en `README.md`,
+  `CLAUDE.md` e `Introduction.mdx` a la vez.
+- Si nada encajaba, hay una línea nueva en `flags.jsonl`, no un
+  componente forzado.
+- Commit en Conventional Commits.
+
+</div>
+
+## Preguntas frecuentes
+
+<div className="aida-faq-item">
+
+**¿Y si un componente existente casi encaja pero no del todo?**
+
+Esa es la zona donde más se tuerce el sistema. Si cubre el 70% o más de las
+props, es una extensión, no un componente nuevo: una prop o variante más,
+no una copia con otro nombre. Por debajo del 70%, sigue el paso 5 del árbol
+de decisión: flag, no invención.
+
+</div>
+
+<div className="aida-faq-item">
+
+**¿Puedo construir "una versión provisional" mientras se decide?**
+
+No. El flag en `flags.jsonl` es el resultado correcto del caso, no un paso
+intermedio antes de construir igual: eso es justo lo que la puerta dura
+intenta evitar.
+
+</div>
+
+<div className="aida-faq-item">
+
+**Mi componente usa overlays o un patrón que no se puede dibujar como
+ejemplo visual de Do's y don'ts, ¿qué hago?**
+
+Usa `<Code>` (de `src/stories/Guidelines.tsx`) en vez de un ejemplo
+renderizado: es lo que hace `Popover` en su segundo par, arriba.
+
+</div>
+
+<div className="aida-faq-item">
+
+**¿Cómo pido ayuda o discuto una decisión?**
+
+Si es sobre si algo encaja o no, abre el flag primero: así queda el caso
+real registrado aunque la respuesta tarde. Para lo demás, abre un Issue en
+[holalfonso-ship-it/agentic-design-system](https://github.com/holalfonso-ship-it/agentic-design-system).
+
+</div>
+
+<div className="aida-faq-item">
+
+**¿Dónde queda constancia de lo que se decidió y de lo que se hizo?**
+
+En Notion, no en este repo: la base **Decisiones de Aida** para el porqué,
+y la **Bitácora de sesiones de Aida** para qué se hizo en cada sesión, con
+sus commits. `CLAUDE.md` es el protocolo; Notion es el historial.
+
+</div>

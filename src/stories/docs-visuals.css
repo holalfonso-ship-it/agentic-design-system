@@ -1,0 +1,85 @@
+/*
+ * Estilos compartidos de las páginas de documentación a mano (MDX) del
+ * Storybook: Introducción y Contribución. No es un token ni un componente
+ * de la librería (ver CLAUDE.md, "Al crear o modificar un componente"),
+ * es solo la vitrina. Los valores de color repiten los tokens reales de
+ * src/tokens/colors.ts a mano porque un archivo .css no puede importar un
+ * módulo .ts.
+ */
+
+/* Timeline numerada (pasos en orden): círculo relleno + línea que conecta. */
+.aida-timeline { counter-reset: aida-step; }
+.aida-timeline ol { list-style: none; padding-left: 0; margin: 24px 0; }
+.aida-timeline li {
+  counter-increment: aida-step; position: relative; margin-bottom: 20px;
+  margin-left: 15px; padding-left: 33px; border-left: 2px solid #E3DED9;
+}
+.aida-timeline li:last-child { border-left-color: transparent; }
+.aida-timeline li::before {
+  content: counter(aida-step);
+  position: absolute; left: -17px; top: 0;
+  width: 32px; height: 32px; border-radius: 999px;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 600; font-size: 14px; line-height: 1;
+  background: #361C5C; color: #FFFFFF; box-shadow: 0 0 0 4px #FFFFFF;
+}
+/* Variante "puerta de decisión" (extender vs. crear): círculo en contorno,
+   no relleno, porque cada paso es una pregunta, no una acción ejecutada. */
+.aida-timeline--gate li::before {
+  background: #EDEAF3; color: #361C5C; border: 2px solid #361C5C;
+  width: 28px; height: 28px; left: -15px;
+}
+
+/* Tarjetas de color a pantalla completa (las dos puertas de Contribución).
+   Reutilizan la paleta real de ProductCard (bnpl/credit) para que la
+   página de contribución se vea con los mismos colores que el propio
+   sistema documenta. */
+.aida-door ul { list-style: none; padding-left: 0; margin: 12px 0 0; }
+.aida-door li { position: relative; padding-left: 18px; margin-bottom: 8px; line-height: 1.4; }
+.aida-door li::before {
+  content: ""; position: absolute; left: 0; top: 8px;
+  width: 6px; height: 6px; border-radius: 999px; background: currentColor;
+}
+.aida-door code { border-radius: 4px; padding: 1px 6px; font-size: 13px; }
+/* El tema de docs de Storybook pinta p/li/strong con su propio color
+   directamente (no por herencia), así que hay que forzarlo aquí. */
+.aida-door--light code { background: rgba(21,18,17,0.08) !important; color: #151211 !important; }
+.aida-door--light a { color: #361C5C !important; text-decoration: underline; }
+.aida-door--light p, .aida-door--light li, .aida-door--light strong { color: #151211 !important; }
+.aida-door--dark code { background: rgba(255,255,255,0.16) !important; color: #FFFFFF !important; }
+.aida-door--dark a { color: #FFFFFF !important; text-decoration: underline; }
+.aida-door--dark p, .aida-door--dark li, .aida-door--dark strong { color: #FFFFFF !important; }
+
+/* Tarjetas blancas con borde, más tranquilas que las puertas: para los 3
+   pilares de Introducción y para listas dentro de una caja (checklist,
+   estado del sistema). */
+.aida-card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 24px 0; }
+.aida-card {
+  background: #FFFFFF; border: 1px solid #C0BEBC; border-radius: 12px;
+  padding: 24px; font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+.aida-card-mark {
+  width: 40px; height: 40px; border-radius: 999px; background: #EDEAF3; color: #361C5C;
+  display: flex; align-items: center; justify-content: center; margin-bottom: 16px;
+}
+.aida-card p.aida-card-title { font-size: 18px; line-height: 24px; font-weight: 600; color: #151211; margin: 0 0 8px; }
+.aida-card p.aida-card-body { font-size: 14px; line-height: 20px; color: #2E2824; margin: 0; }
+
+/* Lista dentro de una tarjeta, con casilla (checklist) o topo (estado). */
+.aida-boxed-list { background: #FFFFFF; border: 1px solid #C0BEBC; border-radius: 12px; padding: 20px 24px; margin: 24px 0; }
+.aida-boxed-list ul { margin: 0; padding-left: 0; list-style: none; }
+.aida-boxed-list li { position: relative; padding: 7px 0 7px 30px; border-bottom: 1px solid #EDEAF3; }
+.aida-boxed-list li:last-child { border-bottom: none; }
+.aida-boxed-list--check li::before {
+  content: ""; position: absolute; left: 0; top: 9px;
+  width: 18px; height: 18px; border-radius: 4px; border: 1.5px solid #5C5653; background: #FFFFFF;
+}
+.aida-boxed-list--dot li::before {
+  content: ""; position: absolute; left: 6px; top: 15px;
+  width: 7px; height: 7px; border-radius: 999px; background: #361C5C;
+}
+
+/* Preguntas frecuentes: un bloque por pregunta, separado por un filete fino. */
+.aida-faq-item { padding: 20px 0; border-top: 1px solid #C0BEBC; }
+.aida-faq-item:first-of-type { border-top: none; padding-top: 4px; }
+.aida-faq-item p:first-child { margin-top: 0; }
