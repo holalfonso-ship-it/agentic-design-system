@@ -6,14 +6,14 @@ import * as PopoverStories from "../components/Popover/Popover.stories";
 # Contribuir a Aida
 
 Esta página es para quien va a diseñar o programar el siguiente componente de
-**Aida**. No repite el framework completo — eso vive en `CLAUDE.md`, en la
-raíz del repo — sino que da el camino corto: qué mirar primero, cuándo
+**Aida**. No repite el framework completo (eso vive en `CLAUDE.md`, en la
+raíz del repo), sino que da el camino corto: qué mirar primero, cuándo
 extender en vez de crear, y qué tiene que estar hecho antes de abrir una PR.
 
 Lo que hace distinto a este sistema de otros onboardings de design system:
 cada componente nace en Figma, se lleva a código con su metadata, sus tests
-y su story de Do's y don'ts, y queda trazado de vuelta a Figma y a Notion —
-no es "escribe el componente y documenta si te acuerdas".
+y su story de Do's y don'ts, y queda trazado de vuelta a Figma y a Notion.
+No es "escribe el componente y documenta si te acuerdas".
 
 ## Elige tu puerta
 
@@ -24,7 +24,7 @@ no es "escribe el componente y documenta si te acuerdas".
     <ul>
       <li>La librería <code>Aida</code>, con variables enlazadas a los tokens</li>
       <li>El <a href="#extender-o-crear">árbol de decisión</a>: extender vs. crear</li>
-      <li>Los <strong>Do's y don'ts</strong> de cada componente — son tu guía de uso, no solo del desarrollador</li>
+      <li>Los <strong>Do's y don'ts</strong> de cada componente, tu guía de uso, no solo del desarrollador</li>
     </ul>
   </div>
   <div style={{ border: "1px solid #E3DED9", borderRadius: 12, padding: 20 }}>
@@ -45,14 +45,14 @@ la story. Tómalo como énfasis, no como carril separado.
 ## ¿Extender o crear?
 
 Esta es la puerta dura del sistema (`CLAUDE.md`, sección "Antes de crear un
-componente nuevo"). Síguela en orden — no es una sugerencia:
+componente nuevo"). Síguela en orden, no es una sugerencia:
 
 1. **Lee `index.toon`** antes de explorar `src/components` a mano. Es el
    grafo de componentes generado por `npm run generate-index`.
 2. **Busca por categoría**, no por nombre exacto: `action`, `navigation`,
    `data-display`, `form`, `feedback`, `overlay`.
 3. **¿Un componente existente cubre ≥70% de las props que necesitas?**
-   Extiéndelo — nueva variante, nueva prop — en vez de crear uno nuevo.
+   Extiéndelo (nueva variante, nueva prop) en vez de crear uno nuevo.
 4. **¿Necesitas un color, radio o tamaño nuevo?** Mira `src/tokens/`
    primero. Ningún componente debe tener un hex o un px a mano que ya
    exista como token.
@@ -60,7 +60,7 @@ componente nuevo"). Síguela en orden — no es una sugerencia:
    ni te inventes uno nuevo por tu cuenta. Añade una línea a
    `flags.jsonl` (ver el esquema en `CLAUDE.md`) y responde explicando
    por qué no encaja, citando el componente o categoría más cercana. El
-   flag **es** el resultado correcto — no construyas nada "mientras
+   flag **es** el resultado correcto, no construyas nada "mientras
    tanto".
 
 `flags.jsonl` es el backlog real del sistema: en vez de adivinar qué falta,
@@ -71,22 +71,22 @@ se prioriza con los casos reales donde el sistema no dio la talla.
 Tomando `Popover` como ejemplo (familia Overlay, Fase 5, 2026-10-16):
 
 1. **Diseña el componente en Figma**, en la librería `Aida`, con cada
-   color, radio y espaciado enlazado a una variable — no a un valor suelto.
+   color, radio y espaciado enlazado a una variable, no a un valor suelto.
    Anota el `componentKey` y el `nodeId`; los necesitas en el paso 3.
 2. **Escribe el componente** en `src/components/<Nombre>/<Nombre>.tsx`,
-   consumiendo tokens de `src/tokens/` — nunca un hex o un px a mano.
+   consumiendo tokens de `src/tokens/`, nunca un hex o un px a mano.
 3. **Documenta la metadata** en `<Nombre>.metadata.ts`, junto al código.
    Campos obligatorios: `name`, `category`, `description`, `props`,
    `tokens`, `useWhen`, `a11y`, `guidelines`. Si el componente viene de
-   Figma, registra `figma.library` y `figma.componentKey` — es lo que
+   Figma, registra `figma.library` y `figma.componentKey`: es lo que
    permite detectar cuando Figma cambia y el código no se actualizó (o
    viceversa). Sin metadata, el componente es invisible para el índice y
    para cualquier agente.
-4. **Añade `<Nombre>.stories.tsx`** con `tags: ["autodocs"]` — cada story
+4. **Añade `<Nombre>.stories.tsx`** con `tags: ["autodocs"]`: cada story
    reutiliza `description` y `useWhen` de la metadata, así que nunca se
    desincronizan. Incluye la story **Do's y don'ts**: `guidelines` en la
    metadata es una lista de pares `{ do, dont, reason }` (mínimo 2), y
-   cada par se dibuja con un ejemplo en el mismo orden — `withExamples`
+   cada par se dibuja con un ejemplo en el mismo orden; `withExamples`
    falla en voz alta si los números no cuadran. Ejemplo completo más
    abajo.
 5. **Escribe `<Nombre>.test.tsx`** (Vitest + Testing Library): cada
@@ -97,13 +97,13 @@ Tomando `Popover` como ejemplo (familia Overlay, Fase 5, 2026-10-16):
 6. **Verifica y abre la PR**: `npm test`, `npm run build-storybook`, y si
    el componente toca conteos citados en `README.md`, `CLAUDE.md` o
    `Introduction.mdx` (hoy, 25 componentes), actualízalos todos juntos.
-   Usa Conventional Commits (`feat:`, `fix:`, `docs:`…) — el changelog y
+   Usa Conventional Commits (`feat:`, `fix:`, `docs:`...): el changelog y
    la versión se generan a partir de ellos.
 
 ## Ejemplo completo: Popover, de Figma a publicado
 
 `Popover` es el panel flotante no modal de la familia Overlay: se diseñó en
-Figma (componente `252:155`, librería `Aida`) sin ninguna variable nueva —
+Figma (componente `252:155`, librería `Aida`) sin ninguna variable nueva,
 solo tokens que ya existían (borde en vez de sombra, como `Select` y
 `Card`). Así se ven sus Do's y don'ts reales, tal cual los lee también
 cualquier agente desde la metadata:
@@ -127,10 +127,10 @@ componente lo cablee.
 - [ ] `<Nombre>.test.tsx` cubre variantes, callbacks, a11y (rol, teclado,
       área táctil) y pasa axe-core.
 - [ ] `npm test` y `npm run build-storybook` en verde.
-- [ ] Si tocaste tokens, vienen de `src/tokens/` — nada hardcodeado.
+- [ ] Si tocaste tokens, vienen de `src/tokens/`, nada hardcodeado.
 - [ ] Si el conteo de componentes cambió, está actualizado en `README.md`,
       `CLAUDE.md` e `Introduction.mdx` a la vez.
-- [ ] Si nada encajaba, hay una línea nueva en `flags.jsonl` — no un
+- [ ] Si nada encajaba, hay una línea nueva en `flags.jsonl`, no un
       componente forzado.
 - [ ] Commit en Conventional Commits.
 
@@ -138,26 +138,26 @@ componente lo cablee.
 
 **¿Y si un componente existente casi encaja pero no del todo?**
 Esa es la zona donde más se tuerce el sistema. Si cubre el 70% o más de las
-props, es una extensión, no un componente nuevo — una prop o variante más,
+props, es una extensión, no un componente nuevo: una prop o variante más,
 no una copia con otro nombre. Por debajo del 70%, sigue el paso 5 del árbol
 de decisión: flag, no invención.
 
 **¿Puedo construir "una versión provisional" mientras se decide?**
 No. El flag en `flags.jsonl` es el resultado correcto del caso, no un paso
-intermedio antes de construir igual — eso es justo lo que la puerta dura
+intermedio antes de construir igual: eso es justo lo que la puerta dura
 intenta evitar.
 
 **Mi componente usa overlays o un patrón que no se puede dibujar como
 ejemplo visual de Do's y don'ts, ¿qué hago?**
 Usa `<Code>` (de `src/stories/Guidelines.tsx`) en vez de un ejemplo
-renderizado — es lo que hace `Popover` en su segundo par, arriba.
+renderizado: es lo que hace `Popover` en su segundo par, arriba.
 
 **¿Cómo pido ayuda o discuto una decisión?**
-Si es sobre si algo encaja o no, abre el flag primero — así queda el caso
+Si es sobre si algo encaja o no, abre el flag primero: así queda el caso
 real registrado aunque la respuesta tarde. Para lo demás, abre un Issue en
 [holalfonso-ship-it/agentic-design-system](https://github.com/holalfonso-ship-it/agentic-design-system).
 
 **¿Dónde queda constancia de lo que se decidió y de lo que se hizo?**
-En Notion, no en este repo: la base **Decisiones — Aida** para el porqué,
-y la **Bitácora de sesiones — Aida** para qué se hizo en cada sesión, con
+En Notion, no en este repo: la base **Decisiones · Aida** para el porqué,
+y la **Bitácora de sesiones · Aida** para qué se hizo en cada sesión, con
 sus commits. `CLAUDE.md` es el protocolo; Notion es el historial.
