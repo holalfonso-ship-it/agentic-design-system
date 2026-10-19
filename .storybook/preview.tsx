@@ -10,6 +10,7 @@ const preview: Preview = {
       storySort: {
         order: [
           "Introducción",
+          "Contribución",
           "Action",
           ["Button", "QuickActionTile", "Toggle"],
           "Navigation",
@@ -21,7 +22,7 @@ const preview: Preview = {
           "Feedback",
           ["Alert", "Toast", "Tooltip", "Spinner", "Skeleton"],
           "Overlay",
-          ["Modal"],
+          ["Modal", "Popover", "DropdownMenu", "Drawer"],
           "Starter kit",
           [
             "Empezar",
