@@ -40,8 +40,15 @@ import * as PopoverStories from "../components/Popover/Popover.stories";
 .aida-door--dark p, .aida-door--dark li, .aida-door--dark strong { color: #FFFFFF !important; }
 .aida-checklist { background: #FFFFFF; border: 1px solid #C0BEBC; border-radius: 12px; padding: 20px 24px; margin: 24px 0; }
 .aida-checklist ul { margin: 0; padding-left: 0; list-style: none; }
-.aida-checklist li { padding: 6px 0; }
-.aida-checklist input[type="checkbox"] { accent-color: #361C5C; width: 16px; height: 16px; margin-right: 8px; }
+.aida-checklist li {
+  position: relative; padding: 7px 0 7px 30px; border-bottom: 1px solid #EDEAF3;
+}
+.aida-checklist li:last-child { border-bottom: none; }
+.aida-checklist li::before {
+  content: ""; position: absolute; left: 0; top: 9px;
+  width: 18px; height: 18px; border-radius: 4px; border: 1.5px solid #5C5653;
+  background: #FFFFFF;
+}
 .aida-faq-item { padding: 20px 0; border-top: 1px solid #C0BEBC; }
 .aida-faq-item:first-of-type { border-top: none; padding-top: 4px; }
 .aida-faq-item p:first-child { margin-top: 0; }
@@ -176,21 +183,21 @@ componente lo cablee.
 
 <div className="aida-checklist">
 
-- [ ] El componente tiene su `<Nombre>.metadata.ts` completo (los 8 campos
-      obligatorios), y `figma.componentKey` si viene de Figma.
-- [ ] `npm run generate-index` corrido después del cambio de metadata.
-- [ ] `<Nombre>.stories.tsx` cubre todas las variantes/estados de
-      `meta.states`, con `tags: ["autodocs"]` y la story Do's y don'ts
-      (mínimo 2 pares, con un ejemplo cada uno).
-- [ ] `<Nombre>.test.tsx` cubre variantes, callbacks, a11y (rol, teclado,
-      área táctil) y pasa axe-core.
-- [ ] `npm test` y `npm run build-storybook` en verde.
-- [ ] Si tocaste tokens, vienen de `src/tokens/`, nada hardcodeado.
-- [ ] Si el conteo de componentes cambió, está actualizado en `README.md`,
-      `CLAUDE.md` e `Introduction.mdx` a la vez.
-- [ ] Si nada encajaba, hay una línea nueva en `flags.jsonl`, no un
-      componente forzado.
-- [ ] Commit en Conventional Commits.
+- El componente tiene su `<Nombre>.metadata.ts` completo (los 8 campos
+  obligatorios), y `figma.componentKey` si viene de Figma.
+- `npm run generate-index` corrido después del cambio de metadata.
+- `<Nombre>.stories.tsx` cubre todas las variantes/estados de
+  `meta.states`, con `tags: ["autodocs"]` y la story Do's y don'ts
+  (mínimo 2 pares, con un ejemplo cada uno).
+- `<Nombre>.test.tsx` cubre variantes, callbacks, a11y (rol, teclado,
+  área táctil) y pasa axe-core.
+- `npm test` y `npm run build-storybook` en verde.
+- Si tocaste tokens, vienen de `src/tokens/`, nada hardcodeado.
+- Si el conteo de componentes cambió, está actualizado en `README.md`,
+  `CLAUDE.md` e `Introduction.mdx` a la vez.
+- Si nada encajaba, hay una línea nueva en `flags.jsonl`, no un
+  componente forzado.
+- Commit en Conventional Commits.
 
 </div>
 
