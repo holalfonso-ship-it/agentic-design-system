@@ -1,41 +1,59 @@
 import { Meta } from "@storybook/addon-docs/blocks";
+import "./docs-visuals.css";
 
 <Meta title="Introducción" />
 
-# Aida — Agentic Design System
+# Aida: Agentic Design System
 
 Vitrina navegable de los componentes reales de **Aida**, el sistema de diseño
-agéntico construido a partir de la librería de Figma
-`Aida`. Esta es la Fase 4 del roadmap: la primera
-pieza pensada para poder enseñarse fuera del propio repo, no solo para que un
-agente de IA la consulte.
+agéntico construido a partir de la librería de Figma `Aida`. Esta es la Fase 4
+del roadmap: la primera pieza pensada para poder enseñarse fuera del propio
+repo, no solo para que un agente de IA la consulte.
 
 ## Los 3 pilares
 
-1. **Metadata por componente** (`<Nombre>.metadata.ts`) — qué es cada
-   componente, cuándo usarlo, qué tokens consume y su trazabilidad a Figma.
-   Cada story de esta vitrina reutiliza esa misma metadata como texto de
-   documentación, para que nunca queden desincronizadas.
-2. **Índice generado** (`index.toon`) — el grafo de componentes que
-   cualquier agente debe consultar antes de explorar el código a mano.
-3. **Protocolo para agentes** (`CLAUDE.md`) — reglas de cuándo extender vs.
-   crear un componente, y el ciclo **ARC** (Audit → Report → Compose) que
-   ya se ha ejecutado una vez sobre este mismo repo (Fase 3, 2026-09-14).
+<div className="aida-card-grid">
+  <div className="aida-card">
+    <div className="aida-card-mark">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="5" y="4" width="14" height="16" rx="2" /><path d="M9 9h6M9 13h6M9 17h3" /></svg>
+    </div>
+    <p className="aida-card-title">Metadata por componente</p>
+    <p className="aida-card-body"><code>&lt;Nombre&gt;.metadata.ts</code>: qué es cada componente, cuándo usarlo, qué tokens consume y su trazabilidad a Figma. Cada story de esta vitrina reutiliza esa misma metadata como texto de documentación, para que nunca queden desincronizadas.</p>
+  </div>
+  <div className="aida-card">
+    <div className="aida-card-mark">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="6" cy="6" r="2" /><circle cx="18" cy="6" r="2" /><circle cx="12" cy="18" r="2" /><path d="M7.7 7.3L11 16M16.3 7.3L13 16" /></svg>
+    </div>
+    <p className="aida-card-title">Índice generado</p>
+    <p className="aida-card-body"><code>index.toon</code>: el grafo de componentes que cualquier agente debe consultar antes de explorar el código a mano.</p>
+  </div>
+  <div className="aida-card">
+    <div className="aida-card-mark">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3l7 3v5c0 5-3 8.5-7 10-4-1.5-7-5-7-10V6z" /></svg>
+    </div>
+    <p className="aida-card-title">Protocolo para agentes</p>
+    <p className="aida-card-body"><code>CLAUDE.md</code>: reglas de cuándo extender vs. crear un componente, y el ciclo <strong>ARC</strong> (Audit → Report → Compose) que ya se ha ejecutado una vez sobre este mismo repo (Fase 3, 2026-09-14).</p>
+  </div>
+</div>
 
 ## Estado del sistema
 
+<div className="aida-boxed-list aida-boxed-list--dot">
+
 - **25 componentes** cubiertos: Button, TabBar, ProductCard,
-  TransactionListItem (Fase 0/1) · QuickActionTile, StatItem, Toggle,
-  Badge, Avatar, Input, Modal (Fase 2) · Icon (Ciclo ARC 3, glifos de
-  Lucide mapeados a los SF Symbols de Figma) · Checkbox, Radio, Select,
-  Textarea, Slider (Fase 5, familia «Formularios») · Alert, Toast, Tooltip, Spinner, Skeleton
-  (Fase 5, familia «Feedback») · Popover, DropdownMenu, Drawer (Fase 5, familia «Overlay»),
+  TransactionListItem (Fase 0/1); QuickActionTile, StatItem, Toggle,
+  Badge, Avatar, Input, Modal (Fase 2); Icon (Ciclo ARC 3, glifos de
+  Lucide mapeados a los SF Symbols de Figma); Checkbox, Radio, Select,
+  Textarea, Slider (Fase 5, familia «Formularios»); Alert, Toast, Tooltip, Spinner, Skeleton
+  (Fase 5, familia «Feedback»); Popover, DropdownMenu, Drawer (Fase 5, familia «Overlay»),
   todos diseñados primero en Figma.
 - **Primer ciclo de Audit/Compose cerrado** (Fase 3): tokens hardcodeados
   corregidos, `ProductCard` remodelado como producto + estado, y deuda de
   accesibilidad de Toggle/Modal/Input resuelta.
-- Categorías: `action`, `navigation`, `data-display`, `form`, `feedback`, `overlay` —
-  mismo orden que en el menú de la izquierda.
+- Categorías (mismo orden que en el menú de la izquierda): `action`,
+  `navigation`, `data-display`, `form`, `feedback`, `overlay`.
+
+</div>
 
 Navega por categoría en el sidebar para ver cada componente con sus
 variantes y estados reales.
