@@ -3,6 +3,36 @@ import * as PopoverStories from "../components/Popover/Popover.stories";
 
 <Meta title="Contribución" />
 
+<style>{`
+.aida-timeline { counter-reset: aida-step; }
+.aida-timeline ol { list-style: none; padding-left: 0; margin: 24px 0; }
+.aida-timeline li { counter-increment: aida-step; position: relative; padding-left: 48px; margin-bottom: 20px; }
+.aida-timeline li::before {
+  content: counter(aida-step);
+  position: absolute; left: 0; top: 0;
+  width: 32px; height: 32px; border-radius: 999px;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 600; font-size: 14px; line-height: 1;
+  background: #361C5C; color: #FFFFFF;
+}
+.aida-timeline--gate li::before {
+  background: transparent; color: #361C5C; border: 2px solid #361C5C;
+}
+.aida-door ul { list-style: none; padding-left: 0; margin: 12px 0 0; }
+.aida-door li { position: relative; padding-left: 18px; margin-bottom: 8px; line-height: 1.4; }
+.aida-door li::before {
+  content: ""; position: absolute; left: 0; top: 8px;
+  width: 6px; height: 6px; border-radius: 999px; background: currentColor;
+}
+.aida-checklist { background: #FFFFFF; border: 1px solid #C0BEBC; border-radius: 12px; padding: 20px 24px; margin: 24px 0; }
+.aida-checklist ul { margin: 0; padding-left: 0; list-style: none; }
+.aida-checklist li { padding: 6px 0; }
+.aida-checklist input[type="checkbox"] { accent-color: #361C5C; width: 16px; height: 16px; margin-right: 8px; }
+.aida-faq-item { padding: 20px 0; border-top: 1px solid #C0BEBC; }
+.aida-faq-item:first-of-type { border-top: none; padding-top: 4px; }
+.aida-faq-item p:first-child { margin-top: 0; }
+`}</style>
+
 # Contribuir a Aida
 
 Esta página es para quien va a diseñar o programar el siguiente componente de
@@ -17,19 +47,25 @@ No es "escribe el componente y documenta si te acuerdas".
 
 ## Elige tu puerta
 
-<div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, margin: "24px 0" }}>
-  <div style={{ border: "1px solid #E3DED9", borderRadius: 12, padding: 20 }}>
-    <strong>Soy diseñadora o diseñador</strong>
-    <p>Empiezas en Figma. Lo que más te importa:</p>
+<div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 16, margin: "24px 0" }}>
+  <div className="aida-door" style={{ borderRadius: 12, padding: 24, background: "#DCF3A2", color: "#151211", fontFamily: '"SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif' }}>
+    <div style={{ width: 40, height: 40, borderRadius: 999, background: "rgba(21,18,17,0.1)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 16 }}>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 20l4-1 10-10-3-3L5 16l-1 4z" /><path d="M14 7l3 3" /></svg>
+    </div>
+    <p style={{ fontSize: 20, lineHeight: "28px", fontWeight: 600, margin: "0 0 8px" }}>Soy diseñadora o diseñador</p>
+    <p style={{ fontSize: 14, lineHeight: "20px", margin: 0 }}>Empiezas en Figma. Lo que más te importa:</p>
     <ul>
       <li>La librería <code>Aida</code>, con variables enlazadas a los tokens</li>
       <li>El <a href="#extender-o-crear">árbol de decisión</a>: extender vs. crear</li>
       <li>Los <strong>Do's y don'ts</strong> de cada componente, tu guía de uso, no solo del desarrollador</li>
     </ul>
   </div>
-  <div style={{ border: "1px solid #E3DED9", borderRadius: 12, padding: 20 }}>
-    <strong>Soy desarrollador o desarrolladora</strong>
-    <p>Empiezas en <code>index.toon</code> y <code>CLAUDE.md</code>. Lo que más te importa:</p>
+  <div className="aida-door" style={{ borderRadius: 12, padding: 24, background: "#452476", color: "#FFFFFF", fontFamily: '"SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif' }}>
+    <div style={{ width: 40, height: 40, borderRadius: 999, background: "rgba(255,255,255,0.14)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 16 }}>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M8 6L2 12l6 6" /><path d="M16 6l6 6-6 6" /></svg>
+    </div>
+    <p style={{ fontSize: 20, lineHeight: "28px", fontWeight: 600, margin: "0 0 8px" }}>Soy desarrollador o desarrolladora</p>
+    <p style={{ fontSize: 14, lineHeight: "20px", margin: 0 }}>Empiezas en <code>index.toon</code> y <code>CLAUDE.md</code>. Lo que más te importa:</p>
     <ul>
       <li>El <a href="#el-camino-en-6-pasos">camino en 6 pasos</a>, de Figma a la PR</li>
       <li>La metadata ejecutable (<code>&lt;Nombre&gt;.metadata.ts</code>) y el índice generado</li>
@@ -47,6 +83,8 @@ la story. Tómalo como énfasis, no como carril separado.
 Esta es la puerta dura del sistema (`CLAUDE.md`, sección "Antes de crear un
 componente nuevo"). Síguela en orden, no es una sugerencia:
 
+<div className="aida-timeline aida-timeline--gate">
+
 1. **Lee `index.toon`** antes de explorar `src/components` a mano. Es el
    grafo de componentes generado por `npm run generate-index`.
 2. **Busca por categoría**, no por nombre exacto: `action`, `navigation`,
@@ -60,8 +98,9 @@ componente nuevo"). Síguela en orden, no es una sugerencia:
    ni te inventes uno nuevo por tu cuenta. Añade una línea a
    `flags.jsonl` (ver el esquema en `CLAUDE.md`) y responde explicando
    por qué no encaja, citando el componente o categoría más cercana. El
-   flag **es** el resultado correcto, no construyas nada "mientras
-   tanto".
+   flag **es** el resultado correcto, no construyas nada "mientras tanto".
+
+</div>
 
 `flags.jsonl` es el backlog real del sistema: en vez de adivinar qué falta,
 se prioriza con los casos reales donde el sistema no dio la talla.
@@ -69,6 +108,8 @@ se prioriza con los casos reales donde el sistema no dio la talla.
 ## El camino en 6 pasos
 
 Tomando `Popover` como ejemplo (familia Overlay, Fase 5, 2026-10-16):
+
+<div className="aida-timeline">
 
 1. **Diseña el componente en Figma**, en la librería `Aida`, con cada
    color, radio y espaciado enlazado a una variable, no a un valor suelto.
@@ -87,8 +128,7 @@ Tomando `Popover` como ejemplo (familia Overlay, Fase 5, 2026-10-16):
    desincronizan. Incluye la story **Do's y don'ts**: `guidelines` en la
    metadata es una lista de pares `{ do, dont, reason }` (mínimo 2), y
    cada par se dibuja con un ejemplo en el mismo orden; `withExamples`
-   falla en voz alta si los números no cuadran. Ejemplo completo más
-   abajo.
+   falla en voz alta si los números no cuadran. Ejemplo completo más abajo.
 5. **Escribe `<Nombre>.test.tsx`** (Vitest + Testing Library): cada
    variante/estado, los callbacks de `props`, el comportamiento de `a11y`
    (rol, teclado, área táctil) y una comprobación de axe-core
@@ -99,6 +139,8 @@ Tomando `Popover` como ejemplo (familia Overlay, Fase 5, 2026-10-16):
    `Introduction.mdx` (hoy, 25 componentes), actualízalos todos juntos.
    Usa Conventional Commits (`feat:`, `fix:`, `docs:`...): el changelog y
    la versión se generan a partir de ellos.
+
+</div>
 
 ## Ejemplo completo: Popover, de Figma a publicado
 
@@ -118,6 +160,8 @@ componente lo cablee.
 
 ## Checklist antes de abrir la PR
 
+<div className="aida-checklist">
+
 - [ ] El componente tiene su `<Nombre>.metadata.ts` completo (los 8 campos
       obligatorios), y `figma.componentKey` si viene de Figma.
 - [ ] `npm run generate-index` corrido después del cambio de metadata.
@@ -134,30 +178,57 @@ componente lo cablee.
       componente forzado.
 - [ ] Commit en Conventional Commits.
 
+</div>
+
 ## Preguntas frecuentes
 
+<div className="aida-faq-item">
+
 **¿Y si un componente existente casi encaja pero no del todo?**
+
 Esa es la zona donde más se tuerce el sistema. Si cubre el 70% o más de las
 props, es una extensión, no un componente nuevo: una prop o variante más,
 no una copia con otro nombre. Por debajo del 70%, sigue el paso 5 del árbol
 de decisión: flag, no invención.
 
+</div>
+
+<div className="aida-faq-item">
+
 **¿Puedo construir "una versión provisional" mientras se decide?**
+
 No. El flag en `flags.jsonl` es el resultado correcto del caso, no un paso
 intermedio antes de construir igual: eso es justo lo que la puerta dura
 intenta evitar.
 
+</div>
+
+<div className="aida-faq-item">
+
 **Mi componente usa overlays o un patrón que no se puede dibujar como
 ejemplo visual de Do's y don'ts, ¿qué hago?**
+
 Usa `<Code>` (de `src/stories/Guidelines.tsx`) en vez de un ejemplo
 renderizado: es lo que hace `Popover` en su segundo par, arriba.
 
+</div>
+
+<div className="aida-faq-item">
+
 **¿Cómo pido ayuda o discuto una decisión?**
+
 Si es sobre si algo encaja o no, abre el flag primero: así queda el caso
 real registrado aunque la respuesta tarde. Para lo demás, abre un Issue en
 [holalfonso-ship-it/agentic-design-system](https://github.com/holalfonso-ship-it/agentic-design-system).
 
+</div>
+
+<div className="aida-faq-item">
+
 **¿Dónde queda constancia de lo que se decidió y de lo que se hizo?**
-En Notion, no en este repo: la base **Decisiones · Aida** para el porqué,
-y la **Bitácora de sesiones · Aida** para qué se hizo en cada sesión, con
+
+En Notion, no en este repo: la base **Decisiones de Aida** para el porqué,
+y la **Bitácora de sesiones de Aida** para qué se hizo en cada sesión, con
 sus commits. `CLAUDE.md` es el protocolo; Notion es el historial.
+
+</div>
