@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.10.3](https://github.com/holalfonso-ship-it/agentic-design-system/compare/agentic-design-system-v0.10.2...agentic-design-system-v0.10.3) (2026-10-19)
+
+
+### Correcciones
+
+* alinear el último círculo de cada timeline con los demás ([daa0d44](https://github.com/holalfonso-ship-it/agentic-design-system/commit/daa0d449ceb9574d1d0b89f8e0fd7a294a295fab))
+* casillas del checklist dibujadas con CSS, no sintaxis GFM ([53d4518](https://github.com/holalfonso-ship-it/agentic-design-system/commit/53d4518cacc4eb0543c1cacfa5bed20fb0f88802))
+
+
+### Documentación
+
+* página de Contribución en Storybook + CONTRIBUTING.md ([94b89eb](https://github.com/holalfonso-ship-it/agentic-design-system/commit/94b89eb2b41e8146b9b2cd52d6605c18c5f97902))
+* quitar guiones largos de la guía de contribución ([b93e682](https://github.com/holalfonso-ship-it/agentic-design-system/commit/b93e682318399f269c41a41a6c16a2d3eab7067d))
+
 ## [0.10.2](https://github.com/holalfonso-ship-it/agentic-design-system/compare/agentic-design-system-v0.10.1...agentic-design-system-v0.10.2) (2026-10-16)
 
 
