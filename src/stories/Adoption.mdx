@@ -1,0 +1,62 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import report from "../adoption/report.json";
+import "./docs-visuals.css";
+
+<Meta title="Adopción" />
+
+# Métrica de adopción agéntica
+
+Esta página no mide cuánta gente usa Aida: mide si los **agentes que la
+consultan siguen el protocolo de `CLAUDE.md`** en vez de inventar
+componentes o forzar uno que no encaja. Es el dato que sostiene el
+argumento de fondo del proyecto — que un design system se puede
+estructurar para que un agente lo use bien, no solo para que una persona
+lo lea.
+
+Los números se generan con `npm run adoption-report` (`scripts/adoption-report.mjs`),
+leyendo directamente `flags.jsonl`, el historial de git y la metadata de
+cada componente — nunca a mano. Última vez generado: <code>{new Date(report.generatedAt).toLocaleString("es-ES")}</code>.
+
+<div className="aida-card-grid">
+  <div className="aida-card">
+    <p className="aida-card-title">{report.flags.total === 0 ? "0 flags" : `${report.flags.resolved}/${report.flags.total}`}</p>
+    <p className="aida-card-body">
+      {report.flags.total === 0
+        ? "Ningún agente ha abierto un flag todavía — ningún caso real de «no encaja nada» desde que existe el mecanismo (2026-09-03)."
+        : `${report.flags.resolved} resueltos de ${report.flags.total} abiertos en flags.jsonl.`}
+    </p>
+  </div>
+  <div className="aida-card">
+    <p className="aida-card-title">{report.extendVsCreate.create} crean / {report.extendVsCreate.extend} extienden</p>
+    <p className="aida-card-body">De {report.extendVsCreate.totalFeatCommits} commits <code>feat:</code> sobre <code>src/components</code>. Proxy de la regla del 70% (extender antes que crear).</p>
+  </div>
+  <div className="aida-card">
+    <p className="aida-card-title">{report.metadataCoverage.withConstraints}/{report.metadataCoverage.total}</p>
+    <p className="aida-card-body">Componentes con <code>constraints</code> declarado. <code>guidelines</code> y <code>figma.componentKey</code> están al {Math.round((report.metadataCoverage.withGuidelines / report.metadataCoverage.total) * 100)}% en los dos casos.</p>
+  </div>
+  <div className="aida-card">
+    <p className="aida-card-title">{report.arcCycles.reduce((sum, c) => sum + c.cerrados, 0)}/{report.arcCycles.reduce((sum, c) => sum + c.hallazgos, 0)}</p>
+    <p className="aida-card-body">Hallazgos cerrados sobre el total, sumando los {report.arcCycles.length} Ciclos ARC ejecutados hasta ahora.</p>
+  </div>
+</div>
+
+## Qué significa cada indicador
+
+<div className="aida-boxed-list aida-boxed-list--dot">
+
+- **flags.jsonl** (`{report.flags.flagged}` flagged, `{report.flags.resolved}` resolved): la puerta de salida legítima de la regla "cuando nada encaja" (`CLAUDE.md`). Muchos `resolved` sin acumular `flagged` sin cerrar es la señal sana; un flag abierto durante varios Ciclos ARC sin resolver es la señal a escalar.
+- **Crear vs. extender**: de los commits `feat:` que tocan `src/components`, cuántos añaden el primer `.tsx` de un componente nuevo frente a cuántos modifican uno que ya existía. Es aproximado por diseño — un commit `feat:` de herramientas (p. ej. Storybook) no toca ningún `.tsx` de componente y no cuenta en ninguno de los dos lados.
+- **Cobertura de metadata**: `guidelines` (do's y don'ts, obligatorio desde el 2026-10-14) y `figma.componentKey` deberían tender al 100%; `constraints` es opcional (2026-10-21) y solo lo lleva un componente con un límite estructural real, así que un número bajo aquí no es un problema — lo sería que subiera sin que haya un caso real detrás.
+- **Drift por Ciclo ARC**: hallazgos (`hallazgos`) vs. cerrados (`cerrados`) de cada Audit → Report → Compose, leído de `src/adoption/arc-cycles.json` (seed manual desde Notion — "🔁 Ciclos ARC — Aida"; no hay forma de leer Notion en un build estático de Storybook, así que esa tabla se actualiza a mano tras cada Audit nuevo).
+
+</div>
+
+## Histórico de Ciclos ARC
+
+<div className="aida-boxed-list aida-boxed-list--check">
+  <ul>
+    {report.arcCycles.map((c) => (
+      <li key={c.ciclo}>Ciclo {c.ciclo} · {c.fase} · {c.fecha} — {c.cerrados} de {c.hallazgos} hallazgos cerrados</li>
+    ))}
+  </ul>
+</div>
