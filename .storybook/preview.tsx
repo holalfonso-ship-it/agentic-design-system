@@ -11,6 +11,7 @@ const preview: Preview = {
         order: [
           "Introducción",
           "Contribución",
+          "Adopción",
           "Action",
           ["Button", "QuickActionTile", "Toggle"],
           "Navigation",

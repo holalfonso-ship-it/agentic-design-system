@@ -1,0 +1,30 @@
+[
+  {
+    "ciclo": 1,
+    "fase": "Fase 3",
+    "fecha": "2026-09-14",
+    "hallazgos": 9,
+    "cerrados": 9
+  },
+  {
+    "ciclo": 2,
+    "fase": "Fase 4",
+    "fecha": "2026-10-01",
+    "hallazgos": 13,
+    "cerrados": 11
+  },
+  {
+    "ciclo": 3,
+    "fase": "Fase 4",
+    "fecha": "2026-10-01",
+    "hallazgos": 7,
+    "cerrados": 7
+  },
+  {
+    "ciclo": 4,
+    "fase": "Fase 4",
+    "fecha": "2026-10-02",
+    "hallazgos": 2,
+    "cerrados": 2
+  }
+]
