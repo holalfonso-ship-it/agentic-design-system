@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.11.0](https://github.com/holalfonso-ship-it/agentic-design-system/compare/agentic-design-system-v0.10.3...agentic-design-system-v0.11.0) (2026-10-21)
+
+
+### Funcionalidades
+
+* campo constraints en la metadata (preconditions/prohibitions) ([f37e44d](https://github.com/holalfonso-ship-it/agentic-design-system/commit/f37e44d33f942e7e1c9363e7f9eb609831372fc6))
+* campo constraints en la metadata (preconditions/prohibitions) ([65cc9e2](https://github.com/holalfonso-ship-it/agentic-design-system/commit/65cc9e26e102cb5aa3f72af6cd32a52f951233ec))
+
 ## [0.10.3](https://github.com/holalfonso-ship-it/agentic-design-system/compare/agentic-design-system-v0.10.2...agentic-design-system-v0.10.3) (2026-10-19)
 
 
