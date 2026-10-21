@@ -7,7 +7,7 @@
  * agente lo consuma sin tener que abrir cada archivo fuente.
  *
  * Formato por línea:
- *   Nombre|categoria|deps:a,b|tokens:n|estados:n|figmaKey
+ *   Nombre|categoria|deps:a,b|tokens:n|estados:n|constraints:n|figmaKey
  *
  * Uso: npm run generate-index
  */
@@ -30,6 +30,28 @@ function extractArrayLength(source, field) {
   const trimmed = match[1].trim();
   if (!trimmed) return 0;
   return trimmed.split(",").filter(Boolean).length;
+}
+
+function countQuotedEntries(source, field) {
+  // A diferencia de extractArrayLength (que separa por comas, válido para
+  // identificadores cortos como tokens o estados), el texto libre de
+  // constraints puede llevar comas dentro de la propia frase. Se cuenta el
+  // número de strings entre comillas del array en vez de partir por comas.
+  const match = source.match(new RegExp(`${field}\\s*:\\s*\\[([\\s\\S]*?)\\n\\s*\\]`));
+  if (!match) return 0;
+  const strings = match[1].match(/"(?:[^"\\]|\\.)*"/g);
+  return strings ? strings.length : 0;
+}
+
+function extractConstraintsCount(source) {
+  // constraints es opcional y anidado ({ preconditions: [...], prohibitions: [...] }),
+  // a diferencia de los arrays planos de arriba. Se cuenta la suma de ambos arrays
+  // dentro del bloque, no si el campo existe o no — así un agente ve de un vistazo
+  // si ese componente tiene límites duros que comprobar antes de extenderlo.
+  const block = source.match(/constraints\s*:\s*\{([\s\S]*?)\n {2}\},/);
+  if (!block) return 0;
+  const inner = block[1];
+  return countQuotedEntries(inner, "preconditions") + countQuotedEntries(inner, "prohibitions");
 }
 
 function extractDeps(source) {
@@ -66,12 +88,13 @@ function main() {
     const deps = extractDeps(source);
     const tokenCount = extractArrayLength(source, "tokens");
     const stateCount = extractArrayLength(source, "states");
+    const constraintsCount = extractConstraintsCount(source);
 
     componentCount += 1;
     relationCount += deps.length;
 
     lines.push(
-      `${name}|${category}|deps:${deps.join(",") || "none"}|tokens:${tokenCount}|estados:${stateCount}|figma:${figmaKey.slice(0, 8)}`
+      `${name}|${category}|deps:${deps.join(",") || "none"}|tokens:${tokenCount}|estados:${stateCount}|constraints:${constraintsCount}|figma:${figmaKey.slice(0, 8)}`
     );
   }
 

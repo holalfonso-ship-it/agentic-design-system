@@ -14,7 +14,10 @@ modificar este codebase correctamente.
    `action`, `navigation`, `data-display`, `form` (desde Input, Fase 2),
    `overlay` (desde Modal, Fase 2).
 3. Si un componente existente cubre más del 70% de las props que necesitas,
-   extiéndelo (nueva variante, nueva prop) en vez de crear uno nuevo.
+   extiéndelo (nueva variante, nueva prop) en vez de crear uno nuevo. Antes de
+   extenderlo, lee `meta.constraints.prohibitions` si existe (campo opcional,
+   2026-10-21): una prohibición que choca con lo que pides cuenta como "no
+   encaja" aunque las props sí cubran el 70% — ver paso 5 y la regla dura.
 4. Si no existe nada parecido, revisa `src/tokens/` antes de escribir
    cualquier valor de color, radio o tamaño de fuente a mano. Ningún
    componente debe tener un hex o un px hardcodeado que ya exista como
@@ -44,7 +47,9 @@ existen en la librería real.
 
 **Regla dura:** si tras seguir los 4 pasos de la sección anterior ningún
 componente existente cubre ≥70% de las props necesarias y ninguna
-categoría existente encaja, el agente NO construye nada. En su lugar:
+categoría existente encaja, **o** el candidato más cercano declara en
+`meta.constraints.prohibitions` justo lo que se le pediría, el agente NO
+construye nada. En su lugar:
 
 1. Añade una línea a `flags.jsonl` (raíz del repo, formato JSON Lines,
    solo apertura — nunca reescribas ni borres líneas existentes) con
@@ -149,6 +154,18 @@ sea in/out. Trátalo como el caso de prueba de esta regla.
    comportamiento de `meta.a11y` (rol, teclado, área táctil) y una
    comprobación de axe-core (`expectNoA11yViolations`). Corre `npm test`
    antes de dar el componente por cerrado.
+8. **Constraints** (2026-10-21, a partir de feedback de Phong Designs AI
+   Systems): campo opcional `constraints: { preconditions: string[],
+   prohibitions: string[] }` en la metadata. No es guía de uso — eso es
+   `guidelines`, para humanos y con ejemplo visual — es lo que un agente
+   debe comprobar ANTES de decidir extender el componente en vez de abrir
+   un flag (ver "Cuando nada encaja"). Solo lo lleva un componente con un
+   límite estructural real (caso de referencia: `TransactionListItem`,
+   solo modela entradas y salidas); no es obligatorio en los 25. Si lo
+   declaras, `src/test/constraints.test.ts` exige que ambos arrays sean
+   de strings no vacíos y que no esté declarado vacío del todo.
+   `generate-index.mjs` lo refleja en `index.toon` como `constraints:n`
+   (suma de ambos arrays), visible sin abrir el archivo.
 
 **Mensajes de commit:** usa Conventional Commits (`feat:`, `fix:`, `docs:`,
 `refactor:`, `test:`, `ci:`, `chore:`; `feat!:` para breaking changes). El
