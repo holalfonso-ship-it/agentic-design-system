@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.12.0](https://github.com/holalfonso-ship-it/agentic-design-system/compare/agentic-design-system-v0.11.0...agentic-design-system-v0.12.0) (2026-10-21)
+
+
+### Funcionalidades
+
+* métrica de adopción agéntica (script + página en Storybook) ([486f484](https://github.com/holalfonso-ship-it/agentic-design-system/commit/486f484845c5a351e00eca50814ff72997417c04))
+
 ## [0.11.0](https://github.com/holalfonso-ship-it/agentic-design-system/compare/agentic-design-system-v0.10.3...agentic-design-system-v0.11.0) (2026-10-21)
 
 
